@@ -2,6 +2,7 @@ import "./globals.css";
 import "katex/dist/katex.min.css";
 import { normal } from "@/font/fonts";
 import { getPageMetadata } from "@/util/metadata";
+import TopBar from "@/components/topBar";
 
 export const metadata = getPageMetadata({
   title: "QCFundamentals",
@@ -41,6 +42,7 @@ export default function RootLayout({
         <meta name="theme-color" content="#ffffff" />
       </head>
       <body>
+        <TopBar />
         <div className="w-full flex justify-center">
           <div className="w-full max-w-[1200px] p-8">{children}</div>
         </div>

@@ -1,5 +1,4 @@
 import { ArticleDefinition } from "@/article/articleDefinitions";
-import Image from "next/image";
 import { ReactNode } from "react";
 
 const Article = ({
@@ -11,7 +10,6 @@ const Article = ({
 }) => {
   return (
     <div className="flex flex-col gap-4">
-      <a href="/">{"<"} Home</a>
       <h1>{articleDefinition.title}</h1>
       <h2 className="text-lightgrey">{articleDefinition.description}</h2>
       {children}

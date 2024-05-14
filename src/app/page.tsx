@@ -4,7 +4,6 @@ import Image from "next/image";
 export default function Home() {
   return (
     <div className="flex flex-col gap-6 items-center">
-      <Image src="/logo.svg" alt="bloch-sphere-0" width={300} height={500} />
       <p>Welcome to Quantum Computing Fundamentals.</p>
       <p>
         At the moment this website is a collection of articles I have written on
