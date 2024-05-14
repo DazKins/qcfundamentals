@@ -4,9 +4,8 @@ import { normal } from "@/font/fonts";
 import { getPageMetadata } from "@/util/metadata";
 
 export const metadata = getPageMetadata({
-  title: "DazKins",
-  description: "DazKins' personal website",
-  image: "/me.png",
+  title: "QCFundamentals",
+  description: "Learn the fundamentals of quantum computing",
 });
 
 export default function RootLayout({

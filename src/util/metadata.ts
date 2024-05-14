@@ -8,7 +8,7 @@ export const getPageMetadata = ({
 }: {
   title: string;
   description?: string;
-  image: string;
+  image?: string;
   type?: "website" | "article";
 }): Metadata => {
   return {
@@ -24,6 +24,6 @@ export const getPageMetadata = ({
       description,
     },
     title: title,
-    metadataBase: new URL("https://dazkins.com"),
+    metadataBase: new URL("https://qcfundamentals.com"),
   };
 };
