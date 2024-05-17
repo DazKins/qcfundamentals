@@ -1,21 +1,21 @@
 import {
   getArticleDefinition,
   getArticlePageMetadata,
-} from "@/article/articleDefinitions";
+} from "@/course/courseStructure";
 import Article from "@/components/article";
 import InlineMathBlock from "@/components/inlineMathBlock";
 import MathBlock from "@/components/mathBlock";
 import Table from "@/components/table";
 import Image from "next/image";
 
-const DOCUMENT_NAME = "what-is-a-qubit";
-const ARTICLE_DEFINITION = getArticleDefinition(DOCUMENT_NAME);
+const CHAPTER_ID = "qubits-and-gates";
+const ARTICLE_ID = "qubits";
 
-export const metadata = getArticlePageMetadata(ARTICLE_DEFINITION);
+export const metadata = getArticlePageMetadata(CHAPTER_ID, ARTICLE_ID);
 
 const Page = () => {
   return (
-    <Article articleDefinition={ARTICLE_DEFINITION}>
+    <Article>
       <h2>Classical Computers</h2>
       <p>
         We&apos;re all familiar with classical computers where information is
@@ -24,19 +24,19 @@ const Page = () => {
       </p>
       <p>
         These bits can then be manipulated using logic gates. The most simple
-        logic gate is the <InlineMathBlock latex="NOT" /> gate which inverts the
-        input sending <InlineMathBlock latex="0" /> &rarr;{" "}
+        logic gate is the <InlineMathBlock latex="\textmd{NOT}" /> gate which
+        inverts the input sending <InlineMathBlock latex="0" /> &rarr;{" "}
         <InlineMathBlock latex="1" /> and <InlineMathBlock latex="1" /> &rarr;{" "}
         <InlineMathBlock latex="0" />.
       </p>
       <p>
         We can&apos;t achieve much with a single bit. More interesting behaviour
         can be implemented with logic gates that act on more than one bit. A
-        common example is the <InlineMathBlock latex="AND" /> gate which takes
-        two inputs and outputs <InlineMathBlock latex="1" /> if both inputs are{" "}
-        <InlineMathBlock latex="1" /> and <InlineMathBlock latex="0" />{" "}
-        otherwise. We can characterise the behaviour of these gates with truth
-        tables:
+        common example is the <InlineMathBlock latex="\textmd{AND}" /> gate
+        which takes two inputs and outputs <InlineMathBlock latex="1" /> if both
+        inputs are <InlineMathBlock latex="1" /> and{" "}
+        <InlineMathBlock latex="0" /> otherwise. We can characterise the
+        behaviour of these gates with truth tables:
       </p>
       <div className="flex flex-col gap-8 sm:flex-row justify-around">
         <Table
@@ -123,8 +123,8 @@ const Page = () => {
           complex numbers
         </a>
         . Complex numbers have a real part and imaginary part, that is, some
-        part multiplied by <InlineMathBlock latex="i = √-1" />. I won&apos;t go
-        into detail on complex numbers in this article.
+        part multiplied by <InlineMathBlock latex="i = \sqrt{-1}" />. I
+        won&apos;t go into detail on complex numbers in this article.
       </p>
       <p>
         As mentioned earlier when we observe (or measure) a qubit, we will get
@@ -191,15 +191,15 @@ const Page = () => {
             height={500}
           />
           <div className="text-center mt-2">
-            <InlineMathBlock latex="1/√2\ket{0} + 1/√2\ket{1}" />
+            <InlineMathBlock latex="\frac{1}{\sqrt{2}}\ket{0} + \frac{1}{\sqrt{2}}\ket{1}" />
           </div>
         </div>
       </div>
       <p>
         As you can see, the state{" "}
-        <InlineMathBlock latex="1/√2\ket{0} + 1/√2\ket{1}" /> lies on the
-        equator as there is a probability{" "}
-        <InlineMathBlock latex="(1/√2)^2 = 1/2" /> to measure{" "}
+        <InlineMathBlock latex="\frac{1}{\sqrt{2}}\ket{0} + \frac{1}{\sqrt{2}}\ket{1}" />{" "}
+        lies on the equator as there is a probability{" "}
+        <InlineMathBlock latex="(\frac{1}{\sqrt{2}})^2 = 1/2" /> to measure{" "}
         <InlineMathBlock latex="\ket{0}" /> and likewise to measure{" "}
         <InlineMathBlock latex="\ket{1}" />.
       </p>
@@ -225,9 +225,10 @@ const Page = () => {
       </p>
       <p>Let&apos;s take a look at some of them:</p>
       <p>
-        The most basic one is the quantum <InlineMathBlock latex="NOT" /> gate
-        that we refer to with an <InlineMathBlock latex="X" />. Just like the
-        classical <InlineMathBlock latex="NOT" /> gate it takes{" "}
+        The most basic one is the quantum{" "}
+        <InlineMathBlock latex="\textmd{NOT}" /> gate that we refer to with an{" "}
+        <InlineMathBlock latex="X" />. Just like the classical{" "}
+        <InlineMathBlock latex="\textmd{NOT}" /> gate it takes{" "}
         <InlineMathBlock latex="\ket{0}" /> &rarr;{" "}
         <InlineMathBlock latex="\ket{1}" /> and{" "}
         <InlineMathBlock latex="\ket{1}" /> &rarr;{" "}
@@ -258,11 +259,11 @@ const Page = () => {
         Another famous gate is the Hadamard gate (named after the mathematician
         Jacques Hadamard). This gate is useful for creating superpositions. It
         takes <InlineMathBlock latex="\ket{0}" /> &rarr;
-        <InlineMathBlock latex="1/√2\ket{0} + 1/√2\ket{1}" /> and{" "}
-        <InlineMathBlock latex="\ket{1}" /> &rarr;
-        <InlineMathBlock latex="1/√2\ket{0} - 1/√2\ket{1}" />. These 50/50
-        superposition states are so common that there is a special notation for
-        them:
+        <InlineMathBlock latex="\frac{1}{\sqrt{2}}\ket{0} + \frac{1}{\sqrt{2}}\ket{1}" />{" "}
+        and <InlineMathBlock latex="\ket{1}" /> &rarr;
+        <InlineMathBlock latex="\frac{1}{\sqrt{2}}\ket{0} - \frac{1}{\sqrt{2}}\ket{1}" />
+        . These 50/50 superposition states are so common that there is a special
+        notation for them:
       </p>
       <MathBlock
         latex={[
@@ -296,27 +297,7 @@ const Page = () => {
         <InlineMathBlock latex="S" /> gate for example will only return the
         original state after 4 applications.
       </p>
-      <p>
-        Now a single qubit, as interesting as it is, isn&apos;t very powerful
-        and won&apos;t allow us to do any interesting computation. There are
-        many multi-qubit gates such as <InlineMathBlock latex="CNOT" />,{" "}
-        <InlineMathBlock latex="CZ" />, <InlineMathBlock latex="SWAP" /> etc.
-        but we&apos;ll save them for another time. We&apos;ll need some more
-        advanced tooling/notation to work with those.
-      </p>
-      <h2>Quantum Circuits</h2>
-      <p>
-        Now we have gates, we can chain as many of them as we like to build
-        circuits.
-      </p>
-      <h2>Conclusion</h2>
-      <p>
-        I hope this short post and the qubit simulator have given you a taste
-        for quantum computing. But we&apos;re just scratching the surface here!
-        When we scale to multiple qubits we&apos;ll get to see superdense
-        coding, entanglement, teleportation and loads more interesting stuff! I
-        hope to write some more posts on this stuff soon.
-      </p>
+      <p>At this point</p>
     </Article>
   );
 };

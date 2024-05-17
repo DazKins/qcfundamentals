@@ -1,10 +1,19 @@
-const Table = ({ data, headerRow }: { data: any[][]; headerRow?: boolean }) => (
+const Table = ({
+  data,
+  headerRow,
+  headerColumn,
+}: {
+  data: any[][];
+  headerRow?: boolean;
+  headerColumn?: boolean;
+}) => (
   <table className="border-separate border border-white rounded-default border-spacing-0 overflow-hidden">
     <tbody>
       {data.map((row, rowIndex) => (
         <TableRow
           data={row}
           headerRow={headerRow}
+          headerColumn={headerColumn}
           index={rowIndex}
           key={rowIndex}
         />
@@ -16,20 +25,23 @@ const Table = ({ data, headerRow }: { data: any[][]; headerRow?: boolean }) => (
 const TableRow = ({
   data,
   headerRow,
+  headerColumn,
   index,
 }: {
   data: any[];
   headerRow?: boolean;
+  headerColumn?: boolean;
   index: number;
 }) => (
   <tr>
-    {data.map((cell, cellIndex) => (
+    {data.map((cell, columnIndex) => (
       <TableCell
         data={cell}
         headerRow={headerRow}
+        headerColumn={headerColumn}
         rowIndex={index}
-        index={cellIndex}
-        key={cellIndex}
+        columnIndex={columnIndex}
+        key={columnIndex}
       />
     ))}
   </tr>
@@ -38,32 +50,34 @@ const TableRow = ({
 const TableCell = ({
   data,
   headerRow,
+  headerColumn,
   rowIndex,
-  index,
+  columnIndex,
 }: {
   data: any;
   headerRow?: boolean;
+  headerColumn?: boolean;
   rowIndex: number;
-  index: number;
+  columnIndex: number;
 }) =>
-  headerRow && rowIndex == 0 ? (
-    <TableHeaderCell data={data} index={index} rowIndex={rowIndex} />
+  (headerRow && rowIndex == 0) || (headerColumn && columnIndex == 0) ? (
+    <TableHeaderCell data={data} columnIndex={columnIndex} rowIndex={rowIndex} />
   ) : (
-    <TableNormalCell data={data} index={index} rowIndex={rowIndex} />
+    <TableNormalCell data={data} columnIndex={columnIndex} rowIndex={rowIndex} />
   );
 
 const TableNormalCell = ({
   data,
   rowIndex,
-  index,
+  columnIndex,
 }: {
   data: any;
   rowIndex: number;
-  index: number;
+  columnIndex: number;
 }) => (
   <td
     className={`text-center py-2 px-4 border-white ${
-      index != 0 ? "border-l" : ""
+      columnIndex != 0 ? "border-l" : ""
     } ${rowIndex != 0 ? "border-t" : ""}`}
   >
     {data}
@@ -73,15 +87,15 @@ const TableNormalCell = ({
 const TableHeaderCell = ({
   data,
   rowIndex,
-  index,
+  columnIndex,
 }: {
   data: any;
   rowIndex: number;
-  index: number;
+  columnIndex: number;
 }) => (
   <th
     className={`text-center py-2 px-4 bg-secondary border-white ${
-      index != 0 ? "border-l" : ""
+      columnIndex != 0 ? "border-l" : ""
     } ${rowIndex != 0 ? "border-t" : ""}`}
   >
     {data}

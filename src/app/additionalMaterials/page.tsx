@@ -9,7 +9,7 @@ const Page = () => {
       <h2>Quantum Computing</h2>
       <h3>Videos</h3>
       <p>
-        The Youtube user "Elucyda" has made a great playlist of his own peronsal
+        The Youtube user "Elucyda" has made a great playlist of his own personal
         lectures that covers advanced algorithms and some quantum physics at the
         same time.{" "}
         <a href="https://www.youtube.com/playlist?list=PLl0eQOWl7mnWPTQF7lgLWZmb5obvOowVw">
@@ -18,7 +18,7 @@ const Page = () => {
       </p>
       <h3>Books</h3>
       <p>
-        The classic "Mike and Ike" textbook (Quantum Computation and Quantum
+        The "Mike and Ike" textbook (Quantum Computation and Quantum
         Information by Isaac Chuang and Michael Nielsen) is one of the most
         classic introductions to the field. Despite being old, it still provides
         an excellent introduction to the theory of quantum algorithms, error
@@ -27,10 +27,23 @@ const Page = () => {
           Amazon
         </a>
       </p>
+      <h3>Apps</h3>
+      <p>
+        Brilliant have made a great Quantum Computing course in collaboration
+        with Microsoft{" "}
+        <i>(Monthly subscription is required for full access).</i>{" "}
+        <a href="https://brilliant.org/courses/quantum-computing/">Website</a>
+      </p>
+      <p>
+        Q-CTRL have launched a online learning portal called black opal with
+        some nice interactive simulators{" "}
+        <i>(Monthly subscription is required for full access).</i>{" "}
+        <a href="https://q-ctrl.com/black-opal">Website</a>
+      </p>
       <h2>Quantum Physics</h2>
       <p>
-        Although not required, a good knowledge of quantum physics can help with
-        some of the more advanced topics.
+        Although not required, here are some useful learning materials for
+        quantum physics.
       </p>
       <h3>Videos</h3>
       <p>

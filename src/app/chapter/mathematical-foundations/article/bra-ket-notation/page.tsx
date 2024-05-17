@@ -1,19 +1,19 @@
 import {
   getArticleDefinition,
   getArticlePageMetadata,
-} from "@/article/articleDefinitions";
+} from "@/course/courseStructure";
 import Article from "@/components/article";
 import InlineMathBlock from "@/components/inlineMathBlock";
 import MathBlock from "@/components/mathBlock";
 
-const DOCUMENT_NAME = "bra-ket-notation";
-const ARTICLE_DEFINITION = getArticleDefinition(DOCUMENT_NAME);
+const CHAPTER_ID = "mathematical-foundations";
+const ARTICLE_ID = "bra-ket-notation";
 
-export const metadata = getArticlePageMetadata(ARTICLE_DEFINITION);
+export const metadata = getArticlePageMetadata(CHAPTER_ID, ARTICLE_ID);
 
 const Page = () => {
   return (
-    <Article articleDefinition={ARTICLE_DEFINITION}>
+    <Article>
       <h2>Introduction</h2>
       <p>
         I&apos;ve recently been studying and learning a lot of quantum

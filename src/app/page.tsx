@@ -1,4 +1,4 @@
-import { ArticleDefinitions } from "@/article/articleDefinitions";
+import { ChapterDefinitions } from "@/course/courseStructure";
 import Image from "next/image";
 
 export default function Home() {
@@ -11,15 +11,38 @@ export default function Home() {
         to include a more complete set of learning resources and include some
         fun and interactive tools.
       </p>
-      {ArticleDefinitions.map((articleDefinition, index) => {
-        return (
-          <p key={index}>
-            <a href={`/article/${articleDefinition.document}`}>
-              {articleDefinition.title}
-            </a>
-          </p>
-        );
-      })}
+      <ul className="list-inside">
+        {ChapterDefinitions.map((chapterDefinition) => (
+          <li>
+            {chapterDefinition.comingSoon ? (
+              <>
+                {chapterDefinition.title}
+                <i> (coming soon)</i>
+              </>
+            ) : (
+              <a href={`/chapter/${chapterDefinition.id}`}>
+                {chapterDefinition.title}
+              </a>
+            )}
+            <ul className="list-inside ps-10">
+              {chapterDefinition.articles.map((articleDefinition) => (
+                <li>
+                  {articleDefinition.comingSoon ? (
+                    <>
+                      {articleDefinition.title}
+                      <i> (coming soon)</i>
+                    </>
+                  ) : (
+                    <a href={`/chapter/${chapterDefinition.id}/article/${articleDefinition.id}`}>
+                      {articleDefinition.title}
+                    </a>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
