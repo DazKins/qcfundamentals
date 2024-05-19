@@ -1,7 +1,11 @@
 import Chapter from "@/components/chapter";
 
 const Page = () => {
-  return <Chapter>asd</Chapter>;
+  return (
+    <Chapter>
+      <i>WIP</i>
+    </Chapter>
+  );
 };
 
 export default Page;

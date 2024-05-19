@@ -35,7 +35,7 @@ const Chapter = ({ children }: Props) => {
       <h2>Contents</h2>
       <ul className="list-inside">
         {chapterDefinition.articles.map((articleDefinition) => (
-          <li>
+          <li key={articleDefinition.id}>
             {articleDefinition.comingSoon ? (
               <>
                 {articleDefinition.title}
@@ -51,27 +51,33 @@ const Chapter = ({ children }: Props) => {
           </li>
         ))}
       </ul>
-      {nextChapterId &&
-        (getChapterDefinition(nextChapterId).comingSoon ? (
-          <p>
-            {"> "}Next Chapter ({getChapterDefinition(nextChapterId).title}){" "}
-            <i>(Coming Soon)</i>
-          </p>
-        ) : (
-          <a href={`/chapter/${nextChapterId}`}>
-            {"> "}Next Chapter ({getChapterDefinition(nextChapterId).title})
-          </a>
-        ))}
-      {previousChapterId && (getChapterDefinition(previousChapterId).comingSoon ? (
-          <p>
-            {"< "}Previous Chapter ({getChapterDefinition(previousChapterId).title}){" "}
-            <i>(Coming Soon)</i>
-          </p>
-        ) : (
-          <a href={`/chapter/${previousChapterId}`}>
-            {"< "}Previous Chapter ({getChapterDefinition(previousChapterId).title})
-          </a>
-        ))}
+
+      <div className="flex flex-row gap-8">
+        {previousChapterId &&
+          (getChapterDefinition(previousChapterId).comingSoon ? (
+            <p>
+              {"< "}Previous Chapter (
+              {getChapterDefinition(previousChapterId).title}){" "}
+              <i>(Coming Soon)</i>
+            </p>
+          ) : (
+            <a href={`/chapter/${previousChapterId}`}>
+              {"< "}Previous Chapter (
+              {getChapterDefinition(previousChapterId).title})
+            </a>
+          ))}
+        {nextChapterId &&
+          (getChapterDefinition(nextChapterId).comingSoon ? (
+            <p>
+              {"> "}Next Chapter ({getChapterDefinition(nextChapterId).title}){" "}
+              <i>(Coming Soon)</i>
+            </p>
+          ) : (
+            <a href={`/chapter/${nextChapterId}`}>
+              {"> "}Next Chapter ({getChapterDefinition(nextChapterId).title})
+            </a>
+          ))}
+      </div>
     </div>
   );
 };
