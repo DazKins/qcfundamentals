@@ -3,13 +3,13 @@ const Page = () => {
     <div className="flex flex-col gap-5">
       <h1>Additional Materials</h1>
       <p>
-        Here you'll find some other useful materials for learning quantum
+        Here you&apos;ll find some other useful materials for learning quantum
         computing.
       </p>
       <h2>Quantum Computing</h2>
       <h3>Videos</h3>
       <p>
-        The Youtube user "Elucyda" has made a great playlist of his own personal
+        The Youtube user &quot;Elucyda&quot; has made a great playlist of his own personal
         lectures that covers advanced algorithms and some quantum physics at the
         same time.{" "}
         <a href="https://www.youtube.com/playlist?list=PLl0eQOWl7mnWPTQF7lgLWZmb5obvOowVw">
@@ -18,7 +18,7 @@ const Page = () => {
       </p>
       <h3>Books</h3>
       <p>
-        The "Mike and Ike" textbook (Quantum Computation and Quantum
+        The &quot;Mike and Ike&quot; textbook (Quantum Computation and Quantum
         Information by Isaac Chuang and Michael Nielsen) is one of the most
         classic introductions to the field. Despite being old, it still provides
         an excellent introduction to the theory of quantum algorithms, error

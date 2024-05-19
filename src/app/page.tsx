@@ -6,7 +6,7 @@ export default function Home() {
     <div className="flex flex-col gap-6 items-center">
       <p>Welcome to Quantum Computing Fundamentals.</p>
       <p>
-        Below you'll find a complete set of learning materials for getting
+        Below you&apos;ll find a complete set of learning materials for getting
         started in quantum computing. The course is divided into chapters which
         can be read however you want.
       </p>

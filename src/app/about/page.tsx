@@ -6,7 +6,7 @@ const Page = () => {
         QCFundamentals is made by <a href="https://dazkins.com">DazKins</a>.
       </p>
       <p>
-        If you have any suggestions or corrections please don't hesitate to
+        If you have any suggestions or corrections please don$&apos;t hesitate to
         reach out to me on <a href="https://x.com/dazkins_">X</a>.
       </p>
       <p></p>
