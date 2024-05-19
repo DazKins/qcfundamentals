@@ -88,8 +88,8 @@ const Page = () => {
         And now we&apos;re ready to do some math!
       </p>
       <p>
-        It&apos;s quite clear that <InlineMathBlock latex="r_1 \circ e = e" />,{" "}
-        <InlineMathBlock latex="f \circ e = e" /> since doing nothing (the
+        It&apos;s quite clear that <InlineMathBlock latex="r_1 \circ e = r_1" />,{" "}
+        <InlineMathBlock latex="f \circ e = f" /> since doing nothing (the
         identity operation <InlineMathBlock latex="e" />) after any operation
         will be the same as just doing the operation. We can see some more
         interesting properties as well. For example{" "}
