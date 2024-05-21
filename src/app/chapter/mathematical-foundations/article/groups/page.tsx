@@ -401,7 +401,7 @@ const Page = () => {
           solution={
             <>
               <p>
-                The integers do form a group under addition! Let's go through
+                The integers do form a group under addition! Let&apos;s go through
                 each of the 5 rules to check:
               </p>
               <ul>
@@ -421,7 +421,7 @@ const Page = () => {
                     <li>
                       We can see fairly trivially that{" "}
                       <InlineMathBlock latex="(a + b) + c = a + (b + c)" /> for
-                      the integers. We won't go into any more detail here, but
+                      the integers. We won&apos;t go into any more detail here, but
                       there are certainly more rigorous proofs that can be done.
                       They are out of scope here. Our basic intuition about
                       integers will be enough for now.
@@ -445,7 +445,7 @@ const Page = () => {
                   <strong>Inverse</strong>
                   <ul className="list-inside ps-10">
                     <li>
-                      Now we've identified the identity element as{" "}
+                      Now we&apos;ve identified the identity element as{" "}
                       <InlineMathBlock latex="0" /> we need to show that for all
                       integers, there exists some other integer that when added
                       together gives <InlineMathBlock latex="0" />. We can
