@@ -5,6 +5,7 @@ import MathBlock from "@/components/mathBlock";
 import Table from "@/components/table";
 import Image from "next/image";
 import { addKeysToArray2 } from "@/util/key";
+import Exercise from "@/components/exercise";
 
 const CHAPTER_ID = "mathematical-foundations";
 const ARTICLE_ID = "groups";
@@ -88,8 +89,8 @@ const Page = () => {
         And now we&apos;re ready to do some math!
       </p>
       <p>
-        It&apos;s quite clear that <InlineMathBlock latex="r_1 \circ e = r_1" />,{" "}
-        <InlineMathBlock latex="f \circ e = f" /> since doing nothing (the
+        It&apos;s quite clear that <InlineMathBlock latex="r_1 \circ e = r_1" />
+        , <InlineMathBlock latex="f \circ e = f" /> since doing nothing (the
         identity operation <InlineMathBlock latex="e" />) after any operation
         will be the same as just doing the operation. We can see some more
         interesting properties as well. For example{" "}
@@ -352,6 +353,127 @@ const Page = () => {
         operations satisfy. This allows us to study the abstract properties of
         these operations and apply them to many different areas of mathematics.
       </p>
+      <h2>Exercises</h2>
+      <div className="flex flex-col gap-8">
+        <h3>Exercise 1</h3>
+        <Exercise
+          problem={
+            <>
+              <p>Are the integers under multiplication a group?</p>
+              <p>
+                More formally if we define the elements of our group to be the
+                integers{" "}
+                <InlineMathBlock latex="\mathbb{Z} = \{..., -2, -1, 0, 1, 2, ...\}" />{" "}
+                and the operation to be standard numerical multiplication
+                <InlineMathBlock latex="\times" /> e.g.{" "}
+                <InlineMathBlock latex="3 \times 2 = 6" /> , do we get a valid
+                group? If so, prove it. If not, which rule(s) does it violate?
+              </p>
+            </>
+          }
+          solution={
+            <>
+              <p>
+                The integers under multiplication are not a group. They violate
+                the inverse rule. For example the integer 2 does not have an
+                inverse under multiplication. Note that the identity under
+                multiplication is <InlineMathBlock latex="1" /> since anything
+                multiplied by <InlineMathBlock latex="1" /> is just itself. The
+                inverse, for example, of <InlineMathBlock latex="2" /> would
+                therefore have to be something that when multiplied with{" "}
+                <InlineMathBlock latex="2" /> gives{" "}
+                <InlineMathBlock latex="1" />. The only number that fits this is{" "}
+                <InlineMathBlock latex="\frac{1}{2}" /> but this is not an
+                integer, so the inverse rule is violated.
+              </p>
+            </>
+          }
+        />
+        <h3>Exercise 2</h3>
+        <Exercise
+          problem={
+            <p>
+              Continuing on from the previous exercise, do we get a valid group
+              if we take the integers under addition instead of multiplication?
+              Again, if so, prove it. If not, which rule(s) does it violate?
+            </p>
+          }
+          solution={
+            <>
+              <p>
+                The integers do form a group under addition! Let's go through
+                each of the 5 rules to check:
+              </p>
+              <ul>
+                <li>
+                  <strong>Closure</strong>
+                  <ul className="list-inside ps-10">
+                    <li>
+                      When we add two integers we will never end up with any
+                      fraction or decimal part, we will always get another
+                      integer.
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <strong>Associativity</strong>
+                  <ul className="list-inside ps-10">
+                    <li>
+                      We can see fairly trivially that{" "}
+                      <InlineMathBlock latex="(a + b) + c = a + (b + c)" /> for
+                      the integers. We won't go into any more detail here, but
+                      there are certainly more rigorous proofs that can be done.
+                      They are out of scope here. Our basic intuition about
+                      integers will be enough for now.
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <strong>Identity</strong>
+                  <ul className="list-inside ps-10">
+                    <li>
+                      To prove that a group has an identity element we first
+                      have to identify that element and then prove it satisfies
+                      the necessary conditions. The identity element for the
+                      integers under addition is <InlineMathBlock latex="0" />{" "}
+                      and we can see that{" "}
+                      <InlineMathBlock latex="a + 0 = 0 + a = a" />{" "}
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <strong>Inverse</strong>
+                  <ul className="list-inside ps-10">
+                    <li>
+                      Now we've identified the identity element as{" "}
+                      <InlineMathBlock latex="0" /> we need to show that for all
+                      integers, there exists some other integer that when added
+                      together gives <InlineMathBlock latex="0" />. We can
+                      clearly see to this inverse is just the negative of the
+                      number. For example the inverse of{" "}
+                      <InlineMathBlock latex="2" /> is{" "}
+                      <InlineMathBlock latex="-2" /> since{" "}
+                      <InlineMathBlock latex="2 + (-2) = 0" /> and the inverse
+                      of <InlineMathBlock latex="-42" /> is{" "}
+                      <InlineMathBlock latex="42" /> since
+                      <InlineMathBlock latex="(-42) + 42 = 0" />
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <strong>Well-Defined</strong>
+                  <ul className="list-inside ps-10">
+                    <li>
+                      Again, we will use our basic intuition to know that adding
+                      two integers always gives the same result.
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </>
+          }
+        />
+      </div>
     </Article>
   );
 };
