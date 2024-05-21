@@ -7,19 +7,21 @@ const Table = ({
   headerRow?: boolean;
   headerColumn?: boolean;
 }) => (
-  <table className="border-separate border border-white rounded-default border-spacing-0 overflow-hidden">
-    <tbody>
-      {data.map((row, rowIndex) => (
-        <TableRow
-          data={row}
-          headerRow={headerRow}
-          headerColumn={headerColumn}
-          index={rowIndex}
-          key={rowIndex}
-        />
-      ))}
-    </tbody>
-  </table>
+  <div className="overflow-scroll">
+    <table className="border-separate border border-white rounded-default border-spacing-0 overflow-hidden">
+      <tbody>
+        {data.map((row, rowIndex) => (
+          <TableRow
+            data={row}
+            headerRow={headerRow}
+            headerColumn={headerColumn}
+            index={rowIndex}
+            key={rowIndex}
+          />
+        ))}
+      </tbody>
+    </table>
+  </div>
 );
 
 const TableRow = ({
@@ -61,9 +63,17 @@ const TableCell = ({
   columnIndex: number;
 }) =>
   (headerRow && rowIndex == 0) || (headerColumn && columnIndex == 0) ? (
-    <TableHeaderCell data={data} columnIndex={columnIndex} rowIndex={rowIndex} />
+    <TableHeaderCell
+      data={data}
+      columnIndex={columnIndex}
+      rowIndex={rowIndex}
+    />
   ) : (
-    <TableNormalCell data={data} columnIndex={columnIndex} rowIndex={rowIndex} />
+    <TableNormalCell
+      data={data}
+      columnIndex={columnIndex}
+      rowIndex={rowIndex}
+    />
   );
 
 const TableNormalCell = ({
