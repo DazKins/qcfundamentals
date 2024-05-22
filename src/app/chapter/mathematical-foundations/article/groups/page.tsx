@@ -401,8 +401,8 @@ const Page = () => {
           solution={
             <>
               <p>
-                The integers do form a group under addition! Let&apos;s go through
-                each of the 5 rules to check:
+                The integers do form a group under addition! Let&apos;s go
+                through each of the 5 rules to check:
               </p>
               <ul>
                 <li>
@@ -421,10 +421,10 @@ const Page = () => {
                     <li>
                       We can see fairly trivially that{" "}
                       <InlineMathBlock latex="(a + b) + c = a + (b + c)" /> for
-                      the integers. We won&apos;t go into any more detail here, but
-                      there are certainly more rigorous proofs that can be done.
-                      They are out of scope here. Our basic intuition about
-                      integers will be enough for now.
+                      the integers. We won&apos;t go into any more detail here,
+                      but there are certainly more rigorous proofs that can be
+                      done. They are out of scope here. Our basic intuition
+                      about integers will be enough for now.
                     </li>
                   </ul>
                 </li>
@@ -471,6 +471,462 @@ const Page = () => {
                 </li>
               </ul>
             </>
+          }
+        />
+        <h3>Exercise 3 (difficult)</h3>
+        <Exercise
+          problem={
+            <div className="flex flex-col gap-2">
+              <p>How many abelian groups of order (size) 3 are there?</p>
+              <p>
+                This is a bit more advanced so here's some guidance on this
+                question:
+              </p>
+              <p>
+                When we say &quot;order&quot; here, we mean the number of
+                elements in the group. e.g. for our triangle group above, the
+                order is <InlineMathBlock latex="6" />. We notate this formally
+                as:
+                <InlineMathBlock latex="|G| = 6" />.
+              </p>
+              <p>
+                Remember the definition of an abelian group is one where the
+                operation is commutative i.e.{" "}
+                <InlineMathBlock latex="a \circ b = b \circ a" />.
+              </p>
+              <p>
+                We should also specify that we're looking for the number of
+                <i>&quot;distinct&quot;</i> abelian groups of order 3. Distinct
+                here means groups that are a fundamentally different structure.
+                This means simply renaming the elements of the group doesn't
+                count as a new group.
+              </p>
+            </div>
+          }
+          solution={
+            <div className="flex flex-col gap-2">
+              <p>
+                We answer this question by studying what the multiplication of
+                this group might look like.
+              </p>
+              <p>
+                We'll define an example group with elements{" "}
+                <InlineMathBlock latex="e" />, <InlineMathBlock latex="x" /> and{" "}
+                <InlineMathBlock latex="u" />. We know that{" "}
+                <InlineMathBlock latex="e" /> is the identity element of this
+                group so we can fill in row and column in our table already:
+              </p>
+              <div className="flex justify-center m-5">
+                <Table
+                  data={[
+                    [
+                      "",
+                      <InlineMathBlock latex="e" />,
+                      <InlineMathBlock latex="x" />,
+                      <InlineMathBlock latex="y" />,
+                    ],
+                    [
+                      <InlineMathBlock latex="e" />,
+                      <InlineMathBlock latex="e" />,
+                      <InlineMathBlock latex="x" />,
+                      <InlineMathBlock latex="y" />,
+                    ],
+                    [
+                      <InlineMathBlock latex="x" />,
+                      <InlineMathBlock latex="x" />,
+                      "",
+                      "",
+                    ],
+                    [
+                      <InlineMathBlock latex="y" />,
+                      <InlineMathBlock latex="y" />,
+                      "",
+                      "",
+                    ],
+                  ]}
+                  headerColumn
+                  headerRow
+                />
+              </div>
+              <p>Then we have 4 empty cells in the table left to fill.</p>
+              <p>
+                We know that each element must have an inverse, so there must be
+                an <InlineMathBlock latex="e" /> in each row/column. Is it
+                possible for an element to have multiple inverses?
+              </p>
+              <p>
+                Let's assume <InlineMathBlock latex="x \circ y_1 = e" /> and{" "}
+                <InlineMathBlock latex="x \circ y_2 = e" /> where{" "}
+                <InlineMathBlock latex=" y_1 \neq y_2" />. We can then show the
+                following:
+              </p>
+              <MathBlock
+                latex={[
+                  "x \\circ y_1 = x \\circ y_2",
+                  "y_1 \\circ (x \\circ y_1) = y_1 \\circ (x \\circ y_2)",
+                  "(y_1 \\circ x) \\circ y_1 = (y_1 \\circ x) \\circ y_2\\ \\ \\ \\textmd{(associativity)}",
+                  "e \\circ y_1 = e \\circ y_2",
+                  "y_1 = y_2",
+                ]}
+              />
+              <p>
+                This contradicts the statement we made earlier that{" "}
+                <InlineMathBlock latex=" y_1 \neq y_2" />. We have therefore
+                proved that inverses are unique! i.e. each row and column in our
+                table should have exactly 1 <InlineMathBlock latex="e" /> in it!
+              </p>
+              <p>
+                With this knowledge we can then explore what possible
+                combinations we can enter into our table. Let's first check what
+                happens if <InlineMathBlock latex="x \circ x = e" />:
+              </p>
+              <div className="flex justify-center m-5">
+                <Table
+                  data={[
+                    [
+                      "",
+                      <InlineMathBlock latex="e" />,
+                      <InlineMathBlock latex="x" />,
+                      <InlineMathBlock latex="y" />,
+                    ],
+                    [
+                      <InlineMathBlock latex="e" />,
+                      <InlineMathBlock latex="e" />,
+                      <InlineMathBlock latex="x" />,
+                      <InlineMathBlock latex="y" />,
+                    ],
+                    [
+                      <InlineMathBlock latex="x" />,
+                      <InlineMathBlock latex="x" />,
+                      <InlineMathBlock latex="e" />,
+                      "",
+                    ],
+                    [
+                      <InlineMathBlock latex="y" />,
+                      <InlineMathBlock latex="y" />,
+                      "",
+                      "",
+                    ],
+                  ]}
+                  headerColumn
+                  headerRow
+                />
+              </div>
+              <p>
+                We need another <InlineMathBlock latex="e" /> in the{" "}
+                <InlineMathBlock latex="y" /> column/row but given that it can't
+                come in any column/row with an existing{" "}
+                <InlineMathBlock latex="e" />
+                it can only go in the bottom right:
+              </p>
+              <div className="flex justify-center m-5">
+                <Table
+                  data={[
+                    [
+                      "",
+                      <InlineMathBlock latex="e" />,
+                      <InlineMathBlock latex="x" />,
+                      <InlineMathBlock latex="y" />,
+                    ],
+                    [
+                      <InlineMathBlock latex="e" />,
+                      <InlineMathBlock latex="e" />,
+                      <InlineMathBlock latex="x" />,
+                      <InlineMathBlock latex="y" />,
+                    ],
+                    [
+                      <InlineMathBlock latex="x" />,
+                      <InlineMathBlock latex="x" />,
+                      <InlineMathBlock latex="e" />,
+                      "",
+                    ],
+                    [
+                      <InlineMathBlock latex="y" />,
+                      <InlineMathBlock latex="y" />,
+                      "",
+                      <InlineMathBlock latex="e" />,
+                    ],
+                  ]}
+                  headerColumn
+                  headerRow
+                />
+              </div>
+              <p>
+                Two cells left to fill! Since the group must be abelian we know
+                that <InlineMathBlock latex="x \circ y = y \circ x" /> so the
+                values in these cells must be the same. So we can either put an{" "}
+                <InlineMathBlock latex="x" /> in both or a{" "}
+                <InlineMathBlock latex="y" /> in both. Let's say we chose{" "}
+                <InlineMathBlock latex="x" />:
+              </p>
+              <div className="flex justify-center m-5">
+                <Table
+                  data={[
+                    [
+                      "",
+                      <InlineMathBlock latex="e" />,
+                      <InlineMathBlock latex="x" />,
+                      <InlineMathBlock latex="y" />,
+                    ],
+                    [
+                      <InlineMathBlock latex="e" />,
+                      <InlineMathBlock latex="e" />,
+                      <InlineMathBlock latex="x" />,
+                      <InlineMathBlock latex="y" />,
+                    ],
+                    [
+                      <InlineMathBlock latex="x" />,
+                      <InlineMathBlock latex="x" />,
+                      <InlineMathBlock latex="e" />,
+                      <InlineMathBlock latex="x" />,
+                    ],
+                    [
+                      <InlineMathBlock latex="y" />,
+                      <InlineMathBlock latex="y" />,
+                      <InlineMathBlock latex="x" />,
+                      <InlineMathBlock latex="e" />,
+                    ],
+                  ]}
+                  headerColumn
+                  headerRow
+                />
+              </div>
+              <p>But there's a problem here:</p>
+              <MathBlock
+                latex={[
+                  "(x \\circ x) \\circ y = x \\circ (x \\circ y)\\ \\ \\ \\textmd{(associativity)}",
+                  "e \\circ y = x \\circ x",
+                  "y = e",
+                ]}
+              />
+              <p>
+                This is a contradiction since <InlineMathBlock latex="y" />{" "}
+                cannot be an identity. There is only one distinct identity
+                element.
+              </p>
+              <p>
+                So it appears putting the <InlineMathBlock latex="e" />s along
+                the diagonal isn't going to work. Let's try putting them in the
+                other two cells:
+              </p>
+              <div className="flex justify-center m-5">
+                <Table
+                  data={[
+                    [
+                      "",
+                      <InlineMathBlock latex="e" />,
+                      <InlineMathBlock latex="x" />,
+                      <InlineMathBlock latex="y" />,
+                    ],
+                    [
+                      <InlineMathBlock latex="e" />,
+                      <InlineMathBlock latex="e" />,
+                      <InlineMathBlock latex="x" />,
+                      <InlineMathBlock latex="y" />,
+                    ],
+                    [
+                      <InlineMathBlock latex="x" />,
+                      <InlineMathBlock latex="x" />,
+                      "",
+                      <InlineMathBlock latex="e" />,
+                    ],
+                    [
+                      <InlineMathBlock latex="y" />,
+                      <InlineMathBlock latex="y" />,
+                      <InlineMathBlock latex="e" />,
+                      "",
+                    ],
+                  ]}
+                  headerColumn
+                  headerRow
+                />
+              </div>
+              <p>
+                This seems a bit easier since the diagonal cells are always
+                commutative. What if we made both cells the same? e.g.
+                <InlineMathBlock latex="x \circ x = y \circ y = x" />:
+              </p>
+              <div className="flex justify-center m-5">
+                <Table
+                  data={[
+                    [
+                      "",
+                      <InlineMathBlock latex="e" />,
+                      <InlineMathBlock latex="x" />,
+                      <InlineMathBlock latex="y" />,
+                    ],
+                    [
+                      <InlineMathBlock latex="e" />,
+                      <InlineMathBlock latex="e" />,
+                      <InlineMathBlock latex="x" />,
+                      <InlineMathBlock latex="y" />,
+                    ],
+                    [
+                      <InlineMathBlock latex="x" />,
+                      <InlineMathBlock latex="x" />,
+                      <InlineMathBlock latex="x" />,
+                      <InlineMathBlock latex="e" />,
+                    ],
+                    [
+                      <InlineMathBlock latex="y" />,
+                      <InlineMathBlock latex="y" />,
+                      <InlineMathBlock latex="e" />,
+                      <InlineMathBlock latex="x" />,
+                    ],
+                  ]}
+                  headerColumn
+                  headerRow
+                />
+              </div>
+              <p>We end up with a similar associativity problem:</p>
+              <MathBlock
+                latex={[
+                  "(x \\circ x) \\circ y = x \\circ (x \\circ y)\\ \\ \\ \\textmd{(associativity)}",
+                  "x \\circ y = x \\circ e",
+                  "e = x",
+                ]}
+              />
+              <p>
+                Again this can't be true. So we're finally down to just 2 cases
+                to check. What about the case{" "}
+                <InlineMathBlock latex="x \circ x = x" /> and{" "}
+                <InlineMathBlock latex="y \circ y = y" />?
+              </p>
+              <div className="flex justify-center m-5">
+                <Table
+                  data={[
+                    [
+                      "",
+                      <InlineMathBlock latex="e" />,
+                      <InlineMathBlock latex="x" />,
+                      <InlineMathBlock latex="y" />,
+                    ],
+                    [
+                      <InlineMathBlock latex="e" />,
+                      <InlineMathBlock latex="e" />,
+                      <InlineMathBlock latex="x" />,
+                      <InlineMathBlock latex="y" />,
+                    ],
+                    [
+                      <InlineMathBlock latex="x" />,
+                      <InlineMathBlock latex="x" />,
+                      <InlineMathBlock latex="x" />,
+                      <InlineMathBlock latex="e" />,
+                    ],
+                    [
+                      <InlineMathBlock latex="y" />,
+                      <InlineMathBlock latex="y" />,
+                      <InlineMathBlock latex="e" />,
+                      <InlineMathBlock latex="y" />,
+                    ],
+                  ]}
+                  headerColumn
+                  headerRow
+                />
+              </div>
+              <p>The problem here is the exact same as before:</p>
+              <MathBlock
+                latex={[
+                  "(x \\circ x) \\circ y = x \\circ (x \\circ y)\\ \\ \\ \\textmd{(associativity)}",
+                  "x \\circ y = x \\circ e",
+                  "e = x",
+                ]}
+              />
+              <p>So we are left with a single case to check!</p>
+              <div className="flex justify-center m-5">
+                <Table
+                  data={[
+                    [
+                      "",
+                      <InlineMathBlock latex="e" />,
+                      <InlineMathBlock latex="x" />,
+                      <InlineMathBlock latex="y" />,
+                    ],
+                    [
+                      <InlineMathBlock latex="e" />,
+                      <InlineMathBlock latex="e" />,
+                      <InlineMathBlock latex="x" />,
+                      <InlineMathBlock latex="y" />,
+                    ],
+                    [
+                      <InlineMathBlock latex="x" />,
+                      <InlineMathBlock latex="x" />,
+                      <InlineMathBlock latex="y" />,
+                      <InlineMathBlock latex="e" />,
+                    ],
+                    [
+                      <InlineMathBlock latex="y" />,
+                      <InlineMathBlock latex="y" />,
+                      <InlineMathBlock latex="e" />,
+                      <InlineMathBlock latex="x" />,
+                    ],
+                  ]}
+                  headerColumn
+                  headerRow
+                />
+              </div>
+              <p>
+                And this one finally works! Try a few elements from the table
+                and you should find this one obeys associativity. Note that we
+                do not have another distinct solution with the{" "}
+                <InlineMathBlock latex="x" /> and <InlineMathBlock latex="y" />{" "}
+                the other way around since the resulting table would be
+                equivalent. i.e. swapping the names of{" "}
+                <InlineMathBlock latex="x" /> and <InlineMathBlock latex="y" />{" "}
+                and swapping their rows/columns would give the same result. The
+                only important thing is that when the same non-identity element
+                is combined with itself it gives the other non-identity element.
+              </p>
+              <p>
+                That took a while! So there is only a single group of order 3
+                that is abelian. I hope you find that surprising! It's not
+                immediately obvious.
+              </p>
+              <p>
+                In fact, looks what happens if we rename our elements{" "}
+                <InlineMathBlock latex="e \rightarrow 0" />,
+                <InlineMathBlock latex="x \rightarrow 1" /> and
+                <InlineMathBlock latex="y \rightarrow 2" />:
+              </p>
+              <div className="flex justify-center m-5">
+                <Table
+                  data={[
+                    [
+                      "",
+                      <InlineMathBlock latex="0" />,
+                      <InlineMathBlock latex="1" />,
+                      <InlineMathBlock latex="2" />,
+                    ],
+                    [
+                      <InlineMathBlock latex="0" />,
+                      <InlineMathBlock latex="0" />,
+                      <InlineMathBlock latex="1" />,
+                      <InlineMathBlock latex="2" />,
+                    ],
+                    [
+                      <InlineMathBlock latex="1" />,
+                      <InlineMathBlock latex="1" />,
+                      <InlineMathBlock latex="2" />,
+                      <InlineMathBlock latex="0" />,
+                    ],
+                    [
+                      <InlineMathBlock latex="2" />,
+                      <InlineMathBlock latex="2" />,
+                      <InlineMathBlock latex="0" />,
+                      <InlineMathBlock latex="1" />,
+                    ],
+                  ]}
+                  headerColumn
+                  headerRow
+                />
+              </div>
+              <p>This is addition modulo 3!</p>
+              <p>
+                That's amazing! That such a simple set of rules seemingly
+                unrelated to anything numerical appeared to give us a structure
+                resembling integer addition!
+              </p>
+            </div>
           }
         />
       </div>

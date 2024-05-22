@@ -34,7 +34,7 @@ const InlineMathBlock = ({
 
   return (
     <span
-      className={`py-[2px] px-1 pb-1 mx-1 bg-darkgrey text-lightgrey rounded-default ${mono.className}`}
+      className={`whitespace-nowrap py-[2px] px-1 pb-1 mx-1 bg-darkgrey text-lightgrey rounded-default ${mono.className}`}
       dangerouslySetInnerHTML={{ __html: html }}
     />
   );
