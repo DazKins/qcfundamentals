@@ -479,7 +479,7 @@ const Page = () => {
             <div className="flex flex-col gap-2">
               <p>How many abelian groups of order (size) 3 are there?</p>
               <p>
-                This is a bit more advanced so here's some guidance on this
+                This is a bit more advanced so here&apos;s some guidance on this
                 question:
               </p>
               <p>
@@ -495,11 +495,11 @@ const Page = () => {
                 <InlineMathBlock latex="a \circ b = b \circ a" />.
               </p>
               <p>
-                We should also specify that we're looking for the number of
+                We should also specify that we&apos;re looking for the number of
                 <i>&quot;distinct&quot;</i> abelian groups of order 3. Distinct
                 here means groups that are a fundamentally different structure.
-                This means simply renaming the elements of the group doesn't
-                count as a new group.
+                This means simply renaming the elements of the group
+                doesn&apos;t count as a new group.
               </p>
             </div>
           }
@@ -510,7 +510,7 @@ const Page = () => {
                 this group might look like.
               </p>
               <p>
-                We'll define an example group with elements{" "}
+                We&apos;ll define an example group with elements{" "}
                 <InlineMathBlock latex="e" />, <InlineMathBlock latex="x" /> and{" "}
                 <InlineMathBlock latex="u" />. We know that{" "}
                 <InlineMathBlock latex="e" /> is the identity element of this
@@ -521,25 +521,25 @@ const Page = () => {
                   data={[
                     [
                       "",
-                      <InlineMathBlock latex="e" />,
-                      <InlineMathBlock latex="x" />,
-                      <InlineMathBlock latex="y" />,
+                      <InlineMathBlock key="00" latex="e" />,
+                      <InlineMathBlock key="01" latex="x" />,
+                      <InlineMathBlock key="02" latex="y" />,
                     ],
                     [
-                      <InlineMathBlock latex="e" />,
-                      <InlineMathBlock latex="e" />,
-                      <InlineMathBlock latex="x" />,
-                      <InlineMathBlock latex="y" />,
+                      <InlineMathBlock key="10" latex="e" />,
+                      <InlineMathBlock key="11" latex="e" />,
+                      <InlineMathBlock key="12" latex="x" />,
+                      <InlineMathBlock key="13" latex="y" />,
                     ],
                     [
-                      <InlineMathBlock latex="x" />,
-                      <InlineMathBlock latex="x" />,
+                      <InlineMathBlock key="20" latex="x" />,
+                      <InlineMathBlock key="21" latex="x" />,
                       "",
                       "",
                     ],
                     [
-                      <InlineMathBlock latex="y" />,
-                      <InlineMathBlock latex="y" />,
+                      <InlineMathBlock key="30" latex="y" />,
+                      <InlineMathBlock key="31" latex="y" />,
                       "",
                       "",
                     ],
@@ -555,8 +555,8 @@ const Page = () => {
                 possible for an element to have multiple inverses?
               </p>
               <p>
-                Let's assume <InlineMathBlock latex="x \circ y_1 = e" /> and{" "}
-                <InlineMathBlock latex="x \circ y_2 = e" /> where{" "}
+                Let&apos;s assume <InlineMathBlock latex="x \circ y_1 = e" />{" "}
+                and <InlineMathBlock latex="x \circ y_2 = e" /> where{" "}
                 <InlineMathBlock latex=" y_1 \neq y_2" />. We can then show the
                 following:
               </p>
@@ -577,33 +577,33 @@ const Page = () => {
               </p>
               <p>
                 With this knowledge we can then explore what possible
-                combinations we can enter into our table. Let's first check what
-                happens if <InlineMathBlock latex="x \circ x = e" />:
+                combinations we can enter into our table. Let&apos;s first check
+                what happens if <InlineMathBlock latex="x \circ x = e" />:
               </p>
               <div className="flex justify-center m-5">
                 <Table
                   data={[
                     [
                       "",
-                      <InlineMathBlock latex="e" />,
-                      <InlineMathBlock latex="x" />,
-                      <InlineMathBlock latex="y" />,
+                      <InlineMathBlock key="00" latex="e" />,
+                      <InlineMathBlock key="01" latex="x" />,
+                      <InlineMathBlock key="02" latex="y" />,
                     ],
                     [
-                      <InlineMathBlock latex="e" />,
-                      <InlineMathBlock latex="e" />,
-                      <InlineMathBlock latex="x" />,
-                      <InlineMathBlock latex="y" />,
+                      <InlineMathBlock key="10" latex="e" />,
+                      <InlineMathBlock key="11" latex="e" />,
+                      <InlineMathBlock key="12" latex="x" />,
+                      <InlineMathBlock key="13" latex="y" />,
                     ],
                     [
-                      <InlineMathBlock latex="x" />,
-                      <InlineMathBlock latex="x" />,
-                      <InlineMathBlock latex="e" />,
+                      <InlineMathBlock key="20" latex="x" />,
+                      <InlineMathBlock key="21" latex="x" />,
+                      <InlineMathBlock key="22" latex="e" />,
                       "",
                     ],
                     [
-                      <InlineMathBlock latex="y" />,
-                      <InlineMathBlock latex="y" />,
+                      <InlineMathBlock key="30" latex="y" />,
+                      <InlineMathBlock key="31" latex="y" />,
                       "",
                       "",
                     ],
@@ -614,8 +614,8 @@ const Page = () => {
               </div>
               <p>
                 We need another <InlineMathBlock latex="e" /> in the{" "}
-                <InlineMathBlock latex="y" /> column/row but given that it can't
-                come in any column/row with an existing{" "}
+                <InlineMathBlock latex="y" /> column/row but given that it
+                can&apos;t come in any column/row with an existing{" "}
                 <InlineMathBlock latex="e" />
                 it can only go in the bottom right:
               </p>
@@ -624,27 +624,27 @@ const Page = () => {
                   data={[
                     [
                       "",
-                      <InlineMathBlock latex="e" />,
-                      <InlineMathBlock latex="x" />,
-                      <InlineMathBlock latex="y" />,
+                      <InlineMathBlock key="00" latex="e" />,
+                      <InlineMathBlock key="01" latex="x" />,
+                      <InlineMathBlock key="02" latex="y" />,
                     ],
                     [
-                      <InlineMathBlock latex="e" />,
-                      <InlineMathBlock latex="e" />,
-                      <InlineMathBlock latex="x" />,
-                      <InlineMathBlock latex="y" />,
+                      <InlineMathBlock key="10" latex="e" />,
+                      <InlineMathBlock key="11" latex="e" />,
+                      <InlineMathBlock key="12" latex="x" />,
+                      <InlineMathBlock key="12" latex="y" />,
                     ],
                     [
-                      <InlineMathBlock latex="x" />,
-                      <InlineMathBlock latex="x" />,
-                      <InlineMathBlock latex="e" />,
+                      <InlineMathBlock key="20" latex="x" />,
+                      <InlineMathBlock key="21" latex="x" />,
+                      <InlineMathBlock key="22" latex="e" />,
                       "",
                     ],
                     [
-                      <InlineMathBlock latex="y" />,
-                      <InlineMathBlock latex="y" />,
+                      <InlineMathBlock key="30" latex="y" />,
+                      <InlineMathBlock key="31" latex="y" />,
                       "",
-                      <InlineMathBlock latex="e" />,
+                      <InlineMathBlock key="32" latex="e" />,
                     ],
                   ]}
                   headerColumn
@@ -656,7 +656,7 @@ const Page = () => {
                 that <InlineMathBlock latex="x \circ y = y \circ x" /> so the
                 values in these cells must be the same. So we can either put an{" "}
                 <InlineMathBlock latex="x" /> in both or a{" "}
-                <InlineMathBlock latex="y" /> in both. Let's say we chose{" "}
+                <InlineMathBlock latex="y" /> in both. Let&apos;s say we chose{" "}
                 <InlineMathBlock latex="x" />:
               </p>
               <div className="flex justify-center m-5">
@@ -664,34 +664,34 @@ const Page = () => {
                   data={[
                     [
                       "",
-                      <InlineMathBlock latex="e" />,
-                      <InlineMathBlock latex="x" />,
-                      <InlineMathBlock latex="y" />,
+                      <InlineMathBlock key="00" latex="e" />,
+                      <InlineMathBlock key="01" latex="x" />,
+                      <InlineMathBlock key="02" latex="y" />,
                     ],
                     [
-                      <InlineMathBlock latex="e" />,
-                      <InlineMathBlock latex="e" />,
-                      <InlineMathBlock latex="x" />,
-                      <InlineMathBlock latex="y" />,
+                      <InlineMathBlock key="10" latex="e" />,
+                      <InlineMathBlock key="11" latex="e" />,
+                      <InlineMathBlock key="12" latex="x" />,
+                      <InlineMathBlock key="13" latex="y" />,
                     ],
                     [
-                      <InlineMathBlock latex="x" />,
-                      <InlineMathBlock latex="x" />,
-                      <InlineMathBlock latex="e" />,
-                      <InlineMathBlock latex="x" />,
+                      <InlineMathBlock key="20" latex="x" />,
+                      <InlineMathBlock key="21" latex="x" />,
+                      <InlineMathBlock key="22" latex="e" />,
+                      <InlineMathBlock key="23" latex="x" />,
                     ],
                     [
-                      <InlineMathBlock latex="y" />,
-                      <InlineMathBlock latex="y" />,
-                      <InlineMathBlock latex="x" />,
-                      <InlineMathBlock latex="e" />,
+                      <InlineMathBlock key="30" latex="y" />,
+                      <InlineMathBlock key="31" latex="y" />,
+                      <InlineMathBlock key="32" latex="x" />,
+                      <InlineMathBlock key="33" latex="e" />,
                     ],
                   ]}
                   headerColumn
                   headerRow
                 />
               </div>
-              <p>But there's a problem here:</p>
+              <p>But there&apos;s a problem here:</p>
               <MathBlock
                 latex={[
                   "(x \\circ x) \\circ y = x \\circ (x \\circ y)\\ \\ \\ \\textmd{(associativity)}",
@@ -706,34 +706,34 @@ const Page = () => {
               </p>
               <p>
                 So it appears putting the <InlineMathBlock latex="e" />s along
-                the diagonal isn't going to work. Let's try putting them in the
-                other two cells:
+                the diagonal isn&apos;t going to work. Let&apos;s try putting
+                them in the other two cells:
               </p>
               <div className="flex justify-center m-5">
                 <Table
                   data={[
                     [
                       "",
-                      <InlineMathBlock latex="e" />,
-                      <InlineMathBlock latex="x" />,
-                      <InlineMathBlock latex="y" />,
+                      <InlineMathBlock key="00" latex="e" />,
+                      <InlineMathBlock key="01" latex="x" />,
+                      <InlineMathBlock key="02" latex="y" />,
                     ],
                     [
-                      <InlineMathBlock latex="e" />,
-                      <InlineMathBlock latex="e" />,
-                      <InlineMathBlock latex="x" />,
-                      <InlineMathBlock latex="y" />,
+                      <InlineMathBlock key="10" latex="e" />,
+                      <InlineMathBlock key="11" latex="e" />,
+                      <InlineMathBlock key="12" latex="x" />,
+                      <InlineMathBlock key="13" latex="y" />,
                     ],
                     [
-                      <InlineMathBlock latex="x" />,
-                      <InlineMathBlock latex="x" />,
+                      <InlineMathBlock key="20" latex="x" />,
+                      <InlineMathBlock key="21" latex="x" />,
                       "",
-                      <InlineMathBlock latex="e" />,
+                      <InlineMathBlock key="22" latex="e" />,
                     ],
                     [
-                      <InlineMathBlock latex="y" />,
-                      <InlineMathBlock latex="y" />,
-                      <InlineMathBlock latex="e" />,
+                      <InlineMathBlock key="30" latex="y" />,
+                      <InlineMathBlock key="31" latex="y" />,
+                      <InlineMathBlock key="32" latex="e" />,
                       "",
                     ],
                   ]}
@@ -751,27 +751,27 @@ const Page = () => {
                   data={[
                     [
                       "",
-                      <InlineMathBlock latex="e" />,
-                      <InlineMathBlock latex="x" />,
-                      <InlineMathBlock latex="y" />,
+                      <InlineMathBlock key="00" latex="e" />,
+                      <InlineMathBlock key="01" latex="x" />,
+                      <InlineMathBlock key="02" latex="y" />,
                     ],
                     [
-                      <InlineMathBlock latex="e" />,
-                      <InlineMathBlock latex="e" />,
-                      <InlineMathBlock latex="x" />,
-                      <InlineMathBlock latex="y" />,
+                      <InlineMathBlock key="10" latex="e" />,
+                      <InlineMathBlock key="11" latex="e" />,
+                      <InlineMathBlock key="12" latex="x" />,
+                      <InlineMathBlock key="13" latex="y" />,
                     ],
                     [
-                      <InlineMathBlock latex="x" />,
-                      <InlineMathBlock latex="x" />,
-                      <InlineMathBlock latex="x" />,
-                      <InlineMathBlock latex="e" />,
+                      <InlineMathBlock key="20" latex="x" />,
+                      <InlineMathBlock key="21" latex="x" />,
+                      <InlineMathBlock key="22" latex="x" />,
+                      <InlineMathBlock key="23" latex="e" />,
                     ],
                     [
-                      <InlineMathBlock latex="y" />,
-                      <InlineMathBlock latex="y" />,
-                      <InlineMathBlock latex="e" />,
-                      <InlineMathBlock latex="x" />,
+                      <InlineMathBlock key="30" latex="y" />,
+                      <InlineMathBlock key="31" latex="y" />,
+                      <InlineMathBlock key="32" latex="e" />,
+                      <InlineMathBlock key="33" latex="x" />,
                     ],
                   ]}
                   headerColumn
@@ -787,8 +787,8 @@ const Page = () => {
                 ]}
               />
               <p>
-                Again this can't be true. So we're finally down to just 2 cases
-                to check. What about the case{" "}
+                Again this can&apos;t be true. So we&apos;re finally down to
+                just 2 cases to check. What about the case{" "}
                 <InlineMathBlock latex="x \circ x = x" /> and{" "}
                 <InlineMathBlock latex="y \circ y = y" />?
               </p>
@@ -797,27 +797,27 @@ const Page = () => {
                   data={[
                     [
                       "",
-                      <InlineMathBlock latex="e" />,
-                      <InlineMathBlock latex="x" />,
-                      <InlineMathBlock latex="y" />,
+                      <InlineMathBlock key="00" latex="e" />,
+                      <InlineMathBlock key="01" latex="x" />,
+                      <InlineMathBlock key="02" latex="y" />,
                     ],
                     [
-                      <InlineMathBlock latex="e" />,
-                      <InlineMathBlock latex="e" />,
-                      <InlineMathBlock latex="x" />,
-                      <InlineMathBlock latex="y" />,
+                      <InlineMathBlock key="10" latex="e" />,
+                      <InlineMathBlock key="11" latex="e" />,
+                      <InlineMathBlock key="12" latex="x" />,
+                      <InlineMathBlock key="13" latex="y" />,
                     ],
                     [
-                      <InlineMathBlock latex="x" />,
-                      <InlineMathBlock latex="x" />,
-                      <InlineMathBlock latex="x" />,
-                      <InlineMathBlock latex="e" />,
+                      <InlineMathBlock key="20" latex="x" />,
+                      <InlineMathBlock key="21" latex="x" />,
+                      <InlineMathBlock key="22" latex="x" />,
+                      <InlineMathBlock key="23" latex="e" />,
                     ],
                     [
-                      <InlineMathBlock latex="y" />,
-                      <InlineMathBlock latex="y" />,
-                      <InlineMathBlock latex="e" />,
-                      <InlineMathBlock latex="y" />,
+                      <InlineMathBlock key="30" latex="y" />,
+                      <InlineMathBlock key="31" latex="y" />,
+                      <InlineMathBlock key="32" latex="e" />,
+                      <InlineMathBlock key="33" latex="y" />,
                     ],
                   ]}
                   headerColumn
@@ -838,27 +838,27 @@ const Page = () => {
                   data={[
                     [
                       "",
-                      <InlineMathBlock latex="e" />,
-                      <InlineMathBlock latex="x" />,
-                      <InlineMathBlock latex="y" />,
+                      <InlineMathBlock key="00" latex="e" />,
+                      <InlineMathBlock key="01" latex="x" />,
+                      <InlineMathBlock key="02" latex="y" />,
                     ],
                     [
-                      <InlineMathBlock latex="e" />,
-                      <InlineMathBlock latex="e" />,
-                      <InlineMathBlock latex="x" />,
-                      <InlineMathBlock latex="y" />,
+                      <InlineMathBlock key="10" latex="e" />,
+                      <InlineMathBlock key="11" latex="e" />,
+                      <InlineMathBlock key="12" latex="x" />,
+                      <InlineMathBlock key="13" latex="y" />,
                     ],
                     [
-                      <InlineMathBlock latex="x" />,
-                      <InlineMathBlock latex="x" />,
-                      <InlineMathBlock latex="y" />,
-                      <InlineMathBlock latex="e" />,
+                      <InlineMathBlock key="20" latex="x" />,
+                      <InlineMathBlock key="21" latex="x" />,
+                      <InlineMathBlock key="22" latex="y" />,
+                      <InlineMathBlock key="23" latex="e" />,
                     ],
                     [
-                      <InlineMathBlock latex="y" />,
-                      <InlineMathBlock latex="y" />,
-                      <InlineMathBlock latex="e" />,
-                      <InlineMathBlock latex="x" />,
+                      <InlineMathBlock key="30" latex="y" />,
+                      <InlineMathBlock key="31" latex="y" />,
+                      <InlineMathBlock key="32" latex="e" />,
+                      <InlineMathBlock key="33" latex="x" />,
                     ],
                   ]}
                   headerColumn
@@ -879,7 +879,7 @@ const Page = () => {
               </p>
               <p>
                 That took a while! So there is only a single group of order 3
-                that is abelian. I hope you find that surprising! It's not
+                that is abelian. I hope you find that surprising! It&apos;s not
                 immediately obvious.
               </p>
               <p>
@@ -893,27 +893,27 @@ const Page = () => {
                   data={[
                     [
                       "",
-                      <InlineMathBlock latex="0" />,
-                      <InlineMathBlock latex="1" />,
-                      <InlineMathBlock latex="2" />,
+                      <InlineMathBlock key="00" latex="0" />,
+                      <InlineMathBlock key="01" latex="1" />,
+                      <InlineMathBlock key="02" latex="2" />,
                     ],
                     [
-                      <InlineMathBlock latex="0" />,
-                      <InlineMathBlock latex="0" />,
-                      <InlineMathBlock latex="1" />,
-                      <InlineMathBlock latex="2" />,
+                      <InlineMathBlock key="10" latex="0" />,
+                      <InlineMathBlock key="11" latex="0" />,
+                      <InlineMathBlock key="12" latex="1" />,
+                      <InlineMathBlock key="13" latex="2" />,
                     ],
                     [
-                      <InlineMathBlock latex="1" />,
-                      <InlineMathBlock latex="1" />,
-                      <InlineMathBlock latex="2" />,
-                      <InlineMathBlock latex="0" />,
+                      <InlineMathBlock key="20" latex="1" />,
+                      <InlineMathBlock key="21" latex="1" />,
+                      <InlineMathBlock key="22" latex="2" />,
+                      <InlineMathBlock key="23" latex="0" />,
                     ],
                     [
-                      <InlineMathBlock latex="2" />,
-                      <InlineMathBlock latex="2" />,
-                      <InlineMathBlock latex="0" />,
-                      <InlineMathBlock latex="1" />,
+                      <InlineMathBlock key="30" latex="2" />,
+                      <InlineMathBlock key="31" latex="2" />,
+                      <InlineMathBlock key="32" latex="0" />,
+                      <InlineMathBlock key="33" latex="1" />,
                     ],
                   ]}
                   headerColumn
@@ -922,7 +922,7 @@ const Page = () => {
               </div>
               <p>This is addition modulo 3!</p>
               <p>
-                That's amazing! That such a simple set of rules seemingly
+                That&apos;s amazing! That such a simple set of rules seemingly
                 unrelated to anything numerical appeared to give us a structure
                 resembling integer addition!
               </p>
