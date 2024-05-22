@@ -7,7 +7,7 @@ const Table = ({
   headerRow?: boolean;
   headerColumn?: boolean;
 }) => (
-  <div className="overflow-scroll">
+  <div className="overflow-auto">
     <table className="border-separate border border-white rounded-default border-spacing-0 overflow-hidden">
       <tbody>
         {data.map((row, rowIndex) => (
