@@ -512,7 +512,7 @@ const Page = () => {
               <p>
                 We&apos;ll define an example group with elements{" "}
                 <InlineMathBlock latex="e" />, <InlineMathBlock latex="x" /> and{" "}
-                <InlineMathBlock latex="u" />. We know that{" "}
+                <InlineMathBlock latex="y" />. We know that{" "}
                 <InlineMathBlock latex="e" /> is the identity element of this
                 group so we can fill in row and column in our table already:
               </p>
@@ -616,8 +616,8 @@ const Page = () => {
                 We need another <InlineMathBlock latex="e" /> in the{" "}
                 <InlineMathBlock latex="y" /> column/row but given that it
                 can&apos;t come in any column/row with an existing{" "}
-                <InlineMathBlock latex="e" />
-                it can only go in the bottom right:
+                <InlineMathBlock latex="e" /> it can only go in the bottom
+                right:
               </p>
               <div className="flex justify-center m-5">
                 <Table
@@ -874,8 +874,8 @@ const Page = () => {
                 equivalent. i.e. swapping the names of{" "}
                 <InlineMathBlock latex="x" /> and <InlineMathBlock latex="y" />{" "}
                 and swapping their rows/columns would give the same result. The
-                only important thing is that when the same non-identity element
-                is combined with itself it gives the other non-identity element.
+                only important thing is that when any non-identity element is
+                combined with itself it gives the other non-identity element.
               </p>
               <p>
                 That took a while! So there is only a single group of order 3
@@ -920,7 +920,10 @@ const Page = () => {
                   headerRow
                 />
               </div>
-              <p>This is addition modulo 3!</p>
+              <p>
+                This is addition modulo 3! i.e. adding integers but taking the
+                remainder when divided by 3.
+              </p>
               <p>
                 That&apos;s amazing! That such a simple set of rules seemingly
                 unrelated to anything numerical appeared to give us a structure
