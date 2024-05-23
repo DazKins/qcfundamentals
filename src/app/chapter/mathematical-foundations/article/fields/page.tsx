@@ -450,8 +450,8 @@ const Page = () => {
               Prove that, for our <InlineMathBlock latex="\mathbb{Z}_3" />{" "}
               field, that following holds:{" "}
               <InlineMathBlock latex="(a+b)^3 = a^3 + b^3" /> where we define{" "}
-              <InlineMathBlock latex="x^3 = x \cdot x \cdot x" />. Note here I'm
-              leaving out the brackets for simplicity.
+              <InlineMathBlock latex="x^3 = x \cdot x \cdot x" />. Note here
+              I&apos;m leaving out the brackets for simplicity.
             </p>
             <p>
               There are 2 ways to prove this. You can check every possible
