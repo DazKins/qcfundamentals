@@ -11,9 +11,8 @@ const Page = () => {
       <p>
         The aim of this chapter is to provide you with a strong mathematical
         grounding for the language of quantum computing. Not all of the concepts
-        introduced here will be used directly, but provide a solid foundation.
-        For example groups and fields will provide a strong foundation for
-        vector spaces which we will use a lot.
+        introduced here will be used directly, but will help get you in the
+        right frame of mind for the rest of the course.
       </p>
       <p>
         If you are already familiar with the mathematical concepts outlined here
