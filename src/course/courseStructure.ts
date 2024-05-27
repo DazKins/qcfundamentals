@@ -29,12 +29,10 @@ export const ChapterDefinitions: ChapterDefinition[] = [
       {
         title: "Fields",
         id: "fields",
-        comingSoon: false,
       },
       {
         title: "Vector Spaces",
         id: "vector-spaces",
-        comingSoon: true,
       },
       {
         title: "Bra-Ket Notation",
