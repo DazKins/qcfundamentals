@@ -357,7 +357,7 @@ const Page = () => {
       <h3>Exercise 1</h3>
       <Exercise
         problem={
-          <div className="flex flex-col gap-2">
+          <>
             <p>
               Prove that <InlineMathBlock latex="0 \cdot a = 0" />
             </p>
@@ -365,10 +365,10 @@ const Page = () => {
               Seems fairly obvious in normal math, but requires careful proof
               when we&apos;re dealing with more abstract objects.
             </p>
-          </div>
+          </>
         }
         solution={
-          <div className="flex flex-col gap-2">
+          <>
             <p>From the definition of associativity:</p>
             <MathBlock
               latex={[
@@ -398,13 +398,13 @@ const Page = () => {
               additive identity) but it just so happens that it sends all values
               to <InlineMathBlock latex="0" /> when multiplied.
             </p>
-          </div>
+          </>
         }
       />
       <h3>Exercise 2</h3>
       <Exercise
         problem={
-          <div className="flex flex-col gap-2">
+          <>
             <p>
               Prove that <InlineMathBlock latex="(-1) \cdot a = -a" />.
             </p>
@@ -415,10 +415,10 @@ const Page = () => {
               multiplicative identity. The notation{" "}
               <InlineMathBlock latex="-1" /> is just for convenience.
             </p>
-          </div>
+          </>
         }
         solution={
-          <div className="flex flex-col gap-2">
+          <>
             <p>
               We know that <InlineMathBlock latex="-a" /> is the additive
               inverse of <InlineMathBlock latex="a" />. That is{" "}
@@ -439,13 +439,13 @@ const Page = () => {
                 "=0",
               ]}
             />
-          </div>
+          </>
         }
       />
       <h3>Exercise 3</h3>
       <Exercise
         problem={
-          <div className="flex flex-col gap-2">
+          <>
             <p>
               Prove that, for our <InlineMathBlock latex="\mathbb{Z}_3" />{" "}
               field, that following holds:{" "}
@@ -458,10 +458,10 @@ const Page = () => {
               combination, or you can use the rules we defined. See if you can
               find both proofs.
             </p>
-          </div>
+          </>
         }
         solution={
-          <div className="flex flex-col gap-2">
+          <>
             <p>
               I won&apos;t detail the cases proof here since it&apos;s fairly
               trivial to check each combination.
@@ -515,7 +515,7 @@ const Page = () => {
               proving this specific case gave you a flavour of how it could be
               done.
             </p>
-          </div>
+          </>
         }
       />
     </Article>

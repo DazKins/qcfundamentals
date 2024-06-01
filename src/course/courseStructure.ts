@@ -23,6 +23,11 @@ export const ChapterDefinitions: ChapterDefinition[] = [
     title: "Mathematical Foundations",
     articles: [
       {
+        title: "Complex Numbers",
+        id: "complex-numbers",
+        comingSoon: true,
+      },
+      {
         title: "Groups",
         id: "groups",
       },
@@ -33,6 +38,10 @@ export const ChapterDefinitions: ChapterDefinition[] = [
       {
         title: "Vector Spaces",
         id: "vector-spaces",
+      },
+      {
+        title: "Linear Algebra",
+        id: "linear-algebra",
       },
       {
         title: "Bra-Ket Notation",
@@ -48,18 +57,22 @@ export const ChapterDefinitions: ChapterDefinition[] = [
   {
     id: "qubits-and-gates",
     title: "Qubits and Gates",
+    comingSoon: true,
     articles: [
       {
         title: "Qubits",
         id: "qubits",
+        comingSoon: true,
       },
       {
         title: "Single Qubit Gates",
         id: "single-qubit-gates",
+        comingSoon: true,
       },
       {
         title: "Multi Qubit Gates",
         id: "multi-qubit-gates",
+        comingSoon: true,
       },
     ],
   },

@@ -14,7 +14,7 @@ const Exercise = ({ problem, solution }: Props) => {
 
   return (
     <div className="flex flex-col gap-2">
-      <div>{problem}</div>
+      <div className="flex flex-col gap-2">{problem}</div>
       <div
         className="cursor-pointer flex items-center gap-2"
         onClick={() => {
@@ -31,7 +31,11 @@ const Exercise = ({ problem, solution }: Props) => {
           </>
         )}{" "}
       </div>
-      {showSolution && <div className="flex flex-col border border-darkgrey p-4 rounded-default">{solution}</div>}
+      {showSolution && (
+        <div className="flex flex-col gap-2 border border-darkgrey p-4 rounded-default">
+          {solution}
+        </div>
+      )}
     </div>
   );
 };

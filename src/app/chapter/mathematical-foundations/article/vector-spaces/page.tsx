@@ -249,7 +249,7 @@ const Page = () => {
       <h3>Exercise 1</h3>
       <Exercise
         problem={
-          <div className="flex flex-col gap-2">
+          <>
             <p>
               A matrix is similar to a column vector except instead of having a
               single column of numbers, it has multiple columns forming a
@@ -269,10 +269,10 @@ const Page = () => {
               Once these definitions have been made, you will have to prove that
               your operations fulfill the rules stated above.
             </p>
-          </div>
+          </>
         }
         solution={
-          <div className="flex flex-col gap-2">
+          <>
             <p>We will define matrix addition as:</p>
             <MathBlock latex="\begin{bmatrix} a & b \\ c & d \end{bmatrix} + \begin{bmatrix} e & f \\ g & h \end{bmatrix} = \begin{bmatrix} a + e & b + f \\ c + g & d + h \end{bmatrix}" />
             <p>and scalar multiplication as:</p>
@@ -364,13 +364,13 @@ const Page = () => {
               bit of algebra but then boiled down to just using the underlying
               properties of the real numbers.
             </p>
-          </div>
+          </>
         }
       />
       <h3>Exercise 2</h3>
       <Exercise
         problem={
-          <div className="flex flex-col gap-2">
+          <>
             <p>
               For the 2x2 matrix vector space defined in the previous exercise,
               find its dimension.
@@ -384,10 +384,10 @@ const Page = () => {
               of vectors, prove they are linearly independant, prove they are
               spanning and then present the size of the set.
             </p>
-          </div>
+          </>
         }
         solution={
-          <div className="flex flex-col gap-2">
+          <>
             <p>We will propose the following set of vectors as a basis:</p>
             <MathBlock latex="\mathbf{v}_{11} = \begin{bmatrix} 1 & 0 \\ 0 & 0 \end{bmatrix}, \mathbf{v}_{12} = \begin{bmatrix} 0 & 1 \\ 0 & 0 \end{bmatrix}, \mathbf{v}_{21} = \begin{bmatrix} 0 & 0 \\ 1 & 0 \end{bmatrix}, \mathbf{v}_{22} = \begin{bmatrix} 0 & 0 \\ 0 & 1 \end{bmatrix}" />
             <p>
@@ -404,13 +404,13 @@ const Page = () => {
               The size of the set is 4, and so this vector space is of dimension
               4.
             </p>
-          </div>
+          </>
         }
       />
       <h3>Exercise 3</h3>
       <Exercise
         problem={
-          <div className="flex flex-col gap-2">
+          <>
             <p>
               How does the dimensionality of our matrix vector space change if
               we only allow symmetric matrices?
@@ -420,10 +420,10 @@ const Page = () => {
               i.e. the top right number is the same as the bottom left number:
             </p>
             <MathBlock latex="\begin{bmatrix} a & b \\ b & c \end{bmatrix}" />
-          </div>
+          </>
         }
         solution={
-          <div className="flex flex-col gap-2">
+          <>
             <p>We propose the following basis:</p>
             <MathBlock latex="\mathbf{v}_{1} = \begin{bmatrix} 1 & 0 \\ 0 & 0 \end{bmatrix}, \mathbf{v}_{2} = \begin{bmatrix} 0 & 1 \\ 1 & 0 \end{bmatrix}, \mathbf{v}_{3} = \begin{bmatrix} 0 & 0 \\ 0 & 1 \end{bmatrix}" />
             <p>
@@ -437,7 +437,7 @@ const Page = () => {
             </p>
             <MathBlock latex="\begin{bmatrix} a & b \\ b & c \end{bmatrix} = a\mathbf{v}_{1} + b\mathbf{v}_{2} + c\mathbf{v}_{3}" />
             <p>Therefore the dimensionality of this vector space is 3.</p>
-          </div>
+          </>
         }
       />
     </Article>

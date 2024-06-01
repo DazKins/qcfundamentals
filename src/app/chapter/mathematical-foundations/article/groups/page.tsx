@@ -476,7 +476,7 @@ const Page = () => {
         <h3>Exercise 3 (difficult)</h3>
         <Exercise
           problem={
-            <div className="flex flex-col gap-2">
+            <>
               <p>How many abelian groups of order (size) 3 are there?</p>
               <p>
                 This is a bit more advanced so here&apos;s some guidance on this
@@ -501,10 +501,10 @@ const Page = () => {
                 This means simply renaming the elements of the group
                 doesn&apos;t count as a new group.
               </p>
-            </div>
+            </>
           }
           solution={
-            <div className="flex flex-col gap-2">
+            <>
               <p>
                 We answer this question by studying what the multiplication of
                 this group might look like.
@@ -929,7 +929,7 @@ const Page = () => {
                 unrelated to anything numerical appeared to give us a structure
                 resembling integer addition!
               </p>
-            </div>
+            </>
           }
         />
       </div>
