@@ -1,37 +1,37 @@
-import {
-  getArticleDefinition,
-  getArticlePageMetadata,
-} from "@/course/courseStructure";
+import { getArticlePageMetadata } from "@/course/courseStructure";
 import Article from "@/components/article";
 import InlineMathBlock from "@/components/inlineMathBlock";
 import MathBlock from "@/components/mathBlock";
+import Exercise from "@/components/exercise";
 
 const CHAPTER_ID = "mathematical-foundations";
 const ARTICLE_ID = "bra-ket-notation";
 
 export const metadata = getArticlePageMetadata(CHAPTER_ID, ARTICLE_ID);
 
+// TODO rename to just "Bra Ket notation"?
+
 const Page = () => {
   return (
     <Article>
       <h2>Introduction</h2>
       <p>
-        I&apos;ve recently been studying and learning a lot of quantum
-        mechanics/computing. In this field, we use a special notation called
-        bra-ket to simplify the mathematics of linear algebra. It was invented
-        by Paul Dirac in his 1939 publication &quot;A New Notation for Quantum
-        Mechanics&quot; but is actually very interesting in other areas.
+        We&apos;re now going to cover a slightly different notation for doing
+        linear algebra called Bra-ket notation. It was invented by Paul Dirac
+        ins his 1939 publication &quot;A New Notation for Quantum
+        Mechanics&quot;. Although it won&apos;t be immmediately obvious, this
+        notation will be very convenient as we jump into quantum computing
       </p>
       <p>
-        Anybody who&apos;s studied linear algebra will know how annoying writing
-        out all the vectors and matrices can be. Bra-ket notation simplifies
-        this and I hope to introduce you to it in this article.
+        This notation will give us many new and interesting tools to use, but we
+        will just cover the basics in this article as we&apos;ve already spent
+        long enough build the mathematical foundations.
       </p>
       <h2>Definitions</h2>
       <p>There are 4 fundamental objects we will use:</p>
       <p>
-        A Ket looks like this <InlineMathBlock latex="\ket{v}" /> and you can
-        think of it as representing a vector.
+        A Ket looks like this <InlineMathBlock latex="\ket{v}" /> and it will
+        represent a vector.
       </p>
       <p>
         A Bra looks like this <InlineMathBlock latex="\bra{v}" />. It&apos;s a
@@ -41,27 +41,19 @@ const Page = () => {
       <p>
         Next are operators. An operator will typically be represented by a
         capital roman letter e.g. <InlineMathBlock latex="A" />. These will be
-        equivalent to matrices.
+        the exact same as operators from the previous article.
       </p>
       <p>
-        The final objects are scalars. These are{" "}
-        <a href="https://en.wikipedia.org/wiki/Complex_number">
-          complex numbers
-        </a>{" "}
-        that we multily our bras, kets and operators by. They will be
-        represented with lowercase roman letters so will look like{" "}
+        And then just as before, we will have scalars represented as lowercase
+        roman letters. The one slight difference we&apos;ll introduce here is
+        that scalars can multiply bras, kets and operators:
         <InlineMathBlock latex="a\ket{v}" />,{" "}
         <InlineMathBlock latex="b\bra{v}" /> or <InlineMathBlock latex="cA" />.
-        Why complex numbers? We could use real numbers just as well but complex
-        numbers give some more interesting properties we can study later.
+        We&apos;ll see more about what this means later. As alluded to in the
+        previous article, we are primarily interested in the case when these
+        scalars are complex numbers.
       </p>
       <h2>The Inner Product</h2>
-      <p>
-        One of the most common operations from linear algebra is the{" "}
-        <a href="https://en.wikipedia.org/wiki/Dot_product">dot product</a>. In
-        bra-ket notation we give this the more fancy name &quot;inner
-        product&quot; but they are the same thing.
-      </p>
       <p>
         With bra-ket notation we would represent the inner product of two
         vectors <InlineMathBlock latex="\ket{v}" /> and{" "}
@@ -72,89 +64,26 @@ const Page = () => {
         <i>acting</i> on a ket. This is our first clue as to what a bra actually
         is.
       </p>
-      <p>Ok, but how do we actually calculate this?</p>
       <p>
-        The answer to this is slightly different than in standard linear
-        algebra. Normally we learn the dot product as the sum of the product of
-        corresponding vector elements. This allows us to compute a dot product
-        given any 2 vectors. Bra-ket notation deals with a more abstract notion
-        of mathematics in which instead of defining <i>how</i> to do something
-        we&apos;ll define <i>what</i> it means. More specifically, we&apos;ll
-        specify properties or conditions that the inner product must satisfy and
-        study it from there.
+        We can represent the 3 rules discussed in the previous articles as such:
       </p>
-      <p>
-        There are 3 definitions that the inner product must satisfy. These are:
-      </p>
-      <h3>Rule 1: Linearity in the second argument</h3>
-      <MathBlock latex="\bra{v}\bigl(\sum_i{a_i \ket{w_i}}\bigr) = \sum_i{a_i\braket{v|w_i}}" />
-      <p>
-        Woah, looks scary right? It&apos;s actually fairly simple. All it&apos;s
-        saying is that the left bra distributes over addition, just like we have
-        with multiplication. This probably is a lot simpler if we look at an
-        example:
-      </p>
-      <MathBlock latex="\bra{v}\bigl(a\ket{w} + b\ket{x}\bigr) = a\braket{v|w} + b\braket{v|x}" />
-      <h3>Rule 2: Conjugation under commutation</h3>
+      <h3>Linearity in the second argument</h3>
+      <MathBlock latex="\bra{u}\bigl(a\ket{v} + b\ket{w}\bigr) = a\braket{u|v} + b\braket{u|w}" />
+      <h3>Conjugate symmetry</h3>
       <MathBlock latex="\braket{v|w}=\braket{w|v}^*" />
-      <p>
-        This one&apos;s not too tricky, it means if we flip the order of the
-        vectors in the inner product the result is the conjugate of the
-        original:
-      </p>
-      <MathBlock latex="\braket{v|w}=a+bi \longleftrightarrow \braket{w|v}=a-bi" />
-      <p>
-        This is the first time we get to see the implications of using complex
-        numbers. In the real numbers we see{" "}
-        <InlineMathBlock latex="\braket{v|w}=\braket{w|v}" />
-      </p>
-      <h3>Rule 3: Vector Magnitude</h3>
-      <MathBlock latex="\braket{v|v}\geq0\qquad \text{and} \qquad \braket{v|v}=0 \longleftrightarrow \ket{v}=0" />
-      <p>
-        Just like in the example of the dot product, the inner product of a
-        vector with itself can be thought of as the squared mangitude of the
-        vector. Hence why it must always be greater than or equal to 0. We
-        won&apos;t define magnitude as a separate concept here since we can
-        simply use <InlineMathBlock latex="\braket{v|v}" /> to represent it.
-      </p>
-      <p>
-        So there&apos;s the 3 rules. Let&apos;s re-iterate: we won&apos;t
-        actually define how to compute the dot product we&apos;ll just use these
-        rules to study it.
-      </p>
-      <p>
-        For example, one thing we can already prove is conjugate-linearity in
-        the first argument. By using rules 1 and 2 we can show the following:
-      </p>
-      <MathBlock
-        latex={[
-          "\\bigl(\\sum_ia_i\\bra{v_i}\\bigr)\\ket{w}",
-          "=\\bigl(\\bra{w}\\sum_ia_i\\ket{v_i}\\bigr)^*",
-          "=\\bigl(\\sum_ia_i\\braket{w|v_i}\\bigr)^*",
-          "=\\sum_i\\bigl(a_i\\braket{w|v_i}\\bigr)^*",
-          "=\\sum_ia_i^*\\braket{w|v_i}^*",
-          "=\\sum_ia_i^*\\braket{v_i|w}",
-        ]}
-      />
-      <p>
-        So this is very similar to rule 1, but when the ket distributes over
-        addition of the bra, we get a conjugate of the coefficients. I&apos;ve
-        glossed over some details in this proof but it will do for now.
-      </p>
+      <h3>Positive definiteness</h3>
+      <MathBlock latex="\braket{v|v}\geq0\ \ \text{and}\ \ \braket{v|v}=0 \longleftrightarrow \ket{v}=0" />
       <h2>Outer Product</h2>
       <p>
-        Now we&apos;ve looked at the inner product, let&apos;s take a look at
-        the outer product. It looks like this:{" "}
-        <InlineMathBlock latex="\ket{v}\bra{w}" />. This actually gives us an
-        operator. We will define what this operator actually does in the
-        following way:
+        Another operation we can perform here is called the outer product. It
+        looks like this: <InlineMathBlock latex="\ket{v}\bra{w}" />. The result
+        of this operation is an operator. We will define what this operator does
+        in the following way:
       </p>
-      <MathBlock latex="\ket{v}\bra{w}\ket{x}\equiv\braket{w|x}\ket{v}" />
+      <MathBlock latex="\ket{u}\bra{v}\ket{w}\equiv\braket{v|w}\ket{u}" />
       <p>
-        So, like earlier, we&apos;re not interested in defining what the outer
-        product actually is, but rather how it acts on things. So when an outer
-        product acts on a ket, we get the inner product of the right bra with
-        that ket, multiplied as a coefficient of the left ket.
+        So when an outer product acts on a ket, we get the inner product of the
+        right bra with that ket, multiplied as a coefficient of the left ket.
       </p>
       <p>
         Remember, a bra acting on a ket (
@@ -181,36 +110,26 @@ const Page = () => {
         are also normal, as the inner product of a vector with itself is 1.
       </p>
       <p>
-        This should feel very familiar with basis vectors. Just like normal
-        column vectors would be defined in terms of{" "}
-        <InlineMathBlock latex="x" />, <InlineMathBlock latex="y" /> and{" "}
-        <InlineMathBlock latex="z" />, we can define vectors in terms of{" "}
-        <InlineMathBlock latex="\ket{0}" />, <InlineMathBlock latex="\ket{1}" />
-        , <InlineMathBlock latex="\ket{2}" /> etc.
+        So the vectors{" "}
+        <InlineMathBlock latex="\ket{0}, \ket{1}, \ldots, \ket{d}" /> form an
+        orthonormal basis of dimension <InlineMathBlock latex="d" />.
       </p>
       <p>
         An arbitrary vector <InlineMathBlock latex="\ket{v}" /> in our space{" "}
         <InlineMathBlock latex="V" /> can then be defined as:
       </p>
-      <MathBlock latex="\ket{v}=\sum_i{v_i\ket{i}}" />
+      <MathBlock latex="\ket{v}= v_0\ket{0} + v_1\ket{1} + \ldots + v_d\ket{d} = \sum_i{v_i\ket{i}}" />
+      <h2>Linear operators as outer products</h2>
       <p>
-        So just like a vector in 3D space would have some{" "}
-        <InlineMathBlock latex="x" />, <InlineMathBlock latex="y" /> and{" "}
-        <InlineMathBlock latex="z" /> component, our vectors are also
-        constructed from components of the basis vectors.
-      </p>
-      <h2>Death to matrices</h2>
-      <p>
-        We&apos;re finally ready to see how we can define operators on our
-        vector space <InlineMathBlock latex="V" /> and do away with Matrices!
+        We&apos;ve already seen how the outer product of two vectors can give us
+        a linear operator. What we will show now is how we can represent a
+        linear operator as a sum of coefficients of outer products.
       </p>
       <p>
-        There&apos;s a few ways to go about this, I think the easiest might just
-        be to show an example operator and see how it works. The simplest
-        operator is the identity operator, the operator that sends any vector to
-        itself. Here&apos;s how it&apos;s defined:
+        The most basic operator we will investigate first is the identity
+        operator:
       </p>
-      <MathBlock latex="I = \sum_i\ket{i}\bra{i}" />
+      <MathBlock latex="I = \ket{0}\bra{0} + \ket{1}\bra{1} + \ldots + \ket{d}\bra{d} = \sum_i\ket{i}\bra{i}" />
       <p>
         It might not be intuitive how that works at first, so let&apos;s try it
         out on our arbitrary vector <InlineMathBlock latex="\ket{v}" /> defined
@@ -241,16 +160,16 @@ const Page = () => {
         So we have proved that this does indeed implement the identity operator!
       </p>
       <p>
-        Here are some interesting matrices in 2 dimensions and their
-        corresponding operator definitions. Note that in these definitions we
-        assume that <InlineMathBlock latex="\ket{0}" /> is the first basis
-        vector and <InlineMathBlock latex="\ket{1}" /> is the second.
+        Here are some definitions of interesting 2-dimensional linear operators.
+        Note that in these definitions we assume that{" "}
+        <InlineMathBlock latex="\ket{0}" /> is the first basis vector and{" "}
+        <InlineMathBlock latex="\ket{1}" /> is the second.
       </p>
       <MathBlock
         latex={[
-          "X = \\begin{bmatrix}0 & 1 \\\\ 1 & 0 \\end{bmatrix} = \\ket{0}\\bra{1} + \\ket{1}\\bra{0}",
-          "Y = \\begin{bmatrix}0 & -i \\\\ i & 0 \\end{bmatrix} = -i\\ket{0}\\bra{1} + i\\ket{1}\\bra{0}",
-          "Z = \\begin{bmatrix}1 & 0 \\\\ 0 & -1 \\end{bmatrix} = \\ket{0}\\bra{0} - \\ket{1}\\bra{1}",
+          "X = \\ket{0}\\bra{1} + \\ket{1}\\bra{0}",
+          "Y = -i\\ket{0}\\bra{1} + i\\ket{1}\\bra{0}",
+          "Z = \\ket{0}\\bra{0} - \\ket{1}\\bra{1}",
         ]}
       />
       <p>
@@ -276,41 +195,156 @@ const Page = () => {
       <p>
         So the effect of the <InlineMathBlock latex="X" /> operator was to flip
         the coefficients of <InlineMathBlock latex="\ket{0}" /> and{" "}
-        <InlineMathBlock latex="\ket{1}" />. If you read{" "}
-        <a href="/article/what-is-a-qubit">the introductory article on qubits</a>{" "}
-        you will recognise this operator and how it can be used in quantum
-        computation! I encourage you to have a play with the other operators and
-        see what they do.
+        <InlineMathBlock latex="\ket{1}" />. I encourage you to have a play with
+        the other operators and see what they do.
       </p>
       <p>
-        As a fun extension exercise, perhaps you can think about how you would
-        multiply two operators together. As a hint, just like we&apos;ve done
-        previously, don&apos;t try to explicitly compute the result. Rather see
-        if you can define how the result <i>should</i> operate on an arbitrary
-        vector. To find <InlineMathBlock latex="AB\ket{v}" /> see what happens
-        when you act with <InlineMathBlock latex="B" /> first and then with{" "}
-        <InlineMathBlock latex="A" />. If you&apos;re feeling really brave see
-        if you can prove the following using the definitions above. Can you find
-        any more?
+        Let&apos;s take a second to reflect here, this is really interesting.
+        Just in the same way that we can represent any vector as a sum of
+        multiples of basis vectors, we can also represent any linear operator as
+        a sum of multiples of outer-products of basis vectors. You may recall in
+        the previous article where we said to define a linear operator, we only
+        need to define how it acts on the basis vectors. And this proves just
+        that. You can see, for example, in the definition of{" "}
+        <InlineMathBlock latex="X" /> that it takes the basis vector{" "}
+        <InlineMathBlock latex="\ket{0}" /> to{" "}
+        <InlineMathBlock latex="\ket{1}" /> and the basis vector{" "}
+        <InlineMathBlock latex="\ket{1}" /> to{" "}
+        <InlineMathBlock latex="\ket{0}" />.
       </p>
-      <MathBlock latex="XY=iZ" />
-      <h2>Conclusion</h2>
-      <p>
-        Despite being mainly used in quantum mechanics, bra-ket notation
-        provides a very clean abstract way for thinking about vector spaces. No
-        more writing out matrices or vectors. No more getting confused by the
-        multiplication ordering!
-      </p>
-      <p>
-        We delibarately didn&apos;t mention anything quantum in this post, but
-        everything here will form a solid foundation for understanding quantum
-        computing/mechanics going forward.
-      </p>
-      <p>
-        I hope you&apos;ve enjoyed this post and that it&apos;s given you a new
-        perspective on linear algebra.
-      </p>
-      <p>I hope to write more soon!</p>
+      <h2>Exercises</h2>
+      <h3>Exercise 1</h3>
+      <Exercise
+        problem={
+          <>
+            <p>
+              Show that <InlineMathBlock latex="XY = iZ" />.
+            </p>
+          </>
+        }
+        solution={
+          <>
+            <MathBlock
+              latex={[
+                "XY = (\\ket{0}\\bra{1} + \\ket{1}\\bra{0})(-i\\ket{0}\\bra{1} + i\\ket{1}\\bra{0})",
+                "= -i\\ket{0}\\bra{1}\\ket{0}\\bra{1} + i \\ket{0}\\bra{1}\\ket{1}\\bra{0} - i\\ket{1}\\bra{0}\\ket{0}\\bra{1} + i\\ket{1}\\bra{0}\\ket{1}\\bra{0}",
+              ]}
+            />
+            <p>
+              It&apos;s not immediately obvious how we can simplify this
+              expression. Our intuition tells us perhaps there might be a way to
+              simplify when we have two outer products together like this:
+              <InlineMathBlock latex="\ket{i}\bra{j}\ket{k}\bra{l}" />. Let&apos;s
+              investigate how this would behave on some arbitrary basis vector <InlineMathBlock latex="\ket{a}" />:
+            </p>
+            <MathBlock
+              latex={[
+                "\\ket{i}\\bra{j}\\ket{k}\\bra{l}\\ket{a}",
+                "= \\ket{i}\\bra{j}(\\ket{k}\\bra{l}\\ket{a})",
+                "= \\ket{i}\\bra{j}(\\braket{l|a}\\ket{k})",
+                "= \\braket{l|a}\\ket{i}\\bra{j}\\ket{k}",
+                "= \\braket{l|a}\\braket{j|k}\\ket{i}",
+              ]}
+            />
+            <p>
+              Since all of these vectors are orthonormal, we know that this will
+              be <InlineMathBlock latex="\mathbf{0}" /> if{" "}
+              <InlineMathBlock latex="j \neq k" />. If{" "}
+              <InlineMathBlock latex="j = k" /> then we have{" "}
+              <InlineMathBlock latex="\braket{j|k} = 1" /> so:
+            </p>
+            <MathBlock
+              latex={["= \\braket{l|a}\\ket{i}", "= \\ket{i}\\bra{j}\\ket{a}"]}
+            />
+            <p>
+              Since we know that studying how an operator acts on basis vectors
+              is sufficient for determining how it interacts with all vectors,
+              we can now see:
+            </p>
+            <MathBlock latex="\ket{i}\bra{j}\ket{k}\bra{l} = \begin{cases}0\ \ \textmd{if}\ \ j \neq k \\ \ket{i}\bra{l}\ \ \textmd{if}\ \ j = k\end{cases}" />
+            <p>
+              Great, so now we can use this fact to simplify our original sum
+              from above:
+            </p>
+            <MathBlock
+              latex={[
+                "= -i\\ket{0}\\bra{1}\\ket{0}\\bra{1} + i \\ket{0}\\bra{1}\\ket{1}\\bra{0} - i\\ket{1}\\bra{0}\\ket{0}\\bra{1} + i\\ket{1}\\bra{0}\\ket{1}\\bra{0}",
+                "= i\\ket{0}\\ket{0} - i\\ket{1}\\ket{1}",
+                "= iZ",
+              ]}
+            />
+          </>
+        }
+      />
+      <h3>Exercise 2</h3>
+      <Exercise
+        problem={
+          <>
+            <p>
+              Continuing on from the previous exercise, check what the other{" "}
+              <InlineMathBlock latex="X" />, <InlineMathBlock latex="Y" /> and{" "}
+              <InlineMathBlock latex="Z" /> operators do when multiplied
+              together. What patterns do you notice?
+            </p>
+          </>
+        }
+        solution={
+          <>
+            <p>
+              Trying <InlineMathBlock latex="YZ" /> we get:
+            </p>
+            <MathBlock
+              latex={[
+                "YZ = (-i\\ket{0}\\bra{1} + i\\ket{1}\\bra{0})(\\ket{0}\\bra{0} - \\ket{1}\\bra{1})",
+                "= -i\\ket{0}\\bra{1}\\ket{0}\\bra{0} + i\\ket{0}\\bra{1}\\ket{1}\\bra{1} + i\\ket{1}\\bra{0}\\ket{0}\\bra{0} - i\\ket{1}\\bra{0}\\ket{1}\\bra{1}",
+                "= i\\ket{0}\\bra{1} + i\\ket{1}\\bra{0}",
+                "= iX",
+              ]}
+            />
+            <p>
+              But if we try <InlineMathBlock latex="ZY" /> we get:
+            </p>
+            <MathBlock
+              latex={[
+                "ZY = (\\ket{0}\\bra{0} - \\ket{1}\\bra{1})(-i\\ket{0}\\bra{1} + i\\ket{1}\\bra{0})",
+                "= -i\\ket{0}\\bra{0}\\ket{0}\\bra{1} + i\\ket{0}\\bra{0}\\ket{1}\\bra{0} + i\\ket{1}\\bra{1}\\ket{0}\\bra{1} - i\\ket{1}\\bra{1}\\ket{1}\\bra{0}",
+                "= -i\\ket{0}\\bra{1} - i\\ket{1}\\bra{0}",
+                "= -iX",
+              ]}
+            />
+            <p>
+              Checking the other cases will reveal the pattern that when
+              multiplying two of these operators that are different in
+              alphabetical order we get <InlineMathBlock latex="i" /> times the
+              other operator. If we multiply them not in alphabetical order we
+              get <InlineMathBlock latex="-i" /> times the other operator.
+            </p>
+            <p>
+              We should also investigate the case of when we multiply an
+              operator by itself:
+            </p>
+            <MathBlock
+              latex={[
+                "YY = (-i\\ket{0}\\bra{1} + i\\ket{1}\\bra{0})(-i\\ket{0}\\bra{1} + i\\ket{1}\\bra{0})",
+                "= -\\ket{0}\\bra{1}\\ket{0}\\bra{1} + \\ket{0}\\bra{1}\\ket{1}\\bra{0} + \\ket{1}\\bra{0}\\ket{0}\\bra{1} - \\ket{1}\\bra{0}\\ket{1}\\bra{0}",
+                "= \\ket{0}\\bra{0} + \\ket{1}\\bra{1}",
+                "= I",
+              ]}
+            />
+            <p>
+              We can check to other cases to confirm that multiplying any of
+              these operators by themselves always give the identity operator.
+            </p>
+            <p>
+              These 4 operators <InlineMathBlock latex="I" />,{" "}
+              <InlineMathBlock latex="X" />, <InlineMathBlock latex="Y" /> and{" "}
+              <InlineMathBlock latex="Z" /> are called that Pauli operators.
+              They are a well known set of operators that will prove useful in
+              our study of quantum computing.
+            </p>
+          </>
+        }
+      />
     </Article>
   );
 };

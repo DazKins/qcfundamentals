@@ -46,7 +46,6 @@ export const ChapterDefinitions: ChapterDefinition[] = [
       {
         title: "Bra-Ket Notation",
         id: "bra-ket-notation",
-        comingSoon: true,
       },
       {
         title: "Tensor Product",
@@ -131,7 +130,7 @@ const chapterCount = ChapterDefinitions.length;
 
 export const getNextChapterId = (chapterId: ChapterId): ChapterId | null => {
   const index = ChapterDefinitions.findIndex(
-    (chapterDefinition) => chapterDefinition.id == chapterId
+    (chapterDefinition) => chapterDefinition.id == chapterId,
   );
 
   if (index < chapterCount - 1) return ChapterDefinitions[index + 1].id;
@@ -141,7 +140,7 @@ export const getNextChapterId = (chapterId: ChapterId): ChapterId | null => {
 
 export const getNextArticleId = (
   chapterId: ChapterId,
-  articleId: ArticleId
+  articleId: ArticleId,
 ): ArticleId | null => {
   const chapterDefinition = getChapterDefinition(chapterId);
 
@@ -150,7 +149,7 @@ export const getNextArticleId = (
   const articleCount = articleDefinitions.length;
 
   const index = articleDefinitions.findIndex(
-    (articleDefinition) => articleDefinition.id == articleId
+    (articleDefinition) => articleDefinition.id == articleId,
   );
 
   if (index < articleCount - 1) return articleDefinitions[index + 1].id;
@@ -159,10 +158,10 @@ export const getNextArticleId = (
 };
 
 export const getPreviousChapterId = (
-  chapterId: ChapterId
+  chapterId: ChapterId,
 ): ChapterId | null => {
   const index = ChapterDefinitions.findIndex(
-    (chapterDefinition) => chapterDefinition.id == chapterId
+    (chapterDefinition) => chapterDefinition.id == chapterId,
   );
 
   if (index > 0) return ChapterDefinitions[index - 1].id;
@@ -172,14 +171,14 @@ export const getPreviousChapterId = (
 
 export const getPreviousArticleId = (
   chapterId: ChapterId,
-  articleId: ArticleId
+  articleId: ArticleId,
 ): ArticleId | null => {
   const chapterDefinition = getChapterDefinition(chapterId);
 
   const articleDefinitions = chapterDefinition.articles;
 
   const index = articleDefinitions.findIndex(
-    (articleDefinition) => articleDefinition.id == articleId
+    (articleDefinition) => articleDefinition.id == articleId,
   );
 
   if (index > 0) return articleDefinitions[index - 1].id;
@@ -188,7 +187,7 @@ export const getPreviousArticleId = (
 };
 
 export const getChapterDefinition = (
-  chapterId: ChapterId
+  chapterId: ChapterId,
 ): ChapterDefinition => {
   const chapterDefinition = ChapterDefinitions.find((chapterDefinition) => {
     return chapterDefinition.id === chapterId;
@@ -213,19 +212,19 @@ export const getChapterPageMetadata = (chapterId: string) => {
 
 export const getArticleDefinition = (
   chapterId: ChapterId,
-  articleId: string
+  articleId: string,
 ): ArticleDefinition => {
   const chapterDefinition = getChapterDefinition(chapterId);
 
   const articleDefinition = chapterDefinition.articles.find(
     (articleDefinition) => {
       return articleDefinition.id === articleId;
-    }
+    },
   );
 
   if (!articleDefinition) {
     throw new Error(
-      `No article definition found for chapter: ${chapterId} and article: ${articleId}`
+      `No article definition found for chapter: ${chapterId} and article: ${articleId}`,
     );
   }
 
@@ -234,7 +233,7 @@ export const getArticleDefinition = (
 
 export const getArticlePageMetadata = (
   chapterId: ChapterId,
-  articleId: ArticleId
+  articleId: ArticleId,
 ) => {
   const articleDefinition = getArticleDefinition(chapterId, articleId);
 

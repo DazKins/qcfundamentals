@@ -9,7 +9,6 @@ const Page = () => {
         If you have any suggestions or corrections please don&apos;t hesitate to
         reach out to me on <a href="https://x.com/dazkins_">X</a>.
       </p>
-      <p></p>
     </div>
   );
 };
