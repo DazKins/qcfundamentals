@@ -14,7 +14,6 @@ export const metadata = getArticlePageMetadata(CHAPTER_ID, ARTICLE_ID);
 const Page = () => {
   return (
     <Article>
-      <h2>Introduction</h2>
       <p>
         We&apos;re now going to cover a slightly different notation for doing
         linear algebra called Bra-ket notation. It was invented by Paul Dirac
@@ -234,8 +233,9 @@ const Page = () => {
               It&apos;s not immediately obvious how we can simplify this
               expression. Our intuition tells us perhaps there might be a way to
               simplify when we have two outer products together like this:
-              <InlineMathBlock latex="\ket{i}\bra{j}\ket{k}\bra{l}" />. Let&apos;s
-              investigate how this would behave on some arbitrary basis vector <InlineMathBlock latex="\ket{a}" />:
+              <InlineMathBlock latex="\ket{i}\bra{j}\ket{k}\bra{l}" />.
+              Let&apos;s investigate how this would behave on some arbitrary
+              basis vector <InlineMathBlock latex="\ket{a}" />:
             </p>
             <MathBlock
               latex={[
