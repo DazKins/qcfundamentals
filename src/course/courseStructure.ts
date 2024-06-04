@@ -25,7 +25,6 @@ export const ChapterDefinitions: ChapterDefinition[] = [
       {
         title: "Complex Numbers",
         id: "complex-numbers",
-        comingSoon: true,
       },
       {
         title: "Groups",
