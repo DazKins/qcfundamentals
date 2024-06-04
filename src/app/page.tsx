@@ -1,5 +1,4 @@
 import { ChapterDefinitions } from "@/course/courseStructure";
-import Image from "next/image";
 
 export default function Home() {
   return (
@@ -14,6 +13,9 @@ export default function Home() {
         <i>
           The course is not currently complete and many articles are still a WIP
         </i>
+      </p>
+      <p>
+        <a href="/introduction-to-the-course">Introduction to the course</a>
       </p>
       <ul className="list-inside">
         {ChapterDefinitions.map((chapterDefinition) => (
