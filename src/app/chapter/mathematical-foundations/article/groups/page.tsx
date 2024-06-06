@@ -252,7 +252,7 @@ const Page = () => {
       <p>Or have you...?</p>
       <p>
         There are actually a few rules that must be followed in order for it to
-        be a group. We can&apos;t just enter any old values into the table. For
+        be a group. We can&apos;t just enter any values we want into the table. For
         example a group of 3 elements table where the operation{" "}
         <InlineMathBlock latex="\circ" /> sends every value to{" "}
         <InlineMathBlock latex="e" /> (the identity) is not a valid group.
