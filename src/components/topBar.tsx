@@ -12,7 +12,7 @@ const TopBar = () => {
   const menuItems = [
     {
       content: "Additional Materials",
-      href: "/additionalMaterials",
+      href: "/additional-materials",
     },
     {
       content: "About",
