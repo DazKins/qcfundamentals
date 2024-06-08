@@ -9,8 +9,6 @@ const ARTICLE_ID = "bra-ket-notation";
 
 export const metadata = getArticlePageMetadata(CHAPTER_ID, ARTICLE_ID);
 
-// TODO rename to just "Bra Ket notation"?
-
 const Page = () => {
   return (
     <Article>
