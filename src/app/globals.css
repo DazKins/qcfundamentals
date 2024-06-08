@@ -18,6 +18,11 @@
     @apply font-bold;
   }
 
+  h4 {
+    @apply text-lg;
+    @apply font-bold;
+  }
+
   a {
     @apply underline;
     @apply text-primary;
