@@ -96,7 +96,7 @@ const Page = () => {
         <InlineMathBlock latex="0" /> and <InlineMathBlock latex="1" />.
       </p>
       <p>
-        We'll start to make use of{" "}
+        We&apos;ll start to make use of{" "}
         <a href="/chapter/mathematical-foundations/article/bra-ket-notation">
           Bra-ket notation
         </a>
@@ -218,8 +218,8 @@ const Page = () => {
         operators to represent our gates!
       </p>
       <p>
-        We've already seen some of these linear operator gates in a previous
-        article, let's restate them here:
+        We&apos;ve already seen some of these linear operator gates in a previous
+        article, let&apos;s restate them here:
       </p>
       <MathBlock
         latex={[
@@ -230,7 +230,7 @@ const Page = () => {
         ]}
       />
       <p>
-        Another famous gate we haven't discussed yet is the Hadamard gate (named
+        Another famous gate we haven&apos;t discussed yet is the Hadamard gate (named
         after the mathematician Jacques Hadamard). This gate is useful for
         creating superpositions. It takes <InlineMathBlock latex="\ket{0}" />{" "}
         &rarr;
@@ -312,7 +312,7 @@ const Page = () => {
         solution={
           <>
             <p>
-              We'll start by looking at <InlineMathBlock latex="XH" />:
+              We&apos;ll start by looking at <InlineMathBlock latex="XH" />:
             </p>
             <MathBlock
               latex={[
@@ -323,7 +323,7 @@ const Page = () => {
               ]}
             />
             <p>
-              Now let's apply <InlineMathBlock latex="H" /> to this:
+              Now let&apos;s apply <InlineMathBlock latex="H" /> to this:
             </p>
             <MathBlock
               latex={[
@@ -345,12 +345,12 @@ const Page = () => {
               ]}
             />
             <p>
-              These algebraic manipulations are getting pretty tedious. We won't
-              really need to do these too much going forward, but it's good to
+              These algebraic manipulations are getting pretty tedious. We won&apos;t
+              really need to do these too much going forward, but it&apos;s good to
               make sure we understand the theory behind it.
             </p>
             <p>
-              Note that there's a slightly different way we could have looked at
+              Note that there&apos;s a slightly different way we could have looked at
               solving these. Instead of trying to multiply operators represented
               as sums of outer products, we could have checked how it operates
               on some arbitrary vector{" "}
@@ -373,7 +373,7 @@ const Page = () => {
             <ul>
               <li>
                 <strong>Linear independence</strong>: Show that{" "}
-                <InlineMathBlock latex="\ket{+}" /> can't be written as a linear
+                <InlineMathBlock latex="\ket{+}" /> can&apos;t be written as a linear
                 multiple of <InlineMathBlock latex="\ket{-}" /> and vice-versa.
               </li>
               <li>
@@ -413,7 +413,7 @@ const Page = () => {
               Looking at the coefficient for <InlineMathBlock latex="\ket{0}" />{" "}
               this tells us that <InlineMathBlock latex="a = 1" /> but subbing
               this value in for the coefficient of{" "}
-              <InlineMathBlock latex="\ket{1}" /> doesn't work as we end up with{" "}
+              <InlineMathBlock latex="\ket{1}" /> doesn&apos;t work as we end up with{" "}
               <InlineMathBlock latex="\frac{1}{\sqrt{2}}" /> on the left hand
               side and <InlineMathBlock latex="-\frac{1}{\sqrt{2}}" /> on the
               right hand side.
@@ -475,9 +475,9 @@ const Page = () => {
             </p>
             <h4>Normality</h4>
             <p>
-              Perhaps the mechanics of taking an inner product here aren't so
+              Perhaps the mechanics of taking an inner product here aren&apos;t so
               clear. Essentially taking an inner product of a vector is about
-              turning it into a bra and then acting on it's ket. Turning a ket
+              turning it into a bra and then acting on it&apos;s ket. Turning a ket
               to bra simply means flipping the bracket and so:
             </p>
             <MathBlock
