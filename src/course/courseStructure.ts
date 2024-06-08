@@ -45,22 +45,16 @@ export const ChapterDefinitions: ChapterDefinition[] = [
       {
         title: "Bra-Ket Notation",
         id: "bra-ket-notation",
-      },
-      {
-        title: "Tensor Product",
-        id: "tensor-product",
-      },
+      }
     ],
   },
   {
     id: "qubits-and-gates",
     title: "Qubits and Gates",
-    comingSoon: true,
     articles: [
       {
         title: "Qubits",
         id: "qubits",
-        comingSoon: true,
       },
       {
         title: "Single Qubit Gates",
