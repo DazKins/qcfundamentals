@@ -3,7 +3,6 @@ import Article from "@/components/article";
 import InlineMathBlock from "@/components/inlineMathBlock";
 import MathBlock from "@/components/mathBlock";
 import Image from "next/image";
-import { INTERNALS } from "next/dist/server/web/spec-extension/request";
 import Exercise from "@/components/exercise";
 
 const CHAPTER_ID = "mathematical-foundations";
