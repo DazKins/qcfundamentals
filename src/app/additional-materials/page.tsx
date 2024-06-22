@@ -9,12 +9,15 @@ const Page = () => {
       <h2>Quantum Computing</h2>
       <h3>Videos</h3>
       <p>
-        The Youtube user &quot;Elucyda&quot; has made a great playlist of his own personal
-        lectures that covers advanced algorithms and some quantum physics at the
-        same time.{" "}
+        The Youtube user &quot;Elucyda&quot; has made a great playlist of his
+        own personal lectures that covers advanced algorithms and some quantum
+        physics at the same time.{" "}
         <a href="https://www.youtube.com/playlist?list=PLl0eQOWl7mnWPTQF7lgLWZmb5obvOowVw">
           YouTube
         </a>
+      </p>
+      <p>
+        The Youtube channel &quot;Quantum Sense&quot; has an awesome series on the mathematics of bra-ket notation. He tackles it more from a physics perspective, but it&apos;s still very applicable here. <a href="https://www.youtube.com/playlist?list=PL8ER5-vAoiHAWm1UcZsiauUGPlJChgNXC">YouTube</a>
       </p>
       <h3>Books</h3>
       <p>
@@ -35,11 +38,12 @@ const Page = () => {
         <a href="https://brilliant.org/courses/quantum-computing/">Website</a>
       </p>
       <p>
-        Q-CTRL have launched a online learning portal called black opal with
+        Q-CTRL have launched a online learning portal called Black Opal with
         some nice interactive simulators{" "}
         <i>(Monthly subscription is required for full access).</i>{" "}
         <a href="https://q-ctrl.com/black-opal">Website</a>
       </p>
+      <br />
       <h2>Quantum Physics</h2>
       <p>
         Although not required, here are some useful learning materials for
