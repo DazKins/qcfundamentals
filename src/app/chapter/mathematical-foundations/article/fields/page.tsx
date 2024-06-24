@@ -369,7 +369,7 @@ const Page = () => {
         }
         solution={
           <>
-            <p>From the definition of associativity:</p>
+            <p>From the definition of distributivity:</p>
             <MathBlock
               latex={[
                 "a \\cdot (a + 0) = a \\cdot a + a \\cdot 0",
