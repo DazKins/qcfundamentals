@@ -5,6 +5,7 @@ import MathBlock from "@/components/mathBlock";
 import Image from "next/image";
 import Table from "@/components/table";
 import Exercise from "@/components/exercise";
+import ArticleImage from "@/components/articleImage";
 
 const CHAPTER_ID = "mathematical-foundations";
 const ARTICLE_ID = "fields";
@@ -112,15 +113,7 @@ const Page = () => {
         We can think about this as counting on a clock with 3 hours, starting
         from 0:
       </p>
-      <div className="w-full flex justify-center">
-        <Image
-          src="/article/fields/mod-3.png"
-          width={500}
-          height={500}
-          alt={"clock with 3 hours"}
-          className="rounded-default overflow-hidden"
-        />
-      </div>
+      <ArticleImage src="/article/fields/mod-3.png" alt="" />
       <p>
         Say we want to check what <InlineMathBlock latex="2 + 2" /> is.
         Normally,
@@ -133,15 +126,7 @@ const Page = () => {
         number line and then move 2 places further along. Let&apos;s do that but
         using our clock:
       </p>
-      <div className="w-full flex justify-center">
-        <Image
-          src="/article/fields/mod-3-2+2.png"
-          width={500}
-          height={500}
-          alt={"clock with 3 hours"}
-          className="rounded-default overflow-hidden"
-        />
-      </div>
+      <ArticleImage src="/article/fields/mod-3-2+2.png" alt="" />
       <p>
         So in our field, <InlineMathBlock latex="2 + 2 = 1" />! Earlier we said
         the elements of our field were the integers remainder when divided by 3,

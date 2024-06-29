@@ -5,6 +5,7 @@ import MathBlock from "@/components/mathBlock";
 import Exercise from "@/components/exercise";
 import Table from "@/components/table";
 import Image from "next/image";
+import ArticleImage from "@/components/articleImage";
 
 const CHAPTER_ID = "qubits-and-gates";
 const ARTICLE_ID = "single-qubit-gates";
@@ -52,25 +53,9 @@ const Page = () => {
         gate that can be used in a circuit diagram. The{" "}
         <InlineMathBlock latex="\textmd{NOT}" /> gate is represented as:
       </p>
-      <div className="w-full flex justify-center">
-        <Image
-          src={"/article/single-qubit-gates/not.png"}
-          width={1000}
-          height={400}
-          alt=""
-          className="rounded-default overflow-hidden"
-        />
-      </div>
+      <ArticleImage src="/article/single-qubit-gates/not.png" alt="" />
       <p>From this one gate we can build a very simple circuit such as:</p>
-      <div className="w-full flex justify-center">
-        <Image
-          src={"/article/single-qubit-gates/2xnot.png"}
-          width={1000}
-          height={400}
-          alt=""
-          className="rounded-default overflow-hidden"
-        />
-      </div>
+      <ArticleImage src="/article/single-qubit-gates/2xnot.png" alt="" />
       <p>
         In circuit diagrams like this we can think of the bits as
         &quot;flowing&quot; from left to right. So in the above circuit we would
@@ -121,15 +106,10 @@ const Page = () => {
         way we represent classical gates. For example a circuit where we apply
         the X gate followed by a Z gate would look like:
       </p>
-      <div className="w-full flex justify-center">
-        <Image
-          src={"/article/single-qubit-gates/quant-circuit.png"}
-          width={1000}
-          height={400}
-          alt=""
-          className=" rounded-default overflow-hidden"
-        />
-      </div>
+      <ArticleImage
+        src="/article/single-qubit-gates/quant-circuit.png"
+        alt=""
+      />
       <p>
         Note that quantum circuits can be a bit confusing since the mathematical
         definition of this circuit is <InlineMathBlock latex="ZX\ket{\psi}" />{" "}

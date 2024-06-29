@@ -6,6 +6,7 @@ import Table from "@/components/table";
 import Image from "next/image";
 import { addKeysToArray2 } from "@/util/key";
 import Exercise from "@/components/exercise";
+import ArticleImage from "@/components/articleImage";
 
 const CHAPTER_ID = "mathematical-foundations";
 const ARTICLE_ID = "groups";
@@ -39,15 +40,7 @@ const Page = () => {
         any specific rotation or reflection of the triangle can be represented
         by a permutation of these vertices. Here&apos;s how that works:
       </p>
-      <div className="w-full flex justify-center">
-        <Image
-          src={"/article/groups/triangle-group-rotation.png"}
-          width={1000}
-          height={400}
-          alt=""
-          className=" rounded-default overflow-hidden"
-        />
-      </div>
+      <ArticleImage src="/article/groups/triangle-group-rotation.png" alt="" />
       <p>
         As you can see as we rotate the triangle we can represent its state by
         the permutation of the vertices. Rotating the triangle changes the
@@ -58,15 +51,7 @@ const Page = () => {
         the vertical axis. We can see this operator as well with the
         permutations:
       </p>
-      <div className="w-full flex justify-center">
-        <Image
-          src={"/article/groups/triangle-group-flip.png"}
-          width={800}
-          height={400}
-          alt=""
-          className=" rounded-default overflow-hidden"
-        />
-      </div>
+      <ArticleImage src="/article/groups/triangle-group-flip.png" alt="" />
       <p>
         Now that we&apos;ve got a visual intuition let&apos;s formalise this in
         mathematical terms.
@@ -252,8 +237,8 @@ const Page = () => {
       <p>Or have you...?</p>
       <p>
         There are actually a few rules that must be followed in order for it to
-        be a group. We can&apos;t just enter any values we want into the table. For
-        example a group of 3 elements table where the operation{" "}
+        be a group. We can&apos;t just enter any values we want into the table.
+        For example a group of 3 elements table where the operation{" "}
         <InlineMathBlock latex="\circ" /> sends every value to{" "}
         <InlineMathBlock latex="e" /> (the identity) is not a valid group.
       </p>

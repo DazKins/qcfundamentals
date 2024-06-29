@@ -2,9 +2,9 @@ import { getArticlePageMetadata } from "@/course/courseStructure";
 import Article from "@/components/article";
 import InlineMathBlock from "@/components/inlineMathBlock";
 import MathBlock from "@/components/mathBlock";
-import Table from "@/components/table";
 import Image from "next/image";
 import Exercise from "@/components/exercise";
+import ArticleImage from "@/components/articleImage";
 
 const CHAPTER_ID = "qubits-and-gates";
 const ARTICLE_ID = "qubits";
@@ -72,9 +72,8 @@ const Page = () => {
         space.
       </p>
       <p>
-        When we observe (or measure) a qubit in the
-        computational basis, we will get either{" "}
-        <InlineMathBlock latex="\ket{0}" /> or{" "}
+        When we observe (or measure) a qubit in the computational basis, we will
+        get either <InlineMathBlock latex="\ket{0}" /> or{" "}
         <InlineMathBlock latex="\ket{1}" />. Not both, or none, we will always
         get one of the two. This phenonmenon is called collapse and represents
         how a quantum system breaks superposition when a system is observed.
@@ -220,15 +219,7 @@ const Page = () => {
         <InlineMathBlock latex="0 \leq \theta \leq \pi" /> and{" "}
         <InlineMathBlock latex="0 \leq \phi < 2\pi " />.
       </p>
-      <div className="w-full flex justify-center">
-        <Image
-          src={"/article/qubits/blochangles.png"}
-          width={1000}
-          height={400}
-          alt=""
-          className=" rounded-default overflow-hidden"
-        />
-      </div>
+      <ArticleImage src="/article/qubits/blochangles.png" alt="" />
       <p>
         The actual position of the qubit on the bloch sphere will be called the
         bloch vector and with a little trigonometry, we find it is given by:
@@ -422,9 +413,9 @@ const Page = () => {
             <p>
               One thing we haven&apos;t seen yet are states with non{" "}
               <InlineMathBlock latex="\frac{1}{2}" /> measurement probabilities.
-              We can intuit from our observations so far that
-              the probability of measuring a given state from another state is
-              proportional to the distance between them on the sphere.
+              We can intuit from our observations so far that the probability of
+              measuring a given state from another state is proportional to the
+              distance between them on the sphere.
             </p>
             <p>
               So we will find that a state halfway between{" "}
