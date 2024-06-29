@@ -1,11 +1,10 @@
-import {
-  getArticleDefinition,
-  getArticlePageMetadata,
-} from "@/course/courseStructure";
+import { getArticlePageMetadata } from "@/course/courseStructure";
 import Article from "@/components/article";
 import InlineMathBlock from "@/components/inlineMathBlock";
 import MathBlock from "@/components/mathBlock";
 import Exercise from "@/components/exercise";
+import Table from "@/components/table";
+import Image from "next/image";
 
 const CHAPTER_ID = "qubits-and-gates";
 const ARTICLE_ID = "single-qubit-gates";
@@ -15,24 +14,99 @@ export const metadata = getArticlePageMetadata(CHAPTER_ID, ARTICLE_ID);
 const Page = () => {
   return (
     <Article>
-
+      <p>
+        The <InlineMathBlock latex="1" />s and <InlineMathBlock latex="0" />s in
+        classical computers are fairly useless by themselves. In order to
+        represent meaningful computation we need to be able to manipulate them.
+      </p>
+      <p>
+        We achieve this using logic gates. The most simple logic gate is the{" "}
+        <InlineMathBlock latex="\textmd{NOT}" /> gate which inverts the input
+        sending <InlineMathBlock latex="0" /> &rarr;{" "}
+        <InlineMathBlock latex="1" /> and <InlineMathBlock latex="1" /> &rarr;{" "}
+        <InlineMathBlock latex="0" />.
+      </p>
+      <p>
+        We can better represent the operation of this gate with something called
+        a truth table. This is a table that shows all possible inputs and their
+        corresponding outputs. For the <InlineMathBlock latex="\textmd{NOT}" />{" "}
+        gate this would look like:
+      </p>
+      <div className="flex flex-row justify-around">
+        <Table
+          data={[
+            ["A", "NOT A"],
+            [0, 1],
+            [1, 0],
+          ]}
+          headerRow={true}
+        />
+      </div>
+      <p>
+        For the NOT gate this is fairly simple, but we will find this
+        representation more useful as we introduce more gates later.
+      </p>
+      <p>
+        In order to represent more complicated circuits without needing crazy
+        mathematical formula to solve, we have special symbols assigned to each
+        gate that can be used in a circuit diagram. The{" "}
+        <InlineMathBlock latex="\textmd{NOT}" /> gate is represented as:
+      </p>
+      <div className="w-full flex justify-center">
+        <Image
+          src={"/article/single-qubit-gates/not.png"}
+          width={1000}
+          height={400}
+          alt=""
+          className="rounded-default overflow-hidden"
+        />
+      </div>
+      <p>From this one gate we can build a very simple circuit such as:</p>
+      <div className="w-full flex justify-center">
+        <Image
+          src={"/article/single-qubit-gates/2xnot.png"}
+          width={1000}
+          height={400}
+          alt=""
+          className="rounded-default overflow-hidden"
+        />
+      </div>
+      <p>
+        In circuit diagrams like this we can think of the bits as
+        &quot;flowing&quot; from left to right. So in the above circuit we would
+        read it as &quot;apply the <InlineMathBlock latex="\textmd{NOT}" /> gate
+        to the input, then apply another{" "}
+        <InlineMathBlock latex="\textmd{NOT}" /> gate to the output of the first{" "}
+        <InlineMathBlock latex="\textmd{NOT}" /> gate&quot;. Clearly this
+        circuit implements the identity operation. That is, the operation that
+        takes <InlineMathBlock latex="1" /> &rarr; <InlineMathBlock latex="1" />{" "}
+        and <InlineMathBlock latex="0" /> &rarr; <InlineMathBlock latex="0" />.
+      </p>
+      <p>
+        A little thinking shows us there are only 4 possible single bit gates.
+        The <InlineMathBlock latex="\textmd{NOT}" /> gate that we have already
+        seen, the identity gate that we described above, a gate that maps all
+        inputs to <InlineMathBlock latex="1" /> and a gate that maps all inputs
+        to <InlineMathBlock latex="0" />.
+      </p>
       <h2>Quantum Gates</h2>
       <p>
-        Just like in classical computers, qubits are fairly useless unless we
-        can actually perform some operations on them. We can do this using
-        quantum gates. Quantum gates are the quantum equivalent of classical
+        Just like in classical computation, we will have gates that allow us to
+        manipulate qubits. Quantum gates are the quantum equivalent of classical
         logic gates. They take qubits as input and produce qubits as output. We
         can use these gates to perform complex algorithms and computations just
-        like we can with classical logic gates.
+        like we can with their classical counterpart.
       </p>
       <p>
         Now remember how we said our qubits will be represented as vectors? Well
-        we know we can act on vectors with operators; we will use these
+        we know we can act on vectors with operators. We will use these
         operators to represent our gates!
       </p>
       <p>
-        We&apos;ve already seen some of these linear operator gates in a previous
-        article, let&apos;s restate them here:
+        Since qubits are more than just classical bits, we have a slightly more
+        interesting set of single qubit gates to study. We&apos;ve already seen
+        some of these linear operator gates in a previous article, let&apos;s
+        restate them here:
       </p>
       <MathBlock
         latex={[
@@ -43,26 +117,33 @@ const Page = () => {
         ]}
       />
       <p>
-        Another famous gate we haven&apos;t discussed yet is the Hadamard gate (named
-        after the mathematician Jacques Hadamard). This gate is useful for
-        creating superpositions. It takes <InlineMathBlock latex="\ket{0}" />{" "}
-        &rarr;
-        <InlineMathBlock latex="\frac{1}{\sqrt{2}}\ket{0} + \frac{1}{\sqrt{2}}\ket{1}" />{" "}
-        and <InlineMathBlock latex="\ket{1}" /> &rarr;
-        <InlineMathBlock latex="\frac{1}{\sqrt{2}}\ket{0} - \frac{1}{\sqrt{2}}\ket{1}" />
-        . These 50/50 superposition states are so common that there is a special
-        notation for them:
+        We will represent these gates in circuit diagrams very similar to the
+        way we represent classical gates. For example a circuit where we apply
+        the X gate followed by a Z gate would look like:
       </p>
-      <MathBlock
-        latex={[
-          "\\ket{+} = \\frac{1}{\\sqrt{2}}\\ket{0} + \\frac{1}{\\sqrt{2}}\\ket{1}",
-          "\\ket{-} = \\frac{1}{\\sqrt{2}}\\ket{0} - \\frac{1}{\\sqrt{2}}\\ket{1}",
-        ]}
-      />
+      <div className="w-full flex justify-center">
+        <Image
+          src={"/article/single-qubit-gates/quant-circuit.png"}
+          width={1000}
+          height={400}
+          alt=""
+          className=" rounded-default overflow-hidden"
+        />
+      </div>
       <p>
-        You might remember these <InlineMathBlock latex="\ket{+}" /> and{" "}
-        <InlineMathBlock latex="\ket{-}" /> states from our bloch sphere diagram
-        earlier.
+        Note that quantum circuits can be a bit confusing since the mathematical
+        definition of this circuit is <InlineMathBlock latex="ZX\ket{\psi}" />{" "}
+        and not <InlineMathBlock latex="XZ\ket{\psi}" />. This is because we
+        read circuits from left to right but apply operators from right to left.
+      </p>
+      <p>
+        Let&apos;s introduce a new single qubit gate we haven&apos;t seen
+        before: the Hadamard gate (named after the mathematician Jacques
+        Hadamard). This gate is useful for creating superpositions. It takes{" "}
+        <InlineMathBlock latex="\ket{0}" /> &rarr;
+        <InlineMathBlock latex="\ket{+}" /> and{" "}
+        <InlineMathBlock latex="\ket{1}" /> &rarr;
+        <InlineMathBlock latex="\ket{-}" />.
       </p>
       <p>We can define the Hadamard gates in terms of an outer product:</p>
       <MathBlock latex="H = \frac{1}{\sqrt{2}}(\ket{0}\bra{0} + \ket{1}\bra{0} + \ket{0}\bra{1} - \ket{1}\bra{1})" />
@@ -70,7 +151,12 @@ const Page = () => {
         Sometimes it can be helpful to factor the bras out from the kets for
         operators like this:
       </p>
-      <MathBlock latex="H = \frac{1}{\sqrt{2}}(\ket{0} + \ket{1})\bra{0} + \frac{1}{\sqrt{2}}(\ket{0} - \ket{1})\bra{1}" />
+      <MathBlock
+        latex={[
+          "H = \\frac{1}{\\sqrt{2}}(\\ket{0} + \\ket{1})\\bra{0} + \\frac{1}{\\sqrt{2}}(\\ket{0} - \\ket{1})\\bra{1}",
+          "= \\ket{+}\\bra{0} + \\ket{-}\\bra{1}",
+        ]}
+      />
       <p>
         This is a useful representation as it more clearly shows us what happens
         to the basis states.
@@ -88,7 +174,9 @@ const Page = () => {
         }
         solution={
           <>
-            <p>The proof follows from some fairly simple algebra:</p>
+            <p>
+              The proof follows from some fairly simple, yet tedious, algebra:
+            </p>
             <MathBlock
               latex={[
                 "HH = \\frac{1}{\\sqrt{2}}(\\ket{0} + \\ket{1})\\bra{0} + \\frac{1}{\\sqrt{2}}(\\ket{0} - \\ket{1})\\bra{1} \\times \\frac{1}{\\sqrt{2}}(\\ket{0} + \\ket{1})\\bra{0} + \\frac{1}{\\sqrt{2}}(\\ket{0} - \\ket{1})\\bra{1}",
@@ -100,7 +188,7 @@ const Page = () => {
               ]}
             />
             <p>
-              Quite a lots of terms! We can use what we know about how outer
+              Quite a lot of terms! We can use what we know about how outer
               products of basis vectors work to simplify:
             </p>
             <MathBlock
@@ -158,15 +246,15 @@ const Page = () => {
               ]}
             />
             <p>
-              These algebraic manipulations are getting pretty tedious. We won&apos;t
-              really need to do these too much going forward, but it&apos;s good to
-              make sure we understand the theory behind it.
+              These algebraic manipulations are getting pretty tedious. We
+              won&apos;t really need to do these too much going forward, but
+              it&apos;s good to make sure we understand the theory behind it.
             </p>
             <p>
-              Note that there&apos;s a slightly different way we could have looked at
-              solving these. Instead of trying to multiply operators represented
-              as sums of outer products, we could have checked how it operates
-              on some arbitrary vector{" "}
+              Note that there&apos;s a slightly different way we could have
+              looked at solving these. Instead of trying to multiply operators
+              represented as sums of outer products, we could have checked how
+              it operates on some arbitrary vector{" "}
               <InlineMathBlock latex="\ket{v} = a\ket{0} + b\ket{1}" /> and then
               validated that <InlineMathBlock latex="HXH\ket{v} = Z\ket{v}" />.
             </p>
@@ -186,8 +274,9 @@ const Page = () => {
             <ul>
               <li>
                 <strong>Linear independence</strong>: Show that{" "}
-                <InlineMathBlock latex="\ket{+}" /> can&apos;t be written as a linear
-                multiple of <InlineMathBlock latex="\ket{-}" /> and vice-versa.
+                <InlineMathBlock latex="\ket{+}" /> can&apos;t be written as a
+                linear multiple of <InlineMathBlock latex="\ket{-}" /> and
+                vice-versa.
               </li>
               <li>
                 <strong>Spanning</strong>: Show that any qubit state can be
@@ -226,10 +315,10 @@ const Page = () => {
               Looking at the coefficient for <InlineMathBlock latex="\ket{0}" />{" "}
               this tells us that <InlineMathBlock latex="a = 1" /> but subbing
               this value in for the coefficient of{" "}
-              <InlineMathBlock latex="\ket{1}" /> doesn&apos;t work as we end up with{" "}
-              <InlineMathBlock latex="\frac{1}{\sqrt{2}}" /> on the left hand
-              side and <InlineMathBlock latex="-\frac{1}{\sqrt{2}}" /> on the
-              right hand side.
+              <InlineMathBlock latex="\ket{1}" /> doesn&apos;t work as we end up
+              with <InlineMathBlock latex="\frac{1}{\sqrt{2}}" /> on the left
+              hand side and <InlineMathBlock latex="-\frac{1}{\sqrt{2}}" /> on
+              the right hand side.
             </p>
             <p>
               A similar argument also proves{" "}
@@ -288,10 +377,10 @@ const Page = () => {
             </p>
             <h4>Normality</h4>
             <p>
-              Perhaps the mechanics of taking an inner product here aren&apos;t so
-              clear. Essentially taking an inner product of a vector is about
-              turning it into a bra and then acting on it&apos;s ket. Turning a ket
-              to bra simply means flipping the bracket and so:
+              Perhaps the mechanics of taking an inner product here aren&apos;t
+              so clear. Essentially taking an inner product of a vector is about
+              turning it into a bra and then acting on it&apos;s ket. Turning a
+              ket to bra simply means flipping the bracket and so:
             </p>
             <MathBlock
               latex={[
@@ -322,89 +411,6 @@ const Page = () => {
           </>
         }
       />
-      <p>
-        Just like in classical computers, qubits are fairly useless unless we
-        can actually perform some operations on them. We can do this using
-        quantum gates. Quantum gates are the quantum equivalent of classical
-        logic gates. They take qubits as input and produce qubits as output. We
-        can use these gates to perform complex algorithms and computations just
-        like we can with classical logic gates.
-      </p>
-      <p>Let&apos;s take a look at some of them:</p>
-      <p>
-        The most basic one is the quantum{" "}
-        <InlineMathBlock latex="\textmd{NOT}" /> gate that we refer to with an{" "}
-        <InlineMathBlock latex="X" />. Just like the classical{" "}
-        <InlineMathBlock latex="\textmd{NOT}" /> gate it takes{" "}
-        <InlineMathBlock latex="\ket{0}" /> &rarr;{" "}
-        <InlineMathBlock latex="\ket{1}" /> and{" "}
-        <InlineMathBlock latex="\ket{1}" /> &rarr;{" "}
-        <InlineMathBlock latex="\ket{0}" />. The more formal notation we&apos;ll
-        use for this is: <InlineMathBlock latex="X\ket{0} = \ket{1}" /> and{" "}
-        <InlineMathBlock latex="X\ket{1} = \ket{0}" />. But how does this act on
-        superposition states? Quantum gates are something we call linear
-        operators. The fact that they are linear means they distribute over
-        addition so for superposition states we do the following:{" "}
-      </p>
-      <MathBlock
-        latex={[
-          "X(a\\ket{0} + b\\ket{1})",
-          "= X(a\\ket{0}) + X(b\\ket{1})",
-          "= aX\\ket{0} + bX\\ket{1}",
-          "= a\\ket{1} + b\\ket{0}",
-        ]}
-      />
-      <p>
-        So the effect of the <InlineMathBlock latex="X" /> gate on a
-        superposition state is to swap the coefficients{" "}
-        <InlineMathBlock latex="a" /> and <InlineMathBlock latex="b" />. This,
-        in effect, swaps the probabilites of observing{" "}
-        <InlineMathBlock latex="\ket{0}" /> or{" "}
-        <InlineMathBlock latex="\ket{1}" />.
-      </p>
-      <p>
-        Another famous gate is the Hadamard gate (named after the mathematician
-        Jacques Hadamard). This gate is useful for creating superpositions. It
-        takes <InlineMathBlock latex="\ket{0}" /> &rarr;
-        <InlineMathBlock latex="\frac{1}{\sqrt{2}}\ket{0} + \frac{1}{\sqrt{2}}\ket{1}" />{" "}
-        and <InlineMathBlock latex="\ket{1}" /> &rarr;
-        <InlineMathBlock latex="\frac{1}{\sqrt{2}}\ket{0} - \frac{1}{\sqrt{2}}\ket{1}" />
-        . These 50/50 superposition states are so common that there is a special
-        notation for them:
-      </p>
-      <MathBlock
-        latex={[
-          "\\ket{+} = \\frac{1}{\\sqrt{2}}\\ket{0} + \\frac{1}{\\sqrt{2}}\\ket{1}",
-          "\\ket{-} = \\frac{1}{\\sqrt{2}}\\ket{0} - \\frac{1}{\\sqrt{2}}\\ket{1}",
-        ]}
-      />
-      <p>We&apos;ll use this from now on.</p>
-      <p>
-        An interesting fact about the <InlineMathBlock latex="H" /> gate is that
-        it is it&apos;s own inverse! By that we mean that if you apply{" "}
-        <InlineMathBlock latex="H" /> twice, the qubit goes back to whatever
-        state it started in. Let&apos;s validate this for{" "}
-        <InlineMathBlock latex="\ket{0}" />:
-      </p>
-      <MathBlock
-        latex={[
-          "HH\\ket{0} = \\ket{0}",
-          "H\\ket{+} = H(\\frac{1}{\\sqrt{2}}\\ket{0} + \\frac{1}{\\sqrt{2}}\\ket{1})",
-          "= \\frac{1}{\\sqrt{2}}H\\ket{0} + \\frac{1}{\\sqrt{2}}H\\ket{1}",
-          "= \\frac{1}{\\sqrt{2}}(\\frac{1}{\\sqrt{2}}\\ket{0} + \\frac{1}{\\sqrt{2}}\\ket{1}) + \\frac{1}{\\sqrt{2}}(\\frac{1}{\\sqrt{2}}\\ket{0} - \\frac{1}{\\sqrt{2}}\\ket{1})",
-          "= (\\frac{1}{2}\\ket{0} + \\frac{1}{2}\\ket{1}) + (\\frac{1}{2}\\ket{0} - \\frac{1}{2}\\ket{1})",
-          "= \\ket{0}",
-        ]}
-      />
-      <p>
-        This property is true for the <InlineMathBlock latex="X" /> gate and
-        true for a few other common gates we haven&apos;t covered here, the{" "}
-        <InlineMathBlock latex="Y" /> and <InlineMathBlock latex="Z" /> gate. It
-        isn&apos;t true of all quantum gates though. The{" "}
-        <InlineMathBlock latex="S" /> gate for example will only return the
-        original state after 4 applications.
-      </p>
-      <p>At this point</p>
     </Article>
   );
 };
