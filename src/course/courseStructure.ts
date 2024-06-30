@@ -45,7 +45,7 @@ export const ChapterDefinitions: ChapterDefinition[] = [
       {
         title: "Bra-Ket Notation",
         id: "bra-ket-notation",
-      }
+      },
     ],
   },
   {
@@ -59,6 +59,10 @@ export const ChapterDefinitions: ChapterDefinition[] = [
       {
         title: "Single Qubit Gates",
         id: "single-qubit-gates",
+      },
+      {
+        title: "Multiple Qubits",
+        id: "multiple-qubits",
       },
       {
         title: "Multi Qubit Gates",
