@@ -93,7 +93,7 @@ const Page = () => {
         We can also use the tensor product on bras. Here&apos;s how it works on the
         inner product operation:
       </p>
-      <MathBlock latex="(\bra{\psi} \otimes \bra{\phi})(\ket{\alpha} \otimes \ket{\beta}) = \braket{\psi|\alpha}\braket{\phi|\beta}" />
+      <MathBlock latex="\braket{\psi \phi | \alpha \beta} = (\bra{\psi} \otimes \bra{\phi})(\ket{\alpha} \otimes \ket{\beta}) = \braket{\psi|\alpha}\braket{\phi|\beta}" />
       <h2>Exercises</h2>
       <h3>Exercise 1</h3>
       <Exercise

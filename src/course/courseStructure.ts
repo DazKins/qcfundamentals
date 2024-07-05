@@ -67,7 +67,6 @@ export const ChapterDefinitions: ChapterDefinition[] = [
       {
         title: "Multi Qubit Gates",
         id: "multi-qubit-gates",
-        comingSoon: true,
       },
     ],
   },
