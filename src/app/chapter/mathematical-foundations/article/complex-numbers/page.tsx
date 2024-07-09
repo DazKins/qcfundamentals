@@ -2,8 +2,8 @@ import { getArticlePageMetadata } from "@/course/courseStructure";
 import Article from "@/components/article";
 import InlineMathBlock from "@/components/inlineMathBlock";
 import MathBlock from "@/components/mathBlock";
-import Image from "next/image";
 import Exercise from "@/components/exercise";
+import ArticleImage from "@/components/articleImage";
 
 const CHAPTER_ID = "mathematical-foundations";
 const ARTICLE_ID = "complex-numbers";
@@ -77,15 +77,7 @@ const Page = () => {
         intuition of the complex numbers. We will imagine these numbers as lying
         on a circle that extends the standard number line:
       </p>
-      <div className="w-full flex justify-center">
-        <Image
-          src={"/article/complex-numbers/complex-circle.png"}
-          width={1000}
-          height={400}
-          alt=""
-          className=" rounded-default overflow-hidden"
-        />
-      </div>
+      <ArticleImage src="complex-circle" alt="" />
       <p>
         This starts to give us an intuition that complex numbers might be well
         visualised as 2-dimensional. Just as we would represent a point in 2
@@ -99,16 +91,10 @@ const Page = () => {
         <InlineMathBlock latex="b" /> is the imaginary component as it is the
         coefficient of <InlineMathBlock latex="i" />.
       </p>
-      <p>Let&apos;s take a look at how we plot these numbers on the 2D plane:</p>
-      <div className="w-full flex justify-center">
-        <Image
-          src={"/article/complex-numbers/argand.png"}
-          width={1000}
-          height={400}
-          alt=""
-          className=" rounded-default overflow-hidden"
-        />
-      </div>
+      <p>
+        Let&apos;s take a look at how we plot these numbers on the 2D plane:
+      </p>
+      <ArticleImage src={"argand"} alt="" />
       <p>So we can see how they plot just like 2D points.</p>
       <p>
         In the same way we can calculate the distance of a point from the origin
@@ -120,14 +106,14 @@ const Page = () => {
       </p>
       <MathBlock latex="|a + bi| = \sqrt{a^2 + b^2}" />
       <p>
-        Another concept we&apos;ll introduce is the complex conjugate. This will be
-        represented with the <InlineMathBlock latex="^*" /> symbol and will
+        Another concept we&apos;ll introduce is the complex conjugate. This will
+        be represented with the <InlineMathBlock latex="^*" /> symbol and will
         simply make the complex part negative:
       </p>
       <MathBlock latex="(a + bi)^* = a - bi" />
       <p>
-        Here&apos;s an interesting property we&apos;ll show. For a complex number{" "}
-        <InlineMathBlock latex="z = a + bi" /> we have:
+        Here&apos;s an interesting property we&apos;ll show. For a complex
+        number <InlineMathBlock latex="z = a + bi" /> we have:
       </p>
       <MathBlock latex="z z^* = (a + bi)(a - bi) = a^2 - abi + abi - b^2i^2 = a^2 + b^2 = |z|^2" />
       <h2>Polar Representation</h2>
@@ -135,15 +121,7 @@ const Page = () => {
         We also know that we can represent points in 2D space using polar
         coordinates. We can do the same for complex numbers:
       </p>
-      <div className="w-full flex justify-center">
-        <Image
-          src={"/article/complex-numbers/polar.png"}
-          width={1000}
-          height={400}
-          alt=""
-          className=" rounded-default overflow-hidden"
-        />
-      </div>
+      <ArticleImage src="polar" alt="" />
       <p>
         We will represent the distance from the origin as{" "}
         <InlineMathBlock latex="r" /> and the angle from the postive-real line
@@ -174,8 +152,8 @@ const Page = () => {
       </p>
       <MathBlock latex="e^{ix} = 1 + ix - \frac{x^2}{2!} - i\frac{x^3}{3!} + \frac{x^4}{4!} + i\frac{x^5}{5!} - \frac{x^6}{6!} - i\frac{x^7}{7!} + \ldots" />
       <p>
-        We&apos;ve expanded the series out to more terms here to make the pattern
-        more visible. Notice now we have some terms with an{" "}
+        We&apos;ve expanded the series out to more terms here to make the
+        pattern more visible. Notice now we have some terms with an{" "}
         <InlineMathBlock latex="i" /> in them and some without. If we group the
         like terms and factor out the <InlineMathBlock latex="i" /> we get:
       </p>

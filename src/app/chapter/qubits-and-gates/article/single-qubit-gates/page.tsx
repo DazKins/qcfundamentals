@@ -53,9 +53,9 @@ const Page = () => {
         gate that can be used in a circuit diagram. The{" "}
         <InlineMathBlock latex="\textmd{NOT}" /> gate is represented as:
       </p>
-      <ArticleImage src="/article/single-qubit-gates/not.png" alt="" />
+      <ArticleImage src="not" alt="" />
       <p>From this one gate we can build a very simple circuit such as:</p>
-      <ArticleImage src="/article/single-qubit-gates/2xnot.png" alt="" />
+      <ArticleImage src="2xnot" alt="" />
       <p>
         In circuit diagrams like this we can think of the bits as
         &quot;flowing&quot; from left to right. So in the above circuit we would
@@ -106,10 +106,7 @@ const Page = () => {
         way we represent classical gates. For example a circuit where we apply
         the X gate followed by a Z gate would look like:
       </p>
-      <ArticleImage
-        src="/article/single-qubit-gates/quant-circuit.png"
-        alt=""
-      />
+      <ArticleImage src="quant-circuit" alt="" />
       <p>
         Note that quantum circuits can be a bit confusing since the mathematical
         definition of this circuit is <InlineMathBlock latex="ZX\ket{\psi}" />{" "}
