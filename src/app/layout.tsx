@@ -7,6 +7,7 @@ import TopBar from "@/components/topBar";
 export const metadata = getPageMetadata({
   title: "QCFundamentals",
   description: "Learn the fundamentals of quantum computing",
+  image: "/qc.png",
 });
 
 export default function RootLayout({

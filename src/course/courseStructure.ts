@@ -200,7 +200,7 @@ export const getChapterPageMetadata = (chapterId: string) => {
 
   return getPageMetadata({
     title: chapterDefinition.title,
-    // image: `/chapter/${chapterDefinition.id}/header.png`,
+    image: "/qc.png",
     type: "article",
   });
 };
@@ -234,7 +234,7 @@ export const getArticlePageMetadata = (
 
   return getPageMetadata({
     title: articleDefinition.title,
-    // image: `/article/${articleDefinition.id}/header.png`,
+    image: "/qc.png",
     type: "article",
   });
 };
