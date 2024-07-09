@@ -5,6 +5,7 @@ import MathBlock from "@/components/mathBlock";
 import Image from "next/image";
 import Exercise from "@/components/exercise";
 import ArticleImage from "@/components/articleImage";
+import ArticleLink from "@/components/articleLink";
 
 const CHAPTER_ID = "qubits-and-gates";
 const ARTICLE_ID = "qubits";
@@ -49,9 +50,12 @@ const Page = () => {
       </p>
       <p>
         We&apos;ll start to make use of{" "}
-        <a href="/chapter/mathematical-foundations/article/bra-ket-notation">
+        <ArticleLink
+          chapterId="mathematical-foundations"
+          articleId="bra-ket-notation"
+        >
           Bra-ket notation
-        </a>{" "}
+        </ArticleLink>{" "}
         by writing our qubit states <InlineMathBlock latex="0" /> and{" "}
         <InlineMathBlock latex="1" /> as <InlineMathBlock latex="\ket{0}" /> and{" "}
         <InlineMathBlock latex="\ket{1}" />. So we are representing our qubits
@@ -66,10 +70,22 @@ const Page = () => {
         A superposition will be represented like this:{" "}
         <InlineMathBlock latex="a\ket{0} + b\ket{1}" />
         where we are multiplying the vectors <InlineMathBlock latex="\ket{0}" />{" "}
-        and <InlineMathBlock latex="\ket{1}" /> by the complex numbers{" "}
+        and <InlineMathBlock latex="\ket{1}" /> by the{" "}
+        <ArticleLink
+          chapterId="mathematical-foundations"
+          articleId="complex-numbers"
+        >
+          complex numbers
+        </ArticleLink>{" "}
         <InlineMathBlock latex="a" /> and <InlineMathBlock latex="b" />{" "}
-        respectively. And so our set of possible qubit states forms a vector
-        space.
+        respectively. And so our set of possible qubit states forms a{" "}
+        <ArticleLink
+          chapterId="mathematical-foundations"
+          articleId="vector-spaces"
+        >
+          vector space
+        </ArticleLink>
+        .
       </p>
       <p>
         When we observe (or measure) a qubit in the computational basis, we will
@@ -80,13 +96,19 @@ const Page = () => {
       </p>
       <p>
         We can calculate the exact probability of measuring each possible
-        outcome using the complex coefficients measured earlier. The probability
-        of measuring <InlineMathBlock latex="\ket{0}" /> is{" "}
-        <InlineMathBlock latex="|a|^2" /> and likewise the probability of
-        measuring <InlineMathBlock latex="\ket{1}" /> is{" "}
-        <InlineMathBlock latex="|b|^2" />. We know from basic mathematics that
-        probabilities must sum to 1, so we can see the constraint on the
-        coefficients in the superposition:
+        outcome using the{" "}
+        <ArticleLink
+          chapterId="mathematical-foundations"
+          articleId="complex-numbers"
+        >
+          complex
+        </ArticleLink>{" "}
+        coefficients measured earlier. The probability of measuring{" "}
+        <InlineMathBlock latex="\ket{0}" /> is <InlineMathBlock latex="|a|^2" />{" "}
+        and likewise the probability of measuring{" "}
+        <InlineMathBlock latex="\ket{1}" /> is <InlineMathBlock latex="|b|^2" />
+        . We know from basic mathematics that probabilities must sum to 1, so we
+        can see the constraint on the coefficients in the superposition:
         <InlineMathBlock latex="|a|^2 + |b|^2 = 1" />
       </p>
       <p>
@@ -245,9 +267,21 @@ const Page = () => {
         The coefficient of <InlineMathBlock latex="\ket{0}" /> is{" "}
         <InlineMathBlock latex="\cos{\frac{\theta}{2}}" /> which, since our
         angle <InlineMathBlock latex="\theta" /> is always real, is a real
-        number. But we said coefficients could be complex numbers here, so how
-        do we plot a qubit with a complex coefficient of{" "}
-        <InlineMathBlock latex="\ket{0}" /> on our bloch sphere?
+        number. But we said coefficients could be{" "}
+        <ArticleLink
+          chapterId="mathematical-foundations"
+          articleId="complex-numbers"
+        >
+          complex numbers
+        </ArticleLink>{" "}
+        here, so how do we plot a qubit with a{" "}
+        <ArticleLink
+          chapterId="mathematical-foundations"
+          articleId="complex-numbers"
+        >
+          complex
+        </ArticleLink>{" "}
+        coefficient of <InlineMathBlock latex="\ket{0}" /> on our bloch sphere?
       </p>
       <p>
         To anwer this question we&apos;ll talk about something called global
@@ -263,9 +297,21 @@ const Page = () => {
         phase&quot;.
       </p>
       <p>
-        A global phase, just means multiplying the state by a complex number of
-        magnitude 1. Thanks to the polar representation of complex numbers, we
-        have a very easy way to represent such a number:{" "}
+        A global phase, just means multiplying the state by a{" "}
+        <ArticleLink
+          chapterId="mathematical-foundations"
+          articleId="complex-numbers"
+        >
+          complex number
+        </ArticleLink>{" "}
+        of magnitude 1. Thanks to the polar representation of{" "}
+        <ArticleLink
+          chapterId="mathematical-foundations"
+          articleId="complex-numbers"
+        >
+          complex numbers{" "}
+        </ArticleLink>
+        , we have a very easy way to represent such a number:{" "}
         <InlineMathBlock latex="e^{i\theta}" />.
       </p>
       <p>
@@ -295,9 +341,15 @@ const Page = () => {
       </p>
       <p>
         Ok, so now we&apos;re ready to answer our original question. How do we
-        plot our qubit with a complex coefficient of{" "}
-        <InlineMathBlock latex="\ket{0}" /> on the bloch sphere? Let&apos;s
-        specify our coefficients in polar form:
+        plot our qubit with a{" "}
+        <ArticleLink
+          chapterId="mathematical-foundations"
+          articleId="complex-numbers"
+        >
+          complex
+        </ArticleLink>{" "}
+        coefficient of <InlineMathBlock latex="\ket{0}" /> on the bloch sphere?
+        Let&apos;s specify our coefficients in polar form:
       </p>
       <MathBlock latex="\ket{\psi} = r_{0}e^{i\theta_0}\ket{0} + r_{1}e^{i\theta_1}\ket{1}" />
       <p>
@@ -327,15 +379,29 @@ const Page = () => {
       />
       <p>
         So we can see that we can plot any qubit state on the bloch sphere, even
-        if the coefficient of <InlineMathBlock latex="\ket{0}" /> is complex.{" "}
+        if the coefficient of <InlineMathBlock latex="\ket{0}" /> is{" "}
+        <ArticleLink
+          chapterId="mathematical-foundations"
+          articleId="complex-numbers"
+        >
+          complex
+        </ArticleLink>
+        .
       </p>
       <p>
         The process we&apos;ve gone through here is a very important one and
         extends well beyond the bloch sphere. There will be many applications in
         the future when it will be useful for us to multiply by some global
         phase in order to make a coefficient real. Since multiplying by a global
-        phase represents a rotation on the complex plane, it is always possible
-        to make any given coefficient real through this process.
+        phase represents a rotation on the{" "}
+        <ArticleLink
+          chapterId="mathematical-foundations"
+          articleId="complex-numbers"
+        >
+          complex
+        </ArticleLink>{" "}
+        plane, it is always possible to make any given coefficient real through
+        this process.
       </p>
       <h2>Exercises</h2>
       <h3>Exercise 1</h3>

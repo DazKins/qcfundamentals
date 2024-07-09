@@ -2,10 +2,10 @@ import { getArticlePageMetadata } from "@/course/courseStructure";
 import Article from "@/components/article";
 import InlineMathBlock from "@/components/inlineMathBlock";
 import MathBlock from "@/components/mathBlock";
-import Image from "next/image";
 import Table from "@/components/table";
 import Exercise from "@/components/exercise";
 import ArticleImage from "@/components/articleImage";
+import ArticleLink from "@/components/articleLink";
 
 const CHAPTER_ID = "mathematical-foundations";
 const ARTICLE_ID = "fields";
@@ -16,24 +16,32 @@ const Page = () => {
   return (
     <Article>
       <p>
-        Now we&apos;ve had a gentle introduction to abstract mathematics with
-        groups, we&apos;re ready to explore a slightly more complex structure:
-        Fields.
+        Now we&apos;ve had a gentle introduction to abstract mathematics with{" "}
+        <ArticleLink chapterId="mathematical-foundations" articleId="groups">
+          groups
+        </ArticleLink>
+        , we&apos;re ready to explore a slightly more complex structure: Fields.
       </p>
       <p>
-        Just like groups, fields have a set of elements that can be combined.
-        However, this time they can be combined with not one, but two
-        operations. One operation, <InlineMathBlock latex="\cdot" />, behaves
-        like multiplication and the other, <InlineMathBlock latex="+" />,
-        behaves like addition.
+        Just like{" "}
+        <ArticleLink chapterId="mathematical-foundations" articleId="groups">
+          groups
+        </ArticleLink>
+        , fields have a set of elements that can be combined. However, this time
+        they can be combined with not one, but two operations. One operation,{" "}
+        <InlineMathBlock latex="\cdot" />, behaves like multiplication and the
+        other, <InlineMathBlock latex="+" />, behaves like addition.
       </p>
       <p>These two operations must obey the following properties:</p>
       <h3>Closure</h3>
       <MathBlock latex={["(a + b) \\in F", "(a \\cdot b) \\in F"]} />
       <p>
-        Very simple one we already saw in groups. Combining any 2 elements from
-        the field under any operation should produce another member of the
-        field.
+        Very simple one we already saw in{" "}
+        <ArticleLink chapterId="mathematical-foundations" articleId="groups">
+          groups
+        </ArticleLink>
+        . Combining any 2 elements from the field under any operation should
+        produce another member of the field.
       </p>
       <h3>Associativity</h3>
       <MathBlock
@@ -43,8 +51,11 @@ const Page = () => {
         ]}
       />
       <p>
-        Another one we&apos;ve seen already from groups. The brackets must
-        behave the same way with both operations.
+        Another one we&apos;ve seen already from{" "}
+        <ArticleLink chapterId="mathematical-foundations" articleId="groups">
+          groups
+        </ArticleLink>
+        . The brackets must behave the same way with both operations.
       </p>
       <h3>Identity</h3>
       <MathBlock
@@ -87,14 +98,20 @@ const Page = () => {
         the order of the elements.
       </p>
       <p>
-        Remeber that this wasn&apos;t a strict requirement for groups, but it
-        will be in fields.
+        Remeber that this wasn&apos;t a strict requirement for{" "}
+        <ArticleLink chapterId="mathematical-foundations" articleId="groups">
+          groups
+        </ArticleLink>
+        , but it will be in fields.
       </p>
       <h3>Distributivity</h3>
       <MathBlock latex={["a \\cdot (b + c) = (a \\cdot b) + (a \\cdot c)"]} />
       <p>
-        This is a completely new rule that we didn&apos;t have with groups. This
-        tells us how the 2 operations interact when used together.
+        This is a completely new rule that we didn&apos;t have with{" "}
+        <ArticleLink chapterId="mathematical-foundations" articleId="groups">
+          groups
+        </ArticleLink>
+        . This tells us how the 2 operations interact when used together.
       </p>
       <br />
       <p>

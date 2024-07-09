@@ -1,4 +1,5 @@
 import Article from "@/components/article";
+import ArticleLink from "@/components/articleLink";
 import Exercise from "@/components/exercise";
 import InlineMathBlock from "@/components/inlineMathBlock";
 import MathBlock from "@/components/mathBlock";
@@ -19,10 +20,16 @@ const Page = () => {
         we&apos;re going to be looking at things in a more abstract way.
       </p>
       <p>
-        A vector space is defined together with a field. We say formally that a
-        vector space over a field <InlineMathBlock latex="F" /> is a set{" "}
-        <InlineMathBlock latex="V" />. The elements of{" "}
-        <InlineMathBlock latex="F" />
+        A vector space is defined together with a{" "}
+        <ArticleLink chapterId="mathematical-foundations" articleId="fields">
+          field
+        </ArticleLink>
+        . We say formally that a vector space over a{" "}
+        <ArticleLink chapterId="mathematical-foundations" articleId="fields">
+          field
+        </ArticleLink>{" "}
+        <InlineMathBlock latex="F" /> is a set <InlineMathBlock latex="V" />.
+        The elements of <InlineMathBlock latex="F" />
         we will call scalars and the elements of <InlineMathBlock latex="V" />{" "}
         we will call vectors. In the mathematical notation, vectors will be
         represented as bold lowercase letters (e.g.{" "}
@@ -42,8 +49,11 @@ const Page = () => {
       <p>
         Once more, we&apos;re going to have a bunch of rules for how these
         operations work. They&apos;re not particularly difficult and have many
-        similarities to the previous rules we&apos;ve seen for groups and
-        fields.
+        similarities to the previous rules we&apos;ve seen for groups and{" "}
+        <ArticleLink chapterId="mathematical-foundations" articleId="fields">
+          fields
+        </ArticleLink>
+        .
       </p>
       <h3>Associativity</h3>
       <MathBlock latex="\mathbf{u} + (\mathbf{v} + \mathbf{w}) = (\mathbf{u} + \mathbf{v}) + \mathbf{w}" />
@@ -56,25 +66,42 @@ const Page = () => {
       <h3>Scalar Multiplication</h3>
       <MathBlock latex="a(b\mathbf{v}) = (a \cdot b)\mathbf{v}" />
       <p>
-        This is the first rule that requires us to use something from the field{" "}
+        This is the first rule that requires us to use something from the{" "}
+        <ArticleLink chapterId="mathematical-foundations" articleId="fields">
+          field
+        </ArticleLink>{" "}
         <InlineMathBlock latex="F" />. It tells us that scalar multiplication
-        use the multiplication operation from the field.
+        use the multiplication operation from the{" "}
+        <ArticleLink chapterId="mathematical-foundations" articleId="fields">
+          field
+        </ArticleLink>
+        .
       </p>
       <h3>Scalar Multiplication Identity</h3>
       <MathBlock latex="1\mathbf{v} = \mathbf{v}" />
       <p>
         This rule tells us that multiplying a vector by the multiplicative
-        identity of the field leaves the vector unchanged. Note that we
-        didn&apos;t have to write <InlineMathBlock latex="\exists 1" /> because
-        the existince of this multiplicative identity already comes from the
-        field.
+        identity of the{" "}
+        <ArticleLink chapterId="mathematical-foundations" articleId="fields">
+          field
+        </ArticleLink>{" "}
+        leaves the vector unchanged. Note that we didn&apos;t have to write{" "}
+        <InlineMathBlock latex="\exists 1" /> because the existince of this
+        multiplicative identity already comes from the{" "}
+        <ArticleLink chapterId="mathematical-foundations" articleId="fields">
+          field
+        </ArticleLink>
+        .
       </p>
       <h3>Distributivity Over Vector Addition</h3>
       <MathBlock latex="a(\mathbf{u} + \mathbf{v}) = a\mathbf{u} + a\mathbf{v}" />
       <h3>Distributivity Over Scalar Addition</h3>
       <MathBlock latex="(a + b)\mathbf{v} = a\mathbf{v} + b\mathbf{v}" />
       <p>
-        This rule shows us how the addition operation from the field{" "}
+        This rule shows us how the addition operation from the{" "}
+        <ArticleLink chapterId="mathematical-foundations" articleId="fields">
+          field
+        </ArticleLink>{" "}
         <InlineMathBlock latex="F" /> behaves with the vector addition
         operation.
       </p>
@@ -82,11 +109,23 @@ const Page = () => {
       <p>
         Great, so we&apos;ve got some slightly different objects and operations
         that behave a bit differently from what we&apos;ve seen before, but
-        fundamentally, this is very similar with groups/fields.
+        fundamentally, this is very similar with{" "}
+        <ArticleLink chapterId="mathematical-foundations" articleId="groups">
+          groups
+        </ArticleLink>
+        /
+        <ArticleLink chapterId="mathematical-foundations" articleId="fields">
+          fields
+        </ArticleLink>
+        .
       </p>
       <p>
         Again we can use our rules to prove some basic properties. For example,
-        just like we did with fields:
+        just like we did with{" "}
+        <ArticleLink chapterId="mathematical-foundations" articleId="fields">
+          fields
+        </ArticleLink>
+        :
       </p>
       <MathBlock
         latex={[
@@ -100,7 +139,10 @@ const Page = () => {
       <h2>Euclidian Vectors</h2>
       <p>
         The most common example of a vector space is the set of Euclidean
-        vectors that you&apos;re probably familiar with. In this case, the field
+        vectors that you&apos;re probably familiar with. In this case, the{" "}
+        <ArticleLink chapterId="mathematical-foundations" articleId="fields">
+          field
+        </ArticleLink>{" "}
         is the real numbers <InlineMathBlock latex="\mathbb{R}" /> and the
         vectors are the points in space represented by a column of real numbers.
         For example:

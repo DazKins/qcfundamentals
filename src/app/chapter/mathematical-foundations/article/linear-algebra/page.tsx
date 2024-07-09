@@ -1,4 +1,5 @@
 import Article from "@/components/article";
+import ArticleLink from "@/components/articleLink";
 import Exercise from "@/components/exercise";
 import InlineMathBlock from "@/components/inlineMathBlock";
 import MathBlock from "@/components/mathBlock";
@@ -150,9 +151,11 @@ const Page = () => {
       <MathBlock latex="\mathbf{v} \cdot \mathbf{w} = (\mathbf{w} \cdot \mathbf{v})^*" />
       <p>
         Where <InlineMathBlock latex="^*" /> denotes the complex conjugate
-        operator. Of course this is only relevant for vector spaces over the
-        field of complex numbers. If we were working with real numbers we&apos;d
-        have:{" "}
+        operator. Of course this is only relevant for vector spaces over the{" "}
+        <ArticleLink chapterId="mathematical-foundations" articleId="fields">
+          field
+        </ArticleLink>{" "}
+        of complex numbers. If we were working with real numbers we&apos;d have:{" "}
         <InlineMathBlock latex="\mathbf{v} \cdot \mathbf{w} = \mathbf{w} \cdot \mathbf{v}" />
       </p>
       <p>
@@ -169,8 +172,12 @@ const Page = () => {
       </p>
       <p>
         Remember that <InlineMathBlock latex="0" /> is the additive identity of
-        the field and <InlineMathBlock latex="\mathbf{0}" /> is the additive
-        identity of the vector space.
+        the{" "}
+        <ArticleLink chapterId="mathematical-foundations" articleId="fields">
+          field
+        </ArticleLink>{" "}
+        and <InlineMathBlock latex="\mathbf{0}" /> is the additive identity of
+        the vector space.
       </p>
       <br />
       <p>

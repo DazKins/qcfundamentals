@@ -3,6 +3,7 @@ import Article from "@/components/article";
 import InlineMathBlock from "@/components/inlineMathBlock";
 import MathBlock from "@/components/mathBlock";
 import Exercise from "@/components/exercise";
+import ArticleLink from "@/components/articleLink";
 
 const CHAPTER_ID = "mathematical-foundations";
 const ARTICLE_ID = "bra-ket-notation";
@@ -48,7 +49,14 @@ const Page = () => {
         <InlineMathBlock latex="b\bra{v}" /> or <InlineMathBlock latex="cA" />.
         We&apos;ll see more about what this means later. As alluded to in the
         previous article, we are primarily interested in the case when these
-        scalars are complex numbers.
+        scalars are{" "}
+        <ArticleLink
+          chapterId="mathematical-foundations"
+          articleId="complex-numbers"
+        >
+          complex numbers
+        </ArticleLink>
+        .
       </p>
       <h2>The Inner Product</h2>
       <p>

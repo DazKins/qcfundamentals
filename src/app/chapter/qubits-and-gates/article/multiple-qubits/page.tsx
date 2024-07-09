@@ -3,6 +3,7 @@ import Article from "@/components/article";
 import InlineMathBlock from "@/components/inlineMathBlock";
 import MathBlock from "@/components/mathBlock";
 import Exercise from "@/components/exercise";
+import ArticleLink from "@/components/articleLink";
 
 const CHAPTER_ID = "qubits-and-gates";
 const ARTICLE_ID = "multiple-qubits";
@@ -13,8 +14,8 @@ const Page = () => {
   return (
     <Article>
       <p>
-        Quite soon, we&apos;re going to need to look at systems containing more than
-        one qubit. Since our definitions of qubits and gates are quite
+        Quite soon, we&apos;re going to need to look at systems containing more
+        than one qubit. Since our definitions of qubits and gates are quite
         mathematical, we need to make sure we have a solid mathematical
         framework for representing these systems.
       </p>
@@ -24,7 +25,13 @@ const Page = () => {
         between two vectors or operators. It is denoted by the symbol{" "}
         <InlineMathBlock latex="\otimes" />. As we deal with more and more
         qubits, writing out this <InlineMathBlock latex="\otimes" /> symbol will
-        get tedious so we will add some special syntax to our bra-ket notation
+        get tedious so we will add some special syntax to our{" "}
+        <ArticleLink
+          chapterId={"mathematical-foundations"}
+          articleId={"bra-ket-notation"}
+        >
+          bra-ket notation
+        </ArticleLink>{" "}
         for this:
       </p>
       <MathBlock latex="\ket{\psi} \otimes \ket{\phi} = \ket{\psi\phi}" />
@@ -67,13 +74,14 @@ const Page = () => {
         multiplies their dimensions.
       </p>
       <p>
-        Here&apos;s how we define the tensor product of gates (linear operators):
+        Here&apos;s how we define the tensor product of gates (linear
+        operators):
       </p>
       <MathBlock latex="(A \otimes B)(\ket{\phi} \otimes \ket{\psi}) = A\ket{\phi} \otimes B\ket{\psi}" />
       <p>
         So this means the tensor product of 2 1-qubit gates would simply
-        represent the 2 gates acting independantly on either qubit. Let&apos;s look
-        at an example of applying a Hadamard gate to one qubit and an{" "}
+        represent the 2 gates acting independantly on either qubit. Let&apos;s
+        look at an example of applying a Hadamard gate to one qubit and an{" "}
         <InlineMathBlock latex="X" /> gate to another:
       </p>
       <MathBlock latex="(H \otimes X)(\ket{0} \otimes \ket{0}) = H\ket{0} \otimes X\ket{0} = \ket{+} \otimes \ket{1} = \ket{+1}" />
@@ -90,8 +98,8 @@ const Page = () => {
         same qubit.
       </p>
       <p>
-        We can also use the tensor product on bras. Here&apos;s how it works on the
-        inner product operation:
+        We can also use the tensor product on bras. Here&apos;s how it works on
+        the inner product operation:
       </p>
       <MathBlock latex="\braket{\psi \phi | \alpha \beta} = (\bra{\psi} \otimes \bra{\phi})(\ket{\alpha} \otimes \ket{\beta}) = \braket{\psi|\alpha}\braket{\phi|\beta}" />
       <h2>Exercises</h2>
@@ -214,14 +222,14 @@ const Page = () => {
               <InlineMathBlock latex="bd = 1" />. The second constraint tells us
               either <InlineMathBlock latex="a" /> or{" "}
               <InlineMathBlock latex="d" /> must be zero. But checking the first
-              constraint <InlineMathBlock latex="a" /> can&apos;t be zero and the
-              fourth constraint tells us <InlineMathBlock latex="d" /> can&apos;t be
-              zero. This is a contradiction.
+              constraint <InlineMathBlock latex="a" /> can&apos;t be zero and
+              the fourth constraint tells us <InlineMathBlock latex="d" />{" "}
+              can&apos;t be zero. This is a contradiction.
             </p>
             <p>
               This is one of the most important results in quantum computing and
-              we&apos;ll discuss much more about what this state is and what it means
-              when we discuss &quot;entanglement&quot;.
+              we&apos;ll discuss much more about what this state is and what it
+              means when we discuss &quot;entanglement&quot;.
             </p>
             <p>
               For now, just take a moment to ponder what this means. In
