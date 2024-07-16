@@ -71,14 +71,12 @@ export const ChapterDefinitions: ChapterDefinition[] = [
     ],
   },
   {
-    id: "use-cases",
-    title: "Use Cases",
-    comingSoon: true,
+    id: "entanglement",
+    title: "Entanglement",
     articles: [
       {
         title: "Entanglement",
         id: "entanglement",
-        comingSoon: true,
       },
       {
         title: "Teleportation",

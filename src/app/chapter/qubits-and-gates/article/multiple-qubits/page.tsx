@@ -231,15 +231,6 @@ const Page = () => {
               we&apos;ll discuss much more about what this state is and what it
               means when we discuss &quot;entanglement&quot;.
             </p>
-            <p>
-              For now, just take a moment to ponder what this means. In
-              classical computation, we could have many bits, but we could
-              always pick out a single bit and describe it&apos;s state
-              independantly. This is not the case in quantum computation. The
-              state of a qubit can be dependent on the state of another qubit.
-              This is a very powerful concept that we will exploit in quantum
-              algorithms.
-            </p>
           </>
         }
       />
