@@ -5,8 +5,8 @@ import ArticleImage from "@/components/articleImage";
 import InlineMathBlock from "@/components/inlineMathBlock";
 import Exercise from "@/components/exercise";
 
-const CHAPTER_ID = "mathematical-foundations";
-const ARTICLE_ID = "bra-ket-notation";
+const CHAPTER_ID = "entanglement";
+const ARTICLE_ID = "entanglement";
 
 export const metadata = getArticlePageMetadata(CHAPTER_ID, ARTICLE_ID);
 
