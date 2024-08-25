@@ -85,7 +85,6 @@ export const ChapterDefinitions: ChapterDefinition[] = [
       {
         title: "Superdense Coding",
         id: "superdense-coding",
-        comingSoon: true,
       },
     ],
   },
