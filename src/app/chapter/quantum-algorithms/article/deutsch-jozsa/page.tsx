@@ -485,7 +485,7 @@ const Page = () => {
             </p>
             <p>
               Now let&apos;s go back to our original formula and apply the
-              Hadamard gates using our new knowledge. We left of with this
+              Hadamard gates using our new knowledge. We left off with this
               formula:
             </p>
             <MathBlock latex="\ket{\psi_2} = \frac{1}{\sqrt{2^{n+1}}}\sum_{x=0}^{2^n-1}\ket{x} \otimes (-1)^{f(x)}(\ket{0} - \ket{1})" />
