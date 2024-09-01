@@ -14,13 +14,13 @@ const Page = () => {
   return (
     <Article>
       <p>
-        We&apos;re now getting pretty familiar with the fact that a qubit can hold
-        any state in a superposition of <InlineMathBlock latex="\ket{0}" /> and{" "}
-        <InlineMathBlock latex="\ket{1}" />. Whereas a classical bit can only
-        occupy one of these two states, a qubit can occupy an infinite contiuum
-        of states between these two. It therefore feels like the qubit contains
-        more information than the classical bit. Is there someway we could
-        somehow extract use out of this information?
+        We&apos;re now getting pretty familiar with the fact that a qubit can
+        hold any state in a superposition of <InlineMathBlock latex="\ket{0}" />{" "}
+        and <InlineMathBlock latex="\ket{1}" />. Whereas a classical bit can
+        only occupy one of these two states, a qubit can occupy an infinite
+        contiuum of states between these two. It therefore feels like the qubit
+        contains more information than the classical bit. Is there someway we
+        could somehow extract use out of this information?
       </p>
       <p>
         In the previous article we discussed how Alice and Bob could use a
@@ -34,24 +34,24 @@ const Page = () => {
         bits of information while only having to send a single qubit.
       </p>
       <p>
-        We&apos;ll begin in the familiar scenario where Alice and Bob have entangled
-        two qubits and taken one half of the entangled pair each.
+        We&apos;ll begin in the familiar scenario where Alice and Bob have
+        entangled two qubits and taken one half of the entangled pair each.
       </p>
       <ArticleImage src="alicebobentangled" alt="" />
       <p>So our system starts in the usual state:</p>
       <MathBlock latex="\ket{\phi_0} = \ket{\beta_{00}} = \frac{1}{\sqrt{2}}(\ket{00} + \ket{11})" />
       <p>
-        Now, let&apos;s say that Alice has 2 classical bits of information that she
-        wants to be able to send to Bob by only sending her qubit. In other
+        Now, let&apos;s say that Alice has 2 classical bits of information that
+        she wants to be able to send to Bob by only sending her qubit. In other
         words, Alice must apply some operation to her qubit such that Bob can
-        apply some operation to both his qubit and Alice&apos;s qubit in order to
-        decode her 2 classical bits.
+        apply some operation to both his qubit and Alice&apos;s qubit in order
+        to decode her 2 classical bits.
       </p>
       <p>
         Remember in our quantum teleporation protocol, Bob had to apply an{" "}
         <InlineMathBlock latex="X" /> and/or a <InlineMathBlock latex="Z" />{" "}
-        gate to his qubit based on the received classical bits. Let&apos;s re-use
-        that intuition here, and we&apos;ll make Alice apply an{" "}
+        gate to his qubit based on the received classical bits. Let&apos;s
+        re-use that intuition here, and we&apos;ll make Alice apply an{" "}
         <InlineMathBlock latex="X" /> and/or <InlineMathBlock latex="Z" /> gate
         depending on the 2 classical bits she wants to send.
       </p>
@@ -85,22 +85,22 @@ const Page = () => {
       </p>
       <p>
         To understand what Bob must now do to retrieve the bits we can get some
-        inspiration from the teleportation circuit and &quot;break&quot; the entanglement
-        by applying a <InlineMathBlock latex="\text{CNOT}" /> gate followed by
-        an <InlineMathBlock latex="H" /> gate:
+        inspiration from the teleportation circuit and &quot;break&quot; the
+        entanglement by applying a <InlineMathBlock latex="\text{CNOT}" /> gate
+        followed by an <InlineMathBlock latex="H" /> gate:
       </p>
       <MathBlock latex="\ket{\phi_2} = (H \otimes I)\text{CNOT}\ket{\phi_1} = \frac{1}{\sqrt{2}}(H \otimes I)\text{CNOT}(U_{b_0b_1}\ket{0} \otimes \ket{0} + U_{b_0b_1}\ket{1} \otimes \ket{1})" />
       <p>And here&apos;s what the circuit looks like now:</p>
       <ArticleImage src="superdense" alt="" />
       <p>
         We could start delving into our outer-product operator notation to
-        explicitly calculate what this equals, but it&apos;s more helpful to study
-        this in cases. The full outer-product based derivation is left as an
-        exercise at the end.
+        explicitly calculate what this equals, but it&apos;s more helpful to
+        study this in cases. The full outer-product based derivation is left as
+        an exercise at the end.
       </p>
       <p>
-        First off, the most basic case, when both of Alice&apos;s bits are 0. i.e.{" "}
-        <InlineMathBlock latex="b_0 = 0" /> and{" "}
+        First off, the most basic case, when both of Alice&apos;s bits are 0.
+        i.e. <InlineMathBlock latex="b_0 = 0" /> and{" "}
         <InlineMathBlock latex="b_1 = 0" />.
       </p>
       <p>
@@ -135,8 +135,8 @@ const Page = () => {
         ]}
       />
       <p>
-        So once again Bob will recover the correct qubits! We&apos;ll leave the other
-        two cases to the exercises.
+        So once again Bob will recover the correct qubits! We&apos;ll leave the
+        other two cases to the exercises.
       </p>
       <p>
         So we have shown that Alice can send 2 classical bits to Bob by only
@@ -183,7 +183,9 @@ const Page = () => {
       <Exercise
         problem={
           <>
-            <p>Validate the other two scenarios of Alice&apos;s classical bits:</p>
+            <p>
+              Validate the other two scenarios of Alice&apos;s classical bits:
+            </p>
             <ul>
               <li>
                 <InlineMathBlock latex="b_0 = 0" /> and{" "}
@@ -253,8 +255,8 @@ const Page = () => {
             </p>
             <MathBlock latex="Z^{b_0}X^{b_1} = (\ket{0}\bra{0} - \ket{1}\bra{1})^{b_0}(\ket{0}\bra{1} + \ket{1}\bra{0})^{b_1}" />
             <p>
-              This works, but unfortunately this won&apos;t serve us very well. The
-              problem is that the <InlineMathBlock latex="b_0" /> and{" "}
+              This works, but unfortunately this won&apos;t serve us very well.
+              The problem is that the <InlineMathBlock latex="b_0" /> and{" "}
               <InlineMathBlock latex="b_1" /> are stuck in the exponentials and
               we won&apos;t be able to easily get anything in our out of the
               brackets. We would prefer a solution where{" "}
@@ -263,8 +265,9 @@ const Page = () => {
               terms or inside the bras/kets themselves.
             </p>
             <p>
-              So let&apos;s analyse further the representation here. Focussing first
-              on the <InlineMathBlock latex="X" /> gate, we have the following:
+              So let&apos;s analyse further the representation here. Focussing
+              first on the <InlineMathBlock latex="X" /> gate, we have the
+              following:
             </p>
             <MathBlock
               latex={[
@@ -314,9 +317,9 @@ const Page = () => {
             </p>
             <MathBlock latex="U_{b_0b_1} = \ket{0}\bra{b_1} + (-1)^{b_0}\ket{1}\bra{\bar{b_1}}" />
             <p>
-              This is brilliant. We&apos;ve now found a closed way to represent our
-              operator mathematically. Now let&apos;s work through the rest of the
-              equation.
+              This is brilliant. We&apos;ve now found a closed way to represent
+              our operator mathematically. Now let&apos;s work through the rest
+              of the equation.
             </p>
             <p>We know that Alice and Bob start with a superposition state:</p>
             <MathBlock latex="\ket{\phi_0} = \frac{1}{\sqrt{2}}(\ket{00} + \ket{11})" />
@@ -372,8 +375,8 @@ const Page = () => {
               ]}
             />
             <p>
-              Ok, we&apos;ve got all our terms. Now all that&apos;s left is algebraic
-              manipulation.
+              Ok, we&apos;ve got all our terms. Now all that&apos;s left is
+              algebraic manipulation.
             </p>
             <p>
               Let&apos;s start by collecting each of the kets into a single term

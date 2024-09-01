@@ -91,12 +91,10 @@ export const ChapterDefinitions: ChapterDefinition[] = [
   {
     id: "quantum-algorithms",
     title: "Quantum Algorithms",
-    comingSoon: true,
     articles: [
       {
         title: "Deutsch-Jozsa",
         id: "deutsch-jozsa",
-        comingSoon: true,
       },
       {
         title: "Grover",
