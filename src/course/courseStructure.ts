@@ -97,9 +97,8 @@ export const ChapterDefinitions: ChapterDefinition[] = [
         id: "deutsch-jozsa",
       },
       {
-        title: "Grover",
-        id: "grover",
-        comingSoon: true,
+        title: "Grover Search",
+        id: "grover-search",
       },
       {
         title: "Order Finding",
