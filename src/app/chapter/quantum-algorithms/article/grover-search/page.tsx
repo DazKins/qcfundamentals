@@ -4,7 +4,6 @@ import InlineMathBlock from "@/components/inlineMathBlock";
 import MathBlock from "@/components/mathBlock";
 import Table from "@/components/table";
 import { getArticlePageMetadata } from "@/course/courseStructure";
-import { Inria_Sans } from "next/font/google";
 
 const CHAPTER_ID = "quantum-algorithms";
 const ARTICLE_ID = "grover-search";

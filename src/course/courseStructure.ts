@@ -101,6 +101,10 @@ export const ChapterDefinitions: ChapterDefinition[] = [
         id: "grover-search",
       },
       {
+        title: "Quantum Fourier Transform",
+        id: "quantum-fourier-transform",
+      },
+      {
         title: "Order Finding",
         id: "order-finding",
         comingSoon: true,
