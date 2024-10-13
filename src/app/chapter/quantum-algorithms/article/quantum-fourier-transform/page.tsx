@@ -31,9 +31,9 @@ const Page = () => {
         where:
       </p>
       <MathBlock latex="y_k = \frac{1}{\sqrt{N}}\sum_{j=0}^{N-1}x_je^{2\pi ijk/N}" />
-      <p>Looks scary? Let's break it down.</p>
+      <p>Looks scary? Let&apos;s break it down.</p>
       <p>
-        Firstly, let's revise our complex numbers a bit. Remember that{" "}
+        Firstly, let&apos;s revise our complex numbers a bit. Remember that{" "}
         <InlineMathBlock latex="e^{i \theta}" /> merely represents a rotation of{" "}
         <InlineMathBlock latex="\theta" /> radians around the complex unit
         circle. Since we know that <InlineMathBlock latex="2\pi" /> is a full
@@ -54,14 +54,14 @@ const Page = () => {
         -th rotation and so on. We can then also see that{" "}
         <InlineMathBlock latex="\omega^{N}_N" /> is the same as{" "}
         <InlineMathBlock latex="\omega^{0}_N" /> since doing a full rotation is
-        the same as doing no rotation. And from there it's fairly clear that we
+        the same as doing no rotation. And from there it&apos;s fairly clear that we
         get relations like:{" "}
         <InlineMathBlock latex="\omega^{2}_N = \omega^{N+2}_N = \omega^{2N+2}_N" />
         . So we end up with a circular pattern very similar to the powers of{" "}
         <InlineMathBlock latex="i" />.
       </p>
       <p>
-        Just to be clear, let's now re-write our original equation with{" "}
+        Just to be clear, let&apos;s now re-write our original equation with{" "}
         <InlineMathBlock latex="\omega" />:
       </p>
       <MathBlock latex="y_k = \frac{1}{\sqrt{N}}\sum_{j=0}^{N-1}x_j\omega_{N}^{jk}" />
@@ -98,7 +98,7 @@ const Page = () => {
         ]}
       />
       <p>
-        It's not immediately clear what's useful about this. Usually this idea
+        It&apos;s not immediately clear what&apos;s useful about this. Usually this idea
         is first presented in a mathematics course where it can be used to
         analyze signals. In that context, the fourier transform is used to
         decompose a signal into its constituent frequencies. This is useful
@@ -106,8 +106,8 @@ const Page = () => {
         noise.
       </p>
       <p>
-        For our case though, we'll simply stick with the definition and see how
-        we can apply this to our quantum algorithms. It's use will hopefully
+        For our case though, we&apos;ll simply stick with the definition and see how
+        we can apply this to our quantum algorithms. It&apos;s use will hopefully
         become apparent later.
       </p>
       <p>We will define the quantum fourier transform as follows:</p>
@@ -138,11 +138,11 @@ const Page = () => {
       </p>
       <p>
         To do this, our first step is to split the <InlineMathBlock latex="j" />{" "}
-        summation into it's individual bits:
+        summation into it&apos;s individual bits:
       </p>
       <MathBlock latex="\ket{y} = \frac{1}{\sqrt{N}}\sum_{j_1=0}^{1} \ldots \sum_{j_n=0}^{1}\omega_N^{yj}\ket{j_1, \ldots, j_n}" />
       <p>
-        Then we'll look at a slightly different representation of our{" "}
+        Then we&apos;ll look at a slightly different representation of our{" "}
         <InlineMathBlock latex="\omega" /> term. We know that{" "}
         <InlineMathBlock latex="\omega_N^{yj} = e^{2\pi iyj/N}" />. But since{" "}
         <InlineMathBlock latex="N = 2^n" /> the division by{" "}
@@ -220,22 +220,22 @@ const Page = () => {
         ]}
       />
       <p>
-        To clean this up, let's drop the big <InlineMathBlock latex="\otimes" />{" "}
+        To clean this up, let&apos;s drop the big <InlineMathBlock latex="\otimes" />{" "}
         symbol and replace <InlineMathBlock latex="N" /> with{" "}
         <InlineMathBlock latex="2^n" />:
       </p>
       <MathBlock latex="\ket{y} = \frac{(\ket{0} + e^{2\pi i0.y_n}\ket{1})(\ket{0} + e^{2\pi i0.y_{n-1}y_n}\ket{1}) \ldots (\ket{0} + e^{2\pi i0.y_1 \ldots y_n}\ket{1})}{2^{n/2}}" />
       <p>
         This is the product representation of the quantum fourier transform.
-        It's useful because it better shows the behaviour on individual bits and
+        It&apos;s useful because it better shows the behaviour on individual bits and
         will allow us to construct a circuit easier.
       </p>
       <p>
-        To build the circuit, we'll need to invent some new gates. The quantum
-        gates we've studied previously have mostly been focussed with discrete
+        To build the circuit, we&apos;ll need to invent some new gates. The quantum
+        gates we&apos;ve studied previously have mostly been focussed with discrete
         jumps around the Bloch Sphere. As we can see from our equation above,
         the quantum fourier transform will involve rotations of the phase of the{" "}
-        <InlineMathBlock latex="\ket{1}" /> state. So let's create the gates:
+        <InlineMathBlock latex="\ket{1}" /> state. So let&apos;s create the gates:
       </p>
       <MathBlock
         latex={[
@@ -254,18 +254,18 @@ const Page = () => {
         <InlineMathBlock latex="\ket{1}" /> by 90 degrees etc.
       </p>
       <p>
-        Let's now present the quantum circuit for the quantum fourier transform
+        Let&apos;s now present the quantum circuit for the quantum fourier transform
         and then examine why it works:
       </p>
       <ArticleImage src="quantumfouriertransform" alt="" />
       <p>
         Notice that our <InlineMathBlock latex="R" /> gates are controlled
-        gates. Just like we've seen other controlled gates previously, these
+        gates. Just like we&apos;ve seen other controlled gates previously, these
         gates only apply their rotation if the control qubit is in the{" "}
         <InlineMathBlock latex="\ket{1}" /> state.
       </p>
       <p>
-        To see that this works, let's start by just following the{" "}
+        To see that this works, let&apos;s start by just following the{" "}
         <InlineMathBlock latex="\ket{y_1}" /> qubit for now.
       </p>
       <p>
@@ -308,7 +308,7 @@ const Page = () => {
         the qubits.
       </p>
       <p>
-        Great! So we've found a circuit that implements the quantum fourier
+        Great! So we&apos;ve found a circuit that implements the quantum fourier
         transform!
       </p>
       <p>
@@ -320,7 +320,7 @@ const Page = () => {
         gates. So this is fairly efficient, no exponential scaling.
       </p>
       <p>
-        We'll begin exploring in the next articles how this quantum fourier
+        We&apos;ll begin exploring in the next articles how this quantum fourier
         transform can be used.
       </p>
     </Article>
