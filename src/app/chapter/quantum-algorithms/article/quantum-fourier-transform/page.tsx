@@ -54,8 +54,8 @@ const Page = () => {
         -th rotation and so on. We can then also see that{" "}
         <InlineMathBlock latex="\omega^{N}_N" /> is the same as{" "}
         <InlineMathBlock latex="\omega^{0}_N" /> since doing a full rotation is
-        the same as doing no rotation. And from there it&apos;s fairly clear that we
-        get relations like:{" "}
+        the same as doing no rotation. And from there it&apos;s fairly clear
+        that we get relations like:{" "}
         <InlineMathBlock latex="\omega^{2}_N = \omega^{N+2}_N = \omega^{2N+2}_N" />
         . So we end up with a circular pattern very similar to the powers of{" "}
         <InlineMathBlock latex="i" />.
@@ -98,17 +98,17 @@ const Page = () => {
         ]}
       />
       <p>
-        It&apos;s not immediately clear what&apos;s useful about this. Usually this idea
-        is first presented in a mathematics course where it can be used to
-        analyze signals. In that context, the fourier transform is used to
-        decompose a signal into its constituent frequencies. This is useful
+        It&apos;s not immediately clear what&apos;s useful about this. Usually
+        this idea is first presented in a mathematics course where it can be
+        used to analyze signals. In that context, the fourier transform is used
+        to decompose a signal into its constituent frequencies. This is useful
         because it allows us to understand the signal better and to filter out
         noise.
       </p>
       <p>
-        For our case though, we&apos;ll simply stick with the definition and see how
-        we can apply this to our quantum algorithms. It&apos;s use will hopefully
-        become apparent later.
+        For our case though, we&apos;ll simply stick with the definition and see
+        how we can apply this to our quantum algorithms. It&apos;s use will
+        hopefully become apparent later.
       </p>
       <p>We will define the quantum fourier transform as follows:</p>
       <MathBlock latex="\ket{y} = \frac{1}{\sqrt{N}}\sum_{j=0}^{N-1}\omega_N^{yj}\ket{j}" />
@@ -220,22 +220,23 @@ const Page = () => {
         ]}
       />
       <p>
-        To clean this up, let&apos;s drop the big <InlineMathBlock latex="\otimes" />{" "}
-        symbol and replace <InlineMathBlock latex="N" /> with{" "}
-        <InlineMathBlock latex="2^n" />:
+        To clean this up, let&apos;s drop the big{" "}
+        <InlineMathBlock latex="\otimes" /> symbol and replace{" "}
+        <InlineMathBlock latex="N" /> with <InlineMathBlock latex="2^n" />:
       </p>
       <MathBlock latex="\ket{y} = \frac{(\ket{0} + e^{2\pi i0.y_n}\ket{1})(\ket{0} + e^{2\pi i0.y_{n-1}y_n}\ket{1}) \ldots (\ket{0} + e^{2\pi i0.y_1 \ldots y_n}\ket{1})}{2^{n/2}}" />
       <p>
         This is the product representation of the quantum fourier transform.
-        It&apos;s useful because it better shows the behaviour on individual bits and
-        will allow us to construct a circuit easier.
+        It&apos;s useful because it better shows the behaviour on individual
+        bits and will allow us to construct a circuit easier.
       </p>
       <p>
-        To build the circuit, we&apos;ll need to invent some new gates. The quantum
-        gates we&apos;ve studied previously have mostly been focussed with discrete
-        jumps around the Bloch Sphere. As we can see from our equation above,
-        the quantum fourier transform will involve rotations of the phase of the{" "}
-        <InlineMathBlock latex="\ket{1}" /> state. So let&apos;s create the gates:
+        To build the circuit, we&apos;ll need to invent some new gates. The
+        quantum gates we&apos;ve studied previously have mostly been focussed
+        with discrete jumps around the Bloch Sphere. As we can see from our
+        equation above, the quantum fourier transform will involve rotations of
+        the phase of the <InlineMathBlock latex="\ket{1}" /> state. So
+        let&apos;s create the gates:
       </p>
       <MathBlock
         latex={[
@@ -254,14 +255,14 @@ const Page = () => {
         <InlineMathBlock latex="\ket{1}" /> by 90 degrees etc.
       </p>
       <p>
-        Let&apos;s now present the quantum circuit for the quantum fourier transform
-        and then examine why it works:
+        Let&apos;s now present the quantum circuit for the quantum fourier
+        transform and then examine why it works:
       </p>
       <ArticleImage src="quantumfouriertransform" alt="" />
       <p>
         Notice that our <InlineMathBlock latex="R" /> gates are controlled
-        gates. Just like we&apos;ve seen other controlled gates previously, these
-        gates only apply their rotation if the control qubit is in the{" "}
+        gates. Just like we&apos;ve seen other controlled gates previously,
+        these gates only apply their rotation if the control qubit is in the{" "}
         <InlineMathBlock latex="\ket{1}" /> state.
       </p>
       <p>
