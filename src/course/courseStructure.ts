@@ -107,7 +107,6 @@ export const ChapterDefinitions: ChapterDefinition[] = [
       {
         title: "Order Finding",
         id: "order-finding",
-        comingSoon: true,
       },
       {
         title: "Shor",
