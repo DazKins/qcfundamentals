@@ -10,11 +10,6 @@ export default function Home() {
         can be read however you want.
       </p>
       <p>
-        <i>
-          The course is not currently complete and many articles are still a WIP
-        </i>
-      </p>
-      <p>
         <a href="/introduction-to-the-course">Introduction to the course</a>
       </p>
       <ul className="list-inside">
