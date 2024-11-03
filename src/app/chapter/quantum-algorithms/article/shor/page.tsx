@@ -1,4 +1,5 @@
 import Article from "@/components/article";
+import Exercise from "@/components/exercise";
 import InlineMathBlock from "@/components/inlineMathBlock";
 import MathBlock from "@/components/mathBlock";
 import { getArticlePageMetadata } from "@/course/courseStructure";
@@ -149,6 +150,57 @@ const Page = () => {
         <InlineMathBlock latex="\gcd(N, a^m - 1)" /> will now give us our
         factors <InlineMathBlock latex="p" /> and <InlineMathBlock latex="q" />.
       </p>
+      <h2>Exercise</h2>
+      <Exercise
+        problem={
+          <>
+            <p>
+              Apply the above algorithm to factor the number{" "}
+              <InlineMathBlock latex="15" />.
+            </p>
+          </>
+        }
+        solution={
+          <>
+            <p>
+              First we must choose our <InlineMathBlock latex="1 < a < 15" />{" "}
+              that is co-prime to <InlineMathBlock latex="15" />. It turns out{" "}
+              <InlineMathBlock latex="a=4" /> gets us the solution pretty
+              quickly, but to demonstrate a slightly more complex example we&apos;ll
+              choose <InlineMathBlock latex="a=7" />.
+            </p>
+            <p>
+              First, we must calculate the order <InlineMathBlock latex="r" />{" "}
+              of <InlineMathBlock latex="7" /> modulo{" "}
+              <InlineMathBlock latex="15" />:
+            </p>
+            <MathBlock
+              latex={[
+                "7^2 = 49 \\equiv 4\\ (\\text{mod}\\ 15)",
+                "7^3 = 7 \\times 7^2 \\equiv 7 \\times 4 = 28 \\equiv 13\\ (\\text{mod}\\ 15)",
+                "7^4 = 7 \\times 7^3 \\equiv 7 \\times 13 = 91 \\equiv 1\\ (\\text{mod}\\ 15)",
+              ]}
+            />
+            <p>
+              so <InlineMathBlock latex="r=4" /> and{" "}
+              <InlineMathBlock latex="m=2" />.
+            </p>
+            <p>So our two multiplied terms become:</p>
+            <MathBlock
+              latex={["a^m - 1 = 7^2 - 1 = 48", "a^m + 1 = 7^2 + 1 = 50"]}
+            />
+            <p>
+              Now let&apos;s compute the <InlineMathBlock latex="\gcd" />:
+            </p>
+            <MathBlock latex={["\\gcd(15, 48) = 3", "\\gcd(15, 50) = 5"]} />
+            <p>
+              So our <InlineMathBlock latex="p = 3" /> and{" "}
+              <InlineMathBlock latex="q = 5" /> and clearly{" "}
+              <InlineMathBlock latex="p \times q = 15" />
+            </p>
+          </>
+        }
+      />
       <p>
         This is amazing! Our fast order-finding quantum algorithm has given us a
         tool to factor large numbers into their prime factors without needing

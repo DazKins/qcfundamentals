@@ -1,5 +1,6 @@
 import Article from "@/components/article";
 import ArticleLink from "@/components/articleLink";
+import Exercise from "@/components/exercise";
 import InlineMathBlock from "@/components/inlineMathBlock";
 import MathBlock from "@/components/mathBlock";
 import { getArticlePageMetadata } from "@/course/courseStructure";
@@ -14,13 +15,14 @@ const Page = () => {
     <Article>
       <p>
         In order to understand the application of the fourier transform to more
-        applications, we&apos;ll first look at an algorithm called order finding.
+        applications, we&apos;ll first look at an algorithm called order
+        finding.
       </p>
       <p>
         This algorithm takes a periodic function as input and produces, as
-        output, the period of that function. We&apos;ll talk a bit more about exactly
-        what that means in a bit. But first let&apos;s go back to an old friend:
-        modular arithmetic.
+        output, the period of that function. We&apos;ll talk a bit more about
+        exactly what that means in a bit. But first let&apos;s go back to an old
+        friend: modular arithmetic.
       </p>
       <p>
         We first met modular (or clock) arithmetic in our article on{" "}
@@ -28,8 +30,9 @@ const Page = () => {
           fields
         </ArticleLink>
         . Doing arithmetic modulo <InlineMathBlock latex="N" /> essentially
-        means only being concerned with the number&apos;s remainder when divided by{" "}
-        <InlineMathBlock latex="N" />. So we get statements like the following:
+        means only being concerned with the number&apos;s remainder when divided
+        by <InlineMathBlock latex="N" />. So we get statements like the
+        following:
       </p>
       <MathBlock latex="13 \equiv 3\ (\text{mod }10)" />
       <p>
@@ -50,10 +53,11 @@ const Page = () => {
         <InlineMathBlock latex="N" />?
       </p>
       <p>
-        This is a very important question in number theory. We won&apos;t dwell too
-        much on all the interesting details, but it is important to note that
-        for some <InlineMathBlock latex="x" /> and <InlineMathBlock latex="N" />{" "}
-        there is no such <InlineMathBlock latex="r" />. For example, if{" "}
+        This is a very important question in number theory. We won&apos;t dwell
+        too much on all the interesting details, but it is important to note
+        that for some <InlineMathBlock latex="x" /> and{" "}
+        <InlineMathBlock latex="N" /> there is no such{" "}
+        <InlineMathBlock latex="r" />. For example, if{" "}
         <InlineMathBlock latex="x=2" /> and <InlineMathBlock latex="N = 8" />,
         no matter how many times we multiply <InlineMathBlock latex="2" /> by
         itself, it will never get to <InlineMathBlock latex="1" />. This is
@@ -81,12 +85,84 @@ const Page = () => {
           "5 \\times 17 = 85 \\equiv 1\\ (\\text{mod } 21)",
         ]}
       />
-      <p>Try a few values out for yourself and see what you get!</p>
+      <h2>Exercise</h2>
+      <Exercise
+        problem={
+          <p>
+            Find <InlineMathBlock latex="r" /> when{" "}
+            <InlineMathBlock latex="x=13" /> and{" "}
+            <InlineMathBlock latex="N=17" />
+          </p>
+        }
+        solution={
+          <>
+            <MathBlock
+              latex={[
+                "13^2 = 169 \\equiv 16\\ (\\text{mod}\\ 17)",
+                "13^3 = 13 \\times 13^2 \\equiv 13 \\times 16 = 208 \\equiv 4\\ (\\text{mod}\\ 17)",
+                "13^4 = 13 \\times 13^3 \\equiv 13 \\times 4 = 52 \\equiv 1\\ (\\text{mod}\\ 17)",
+              ]}
+            />
+            <p>
+              So <InlineMathBlock latex="r = 4" />
+            </p>
+          </>
+        }
+      />
+      <h2>Exercise</h2>
+      <Exercise
+        problem={
+          <p>
+            Does <InlineMathBlock latex="r" /> exist if{" "}
+            <InlineMathBlock latex="x=8" /> and <InlineMathBlock latex="N=12" />
+          </p>
+        }
+        solution={
+          <>
+            <p>
+              <InlineMathBlock latex="r" /> does not exist since{" "}
+              <InlineMathBlock latex="8" /> and <InlineMathBlock latex="12" />{" "}
+              are not co-prime. They have shared factors:{" "}
+              <InlineMathBlock latex="4" /> and <InlineMathBlock latex="2" />.
+            </p>
+            <p>You can even try the multiplications and see that:</p>
+            <MathBlock
+              latex={[
+                "8^2 = 64 \\equiv 4\\ (\\text{mod}\\ 12)",
+                "8^3 = 8 \\times 8^2 \\equiv 8 \\times 4 = 32 \\equiv 8\\ (\\text{mod}\\ 12)",
+              ]}
+            />
+            <p>So, more succinctly we have:</p>
+            <MathBlock latex="8^3 \equiv 8\ (\text{mod}\ 12)" />
+            <p>
+              This means we will just end up going around in a loop where even
+              powers of <InlineMathBlock latex="8" /> are congruent to{" "}
+              <InlineMathBlock latex="4" /> and odd powers are congruent to{" "}
+              <InlineMathBlock latex="8" />.
+            </p>
+            <p>
+              Note that looking at the equation above, you may be tempted to
+              divide both sides by <InlineMathBlock latex="8" /> to get:{" "}
+              <InlineMathBlock latex="8^2 \equiv 1\ (\text{mod}\ 12)" /> which
+              is in obvious contradiction to what we calculated above. It turns
+              out, that in modular arithmetic, we can only divide both sides if
+              the number we are dividing by is co-prime to the modulus. In this
+              case, <InlineMathBlock latex="8" /> and{" "}
+              <InlineMathBlock latex="12" /> are not co-prime, so we can&apos;t
+              divide by <InlineMathBlock latex="8" />.
+            </p>
+            <p>
+              We won&apos;t go into detail about why that is the case, but perhaps
+              you might like to ponder why that is the case.
+            </p>
+          </>
+        }
+      />
       <p>
         We call this value <InlineMathBlock latex="r" /> the order. Generally,
         computing the order is really difficult. At least for classical
-        computers. We&apos;ll now apply the quantum fourier transform in order to
-        solve it more easily using a quantum computer.
+        computers. We&apos;ll now apply the quantum fourier transform in order
+        to solve it more easily using a quantum computer.
       </p>
       <p>
         Like a lot of quantum algorithms, lets start by introducing an oracle.
@@ -94,10 +170,10 @@ const Page = () => {
       </p>
       <MathBlock latex="U\ket{x}\ket{0} = \ket{x}\ket{a^x\ \text{mod}\ N}" />
       <p>
-        It&apos;s important to note here that the 2 kets represent multiple quantum
-        bits as just having single bit numbers wouldn&apos;t be very useful. We&apos;ll
-        deliberately leave these two keys separate during our calculations and
-        refer to them as the first/second register.
+        It&apos;s important to note here that the 2 kets represent multiple
+        quantum bits as just having single bit numbers wouldn&apos;t be very
+        useful. We&apos;ll deliberately leave these two keys separate during our
+        calculations and refer to them as the first/second register.
       </p>
       <p>
         If we start in a state where all our qubits are{" "}
@@ -187,8 +263,8 @@ const Page = () => {
       </p>
       <MathBlock latex="\ket{c2^n/r}" />
       <p>
-        Great! That&apos;s all the messy quantum stuff out the way, now how do we get{" "}
-        <InlineMathBlock latex="r" /> from this?
+        Great! That&apos;s all the messy quantum stuff out the way, now how do
+        we get <InlineMathBlock latex="r" /> from this?
       </p>
       <p>
         If we let our measurement be <InlineMathBlock latex="y" /> then we can
@@ -196,27 +272,29 @@ const Page = () => {
       </p>
       <MathBlock latex="\frac{y}{2^n} \approx \frac{c}{r}" />
       <p>
-        Notice we say approximately here. This is because we can&apos;t gaurantee we
-        measure an exact multiple, only that our measurement is very close.
+        Notice we say approximately here. This is because we can&apos;t
+        gaurantee we measure an exact multiple, only that our measurement is
+        very close.
       </p>
       <p>
         Now, if <InlineMathBlock latex="c" /> and <InlineMathBlock latex="r" />{" "}
-        are not co-prime (i.e. they share a common factor), we can&apos;t extract{" "}
-        <InlineMathBlock latex="r" />. e.g. if <InlineMathBlock latex="c = 8" />{" "}
-        and <InlineMathBlock latex="r = 4" /> then{" "}
-        <InlineMathBlock latex="y/2^n" /> is <InlineMathBlock latex="1/2" />, so
-        our <InlineMathBlock latex="r" /> value gets &quot;destroyed&quot; by
-        the common factor cancelling. If we have this problem there&apos;s
-        unfortunately no real way of knowing. We&apos;ll see later that if we fail in
-        this way we will simply retry the quantum part of the algorithm.
+        are not co-prime (i.e. they share a common factor), we can&apos;t
+        extract <InlineMathBlock latex="r" />. e.g. if{" "}
+        <InlineMathBlock latex="c = 8" /> and <InlineMathBlock latex="r = 4" />{" "}
+        then <InlineMathBlock latex="y/2^n" /> is{" "}
+        <InlineMathBlock latex="1/2" />, so our <InlineMathBlock latex="r" />{" "}
+        value gets &quot;destroyed&quot; by the common factor cancelling. If we
+        have this problem there&apos;s unfortunately no real way of knowing.
+        We&apos;ll see later that if we fail in this way we will simply retry
+        the quantum part of the algorithm.
       </p>
       <p>
         Trying to extract <InlineMathBlock latex="r" /> from our
         <InlineMathBlock latex="y/2^n" /> value comes with another difficulty:
         We only used a finite number of bits. If <InlineMathBlock latex="r" />{" "}
         is odd, then <InlineMathBlock latex="1/r" /> has an infinite decimal
-        representation. So it&apos;s likely we may end up with an approximate value
-        that is cutoff at some point.
+        representation. So it&apos;s likely we may end up with an approximate
+        value that is cutoff at some point.
       </p>
       <p>
         Luckily, we know that <InlineMathBlock latex="c" /> and{" "}
@@ -227,8 +305,8 @@ const Page = () => {
       <p>
         Continued fractions provides a way to develop a sequence of fractions
         providing better and better approximations to a given number. This also
-        helps because we know we didn&apos;t necessarily measure an exact multiple of{" "}
-        <InlineMathBlock latex="2^n/r" />.
+        helps because we know we didn&apos;t necessarily measure an exact
+        multiple of <InlineMathBlock latex="2^n/r" />.
       </p>
       <p>
         The continued fraction for a number <InlineMathBlock latex="q" /> is:
@@ -239,8 +317,8 @@ const Page = () => {
         and better approximations for <InlineMathBlock latex="q" />.
       </p>
       <p>
-        For example, if <InlineMathBlock latex="q = 1.6" /> we can find it&apos;s
-        continued fraction with the following method:
+        For example, if <InlineMathBlock latex="q = 1.6" /> we can find
+        it&apos;s continued fraction with the following method:
       </p>
       <MathBlock
         latex={[
@@ -279,8 +357,8 @@ const Page = () => {
         How do we check a candidate value? Just sub it into our original
         equation! <InlineMathBlock latex="x^r\ \text{mod}\ N" /> can be easily
         computed and checked by a classical computer. If it equals{" "}
-        <InlineMathBlock latex="1" /> we are done. If it doesn&apos;t, we simply move
-        on to our next candidate value.
+        <InlineMathBlock latex="1" /> we are done. If it doesn&apos;t, we simply
+        move on to our next candidate value.
       </p>
       <p>
         If all of our candidate values fail, it means either{" "}
@@ -324,12 +402,13 @@ const Page = () => {
         <li>If no candidate values work, start again from step 1</li>
       </ol>
       <p>
-        We&apos;ve skipped over a few details, such as how many qubits we should use
-        and what the probability of success actually is but it&apos;s enough for now.
+        We&apos;ve skipped over a few details, such as how many qubits we should
+        use and what the probability of success actually is but it&apos;s enough
+        for now.
       </p>
       <p>
-        In the next article we&apos;ll use what we&apos;ve learned to factor prime
-        numbers!
+        In the next article we&apos;ll use what we&apos;ve learned to factor
+        prime numbers!
       </p>
     </Article>
   );
