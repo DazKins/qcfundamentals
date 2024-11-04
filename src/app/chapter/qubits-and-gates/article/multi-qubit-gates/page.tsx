@@ -50,13 +50,19 @@ const Page = () => {
         />
       </div>
       <p>And here&apos;s what the circuit symbols look like:</p>
-      <ArticleImage src="and+or" alt="" />
+      <ArticleImage
+        src="and+or"
+        alt="Classical circuit symbols for the AND and OR gates"
+      />
       <p>
         As before, we can chain these gates together visually in a circuit
         diagram. Now we have 2 qubit gates, we&apos;re able to achieve more
         complex behaviour. Take a look at the circuit below:
       </p>
-      <ArticleImage src="xor" alt="" />
+      <ArticleImage
+        src="xor"
+        alt="A classical circuit implementation of the XOR operation using NOT, AND and OR gates"
+      />
       <p>Woah, looks crazy right?</p>
       <p>
         This circuit is implementing a famous gate called
@@ -103,7 +109,10 @@ const Page = () => {
         ]}
       />
       <p>Just like with classical gates, we have a circuit symbol for this:</p>
-      <ArticleImage src="cnot" alt="" />
+      <ArticleImage
+        src="cnot"
+        alt="The quantum circuit symbol for a CNOT gate"
+      />
       <p>
         In this representation the solid circle at the top represents the
         &quot;control&quot; qubit, and the crossed circle at the bottom
@@ -162,7 +171,10 @@ const Page = () => {
         ]}
       />
       <p>The circuit symbol for this gate is:</p>
-      <ArticleImage src="swap" alt="" />
+      <ArticleImage
+        src="swap"
+        alt="The quantum circuit symbol for the SWAP gate"
+      />
       <p>And can be defined similarly:</p>
       <MathBlock
         latex={[
@@ -184,7 +196,10 @@ const Page = () => {
         Take a look at the <InlineMathBlock latex="\text{XOR}" /> circuit above.
         Did you notice a hidden gate? We use it twice in these locations:
       </p>
-      <ArticleImage src="fanout" alt="" />
+      <ArticleImage
+        src="fanout"
+        alt="The classical XOR circuit again with the implicit FANOUTs highlighted"
+      />
       <p>
         This part of the circuit essentially &quot;copies&quot; the bit so we
         can use it&apos;s value in more than one place. In classical circuits
@@ -366,7 +381,10 @@ const Page = () => {
               Verify that the following circuit is equivalent to{" "}
               <InlineMathBlock latex="\text{SWAP}" />:
             </p>
-            <ArticleImage src="cnotswap" alt="" />
+            <ArticleImage
+              src="cnotswap"
+              alt="A quantum circuit consisting of 3 CNOT gates, the middle one is inverted"
+            />
           </>
         }
         solution={

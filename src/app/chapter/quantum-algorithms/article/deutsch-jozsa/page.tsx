@@ -137,7 +137,10 @@ const Page = () => {
         operations to be reversible.
       </p>
       <p>We&apos;ll denote this operation in a circuit as:</p>
-      <ArticleImage src="quantoracle" alt="" />
+      <ArticleImage
+        src="quantoracle"
+        alt="A quantum circuit representation of an oracle"
+      />
       <p>
         If we simply set <InlineMathBlock latex="y" /> to 0, we get the
         following:
@@ -157,7 +160,10 @@ const Page = () => {
         <InlineMathBlock latex="\ket{1}" /> respectively. So we can get here
         with the following circuit:
       </p>
-      <ArticleImage src="djsetup" alt="" />
+      <ArticleImage
+        src="djsetup"
+        alt="A quantum circuit with 2 qubits starting in the 0 state, with a hadamard gate being applied to both qubits but an X applied to the second qubit first"
+      />
       <p>
         Note that it is by convention in many of these quantum algorithm
         circuits that we start with all the qubits in the state{" "}
@@ -165,7 +171,10 @@ const Page = () => {
         the <InlineMathBlock latex="X" /> gate on the second qubit.
       </p>
       <p>We then feed these two qubits into our quantum oracle:</p>
-      <ArticleImage src="dj2" alt="" />
+      <ArticleImage
+        src="dj2"
+        alt="The previous quantum circuit being fed into the quantum oracle"
+      />
       <p>
         The vertical dashed lines are simply there to help us with our
         mathematical book keeping and tracking the state at different stages of
@@ -281,7 +290,10 @@ const Page = () => {
         measure <InlineMathBlock latex="\ket{1}" /> the function is balanced.
       </p>
       <p>Our final circuit looks like this:</p>
-      <ArticleImage src="djcomp" alt="" />
+      <ArticleImage
+        src="djcomp"
+        alt="The final Deutsch-Josza circuit with measurement at the end"
+      />
       <p>
         So we have proven that the Deutsch-Jozsa is indeed able to determine
         whether a function is constant or balanced with only a single query to
@@ -333,7 +345,10 @@ const Page = () => {
               <InlineMathBlock latex="x" />.
             </p>
             <p>In circuit form this looks like:</p>
-            <ArticleImage src="nquantoracle" alt="" />
+            <ArticleImage
+              src="nquantoracle"
+              alt="An arbitrary n-bit quantum oracle"
+            />
           </>
         }
         solution={
@@ -343,7 +358,10 @@ const Page = () => {
               that we spread the Hadmard gate across all the bits and measure
               all n bits at the end:
             </p>
-            <ArticleImage src="djncomp" alt="" />
+            <ArticleImage
+              src="djncomp"
+              alt="A Deutsch-Josza circuit over an arbitrary n qubits"
+            />
             <p>
               Our pre-oracle state after applying the Hadamard gates looks like:
             </p>

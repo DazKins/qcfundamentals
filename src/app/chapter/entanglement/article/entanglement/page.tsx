@@ -33,7 +33,10 @@ const Page = () => {
         what do they look like?
       </p>
       <p>Let&apos;s examine the following circuit:</p>
-      <ArticleImage src="entangler" alt="" />
+      <ArticleImage
+        src="entangler"
+        alt="A quantum circuit consisting of a Hadamard gate on the first qubit followed by a CNOT gate"
+      />
       <p>
         We know how to work with these! We start in the state
         <InlineMathBlock latex="\ket{00}" />. We&apos;ll then apply the Hadamard
@@ -128,7 +131,10 @@ const Page = () => {
         <InlineMathBlock latex="\ket{\beta_{00}}" />, Alice takes the first
         qubit, Bob takes the other and then they travel far apart:
       </p>
-      <ArticleImage src="alicebobentangled" alt="" />
+      <ArticleImage
+        src="alicebobentangled"
+        alt="A depiction of two actors Alice and Bob entangling two qubits together and then being separated by a large physical distance."
+      />
       <p>
         If Alice measures her qubit as <InlineMathBlock latex="\ket{0}" /> then
         the system of both their qubits collapses to{" "}
@@ -239,7 +245,10 @@ const Page = () => {
               <InlineMathBlock latex="\text{CNOT}" /> gate between the second
               (or first) and third qubit. So our circuit becomes:
             </p>
-            <ArticleImage src="3entangler" alt="" />
+            <ArticleImage
+              src="3entangler"
+              alt="A circuit of three qubits consisting of a Hadamard gate on the first qubit, a CNOT between the first and second qubit and a CNOT between the second and third qubit"
+            />
             <h4>Question 3</h4>
             <p>
               It gets pretty hard to reason about this stuff with 3 qubits. 3

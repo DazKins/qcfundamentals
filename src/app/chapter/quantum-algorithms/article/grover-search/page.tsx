@@ -170,7 +170,10 @@ const Page = () => {
         Ok, that&apos;s quite a lot to take in. Before we start looking into how
         this works, let&apos;s look at the circuit representation:
       </p>
-      <ArticleImage src="grover" alt="" />
+      <ArticleImage
+        src="grover"
+        alt="The circuit representation of the Grover circuit"
+      />
       <p>
         The numbers at the bottom represent the corresponding steps in the
         algorithm listed above. We&apos;ve also added a bracket over steps 3-6
@@ -308,7 +311,10 @@ const Page = () => {
         It&apos;s fairly clear these two vectors are orthogonal, since they
         don&apos;t share any of the same kets. And thus we can plot them in 2D:
       </p>
-      <ArticleImage src="groveraxis" alt="" />
+      <ArticleImage
+        src="groveraxis"
+        alt="The omega and s prime two-dimensional vector space"
+      />
       <p>
         Ok, so we&apos;ve got two basis vectors for our space. Now we need to
         know where in the space to plot our state vector. Since we&apos;ve
@@ -344,7 +350,10 @@ const Page = () => {
         starting point. We&apos;ll denote our starting state as{" "}
         <InlineMathBlock latex="\phi_0" /> as we have done before:
       </p>
-      <ArticleImage src="groveraxisfirststate" alt="" />
+      <ArticleImage
+        src="groveraxisfirststate"
+        alt="The phi zero state plotted on the two dimensional vector space, closer to s prime than to omega"
+      />
       <p>
         Now to find <InlineMathBlock latex="\ket{\phi_1}" /> we just apply our
         Grover iterator:{" "}
@@ -368,7 +377,10 @@ const Page = () => {
         around <InlineMathBlock latex="\ket{s}" />.
       </p>
       <p>So this looks like:</p>
-      <ArticleImage src="groveraxisrot" alt="" />
+      <ArticleImage
+        src="groveraxisrot"
+        alt="A representation of the flips a state goes through under the Grover iterator"
+      />
       <p>
         Here, the bottom dotted line represents the first reflection around{" "}
         <InlineMathBlock latex="\ket{s^\prime}" />.
@@ -389,7 +401,10 @@ const Page = () => {
         To answer this, we&apos;ll have to look at the angles involved in the
         rotations. We can see this more easily on the following diagram:
       </p>
-      <ArticleImage src="angles" alt="" />
+      <ArticleImage
+        src="angles"
+        alt="The flips of the state under the Grover iterator with angles labelled"
+      />
       <p>
         We can see clearly some doubling relations between angles here. The
         green angle, the result after the initial reflection around{" "}

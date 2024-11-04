@@ -241,7 +241,10 @@ const Page = () => {
         <InlineMathBlock latex="0 \leq \theta \leq \pi" /> and{" "}
         <InlineMathBlock latex="0 \leq \phi < 2\pi " />.
       </p>
-      <ArticleImage src="blochangles" alt="" />
+      <ArticleImage
+        src="blochangles"
+        alt="A representation of qubits as angles on a Bloch sphere"
+      />
       <p>
         The actual position of the qubit on the bloch sphere will be called the
         bloch vector and with a little trigonometry, we find it is given by:

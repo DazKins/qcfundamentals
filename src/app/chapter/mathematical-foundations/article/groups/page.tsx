@@ -40,7 +40,10 @@ const Page = () => {
         any specific rotation or reflection of the triangle can be represented
         by a permutation of these vertices. Here&apos;s how that works:
       </p>
-      <ArticleImage src="triangle-group-rotation" alt="" />
+      <ArticleImage
+        src="triangle-group-rotation"
+        alt="The rotations of a triangle and the different permutations of the vertices"
+      />
       <p>
         As you can see as we rotate the triangle we can represent its state by
         the permutation of the vertices. Rotating the triangle changes the
@@ -51,7 +54,10 @@ const Page = () => {
         the vertical axis. We can see this operator as well with the
         permutations:
       </p>
-      <ArticleImage src="triangle-group-flip" alt="" />
+      <ArticleImage
+        src="triangle-group-flip"
+        alt="A representation of how flipping a triangle affects the vertex permutations"
+      />
       <p>
         Now that we&apos;ve got a visual intuition let&apos;s formalise this in
         mathematical terms.

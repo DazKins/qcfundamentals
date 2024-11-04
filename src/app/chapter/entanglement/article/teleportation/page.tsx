@@ -103,7 +103,10 @@ const Page = () => {
         Before moving on, let&apos;s just take a look at what we&apos;ve done so
         far and how it looks in a circuit diagram:
       </p>
-      <ArticleImage src="quantumteleport" alt="" />
+      <ArticleImage
+        src="quantumteleport"
+        alt="A half complete implementation of the quantum teleportation circuit"
+      />
       <p>Those 2 symbols on the right represent measurement of the qubit.</p>
       <p>
         Ok, so now going back to our state of{" "}
@@ -164,7 +167,10 @@ const Page = () => {
         order for him to decode his entangled bit. We can represent all this in
         our circuit diagram:
       </p>
-      <ArticleImage src="quantumteleportcomp" alt="" />
+      <ArticleImage
+        src="quantumteleportcomp"
+        alt="A fully complete quantum teleporation circuit"
+      />
       <p>
         So we can see how the outcomes of Alice&apos;s measurement can be
         applied to Bob&apos;s qubit as a <InlineMathBlock latex="\text{CNOT}" />{" "}

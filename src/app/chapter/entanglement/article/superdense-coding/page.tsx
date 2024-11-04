@@ -37,7 +37,10 @@ const Page = () => {
         We&apos;ll begin in the familiar scenario where Alice and Bob have
         entangled two qubits and taken one half of the entangled pair each.
       </p>
-      <ArticleImage src="alicebobentangled" alt="" />
+      <ArticleImage
+        src="alicebobentangled"
+        alt="A depiction of two actors Alice and Bob entangling two qubits together and then being separated by a large physical distance."
+      />
       <p>So our system starts in the usual state:</p>
       <MathBlock latex="\ket{\phi_0} = \ket{\beta_{00}} = \frac{1}{\sqrt{2}}(\ket{00} + \ket{11})" />
       <p>
@@ -76,7 +79,10 @@ const Page = () => {
       </p>
       <MathBlock latex="\ket{\phi_1} = \frac{1}{\sqrt{2}}(U_{b_0b_1}\ket{0} \otimes \ket{0} + U_{b_0b_1}\ket{1} \otimes \ket{1})" />
       <p>The circuit we have so far looks like this:</p>
-      <ArticleImage src="superdensealice" alt="" />
+      <ArticleImage
+        src="superdensealice"
+        alt="A quantum circuit started in the entangled beta zero zero state where an X gate is applied to the first qubit when b_1 is 1 followed by a Z gate when b_0 is 1"
+      />
       <p>
         Notice how this appears very similar to our quantum teleportation
         circuit but backwards! Instead of Bob applying{" "}
@@ -91,7 +97,10 @@ const Page = () => {
       </p>
       <MathBlock latex="\ket{\phi_2} = (H \otimes I)\text{CNOT}\ket{\phi_1} = \frac{1}{\sqrt{2}}(H \otimes I)\text{CNOT}(U_{b_0b_1}\ket{0} \otimes \ket{0} + U_{b_0b_1}\ket{1} \otimes \ket{1})" />
       <p>And here&apos;s what the circuit looks like now:</p>
-      <ArticleImage src="superdense" alt="" />
+      <ArticleImage
+        src="superdense"
+        alt="A quantum circuit starting in the entangled state where an X gate is applied to the first qubit if b_1 is 1 followed by a Z gate if b_0 is 1. A CNOT gate is then applied followed by a Hadamard gate on the first qubit"
+      />
       <p>
         We could start delving into our outer-product operator notation to
         explicitly calculate what this equals, but it&apos;s more helpful to

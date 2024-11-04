@@ -77,7 +77,10 @@ const Page = () => {
         intuition of the complex numbers. We will imagine these numbers as lying
         on a circle that extends the standard number line:
       </p>
-      <ArticleImage src="complex-circle" alt="" />
+      <ArticleImage
+        src="complex-circle"
+        alt="A circular representation of the complex units on an Argan diagram"
+      />
       <p>
         This starts to give us an intuition that complex numbers might be well
         visualised as 2-dimensional. Just as we would represent a point in 2
@@ -94,7 +97,10 @@ const Page = () => {
       <p>
         Let&apos;s take a look at how we plot these numbers on the 2D plane:
       </p>
-      <ArticleImage src={"argand"} alt="" />
+      <ArticleImage
+        src="argand"
+        alt="A variety of example complex numbers plotted on an Argand diagram"
+      />
       <p>So we can see how they plot just like 2D points.</p>
       <p>
         In the same way we can calculate the distance of a point from the origin
@@ -121,7 +127,10 @@ const Page = () => {
         We also know that we can represent points in 2D space using polar
         coordinates. We can do the same for complex numbers:
       </p>
-      <ArticleImage src="polar" alt="" />
+      <ArticleImage
+        src="polar"
+        alt="An example of a complex number in polar form, with an angle and a radius"
+      />
       <p>
         We will represent the distance from the origin as{" "}
         <InlineMathBlock latex="r" /> and the angle from the postive-real line

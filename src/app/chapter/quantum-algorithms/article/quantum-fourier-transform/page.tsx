@@ -258,7 +258,10 @@ const Page = () => {
         Let&apos;s now present the quantum circuit for the quantum fourier
         transform and then examine why it works:
       </p>
-      <ArticleImage src="quantumfouriertransform" alt="" />
+      <ArticleImage
+        src="quantumfouriertransform"
+        alt="The quantum circuit for the quantum fourier transform consisting of Hadmard gates and R gates"
+      />
       <p>
         Notice that our <InlineMathBlock latex="R" /> gates are controlled
         gates. Just like we&apos;ve seen other controlled gates previously,

@@ -53,9 +53,12 @@ const Page = () => {
         gate that can be used in a circuit diagram. The{" "}
         <InlineMathBlock latex="\textmd{NOT}" /> gate is represented as:
       </p>
-      <ArticleImage src="not" alt="" />
+      <ArticleImage src="not" alt="A classical NOT gate circuit symbol" />
       <p>From this one gate we can build a very simple circuit such as:</p>
-      <ArticleImage src="2xnot" alt="" />
+      <ArticleImage
+        src="2xnot"
+        alt="A classical circuit consisting of two NOT gates, one after the other"
+      />
       <p>
         In circuit diagrams like this we can think of the bits as
         &quot;flowing&quot; from left to right. So in the above circuit we would
@@ -106,7 +109,10 @@ const Page = () => {
         way we represent classical gates. For example a circuit where we apply
         the X gate followed by a Z gate would look like:
       </p>
-      <ArticleImage src="quant-circuit" alt="" />
+      <ArticleImage
+        src="quant-circuit"
+        alt="A quantum circuit consisting of an X gate followed by a Z gate"
+      />
       <p>
         Note that quantum circuits can be a bit confusing since the mathematical
         definition of this circuit is <InlineMathBlock latex="ZX\ket{\psi}" />{" "}

@@ -130,7 +130,10 @@ const Page = () => {
         We can think about this as counting on a clock with 3 hours, starting
         from 0:
       </p>
-      <ArticleImage src="mod-3" alt="" />
+      <ArticleImage
+        src="mod-3"
+        alt="A representation of counting mod 3 by a clock with the numbers 0, 1 and 2"
+      />
       <p>
         Say we want to check what <InlineMathBlock latex="2 + 2" /> is.
         Normally,
@@ -143,7 +146,10 @@ const Page = () => {
         number line and then move 2 places further along. Let&apos;s do that but
         using our clock:
       </p>
-      <ArticleImage src="mod-3-2+2" alt="" />
+      <ArticleImage
+        src="mod-3-2+2"
+        alt="A representation of adding 2 and 2 to get 1 when counting mod 3"
+      />
       <p>
         So in our field, <InlineMathBlock latex="2 + 2 = 1" />! Earlier we said
         the elements of our field were the integers remainder when divided by 3,
