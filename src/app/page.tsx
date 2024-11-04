@@ -10,7 +10,7 @@ export default function Home() {
         can be read however you want.
       </p>
       <p>
-        <a href="/introduction-to-the-course">Introduction to the course</a>
+        <a href="/introduction-to-the-course">Introduction to the Course</a>
       </p>
       <ul className="list-inside">
         {ChapterDefinitions.map((chapterDefinition) => (
@@ -46,6 +46,9 @@ export default function Home() {
           </li>
         ))}
       </ul>
+      <p>
+        <a href="/afterword-next-steps">Afterword & Next Steps</a>
+      </p>
     </div>
   );
 }

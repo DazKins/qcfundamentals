@@ -17,7 +17,12 @@ const Page = () => {
         </a>
       </p>
       <p>
-        The Youtube channel &quot;Quantum Sense&quot; has an awesome series on the mathematics of bra-ket notation. He tackles it more from a physics perspective, but it&apos;s still very applicable here. <a href="https://www.youtube.com/playlist?list=PL8ER5-vAoiHAWm1UcZsiauUGPlJChgNXC">YouTube</a>
+        The Youtube channel &quot;Quantum Sense&quot; has an awesome series on
+        the mathematics of bra-ket notation. He tackles it more from a physics
+        perspective, but it&apos;s still very applicable here.{" "}
+        <a href="https://www.youtube.com/playlist?list=PL8ER5-vAoiHAWm1UcZsiauUGPlJChgNXC">
+          YouTube
+        </a>
       </p>
       <h3>Books</h3>
       <p>
@@ -29,6 +34,21 @@ const Page = () => {
         <a href="https://www.amazon.com/Quantum-Computation-Information-10th-Anniversary/dp/1107002176">
           Amazon
         </a>
+      </p>
+      <p>
+        &quot;Programming Quantum Computers&quot; by Eric R. Johnston, Nic
+        Harrigan & Mercedes Gimeno-Segovia, presents a slightly more practical
+        hands on approach where you will learn the fundamentals of programming a
+        QPU (Quantum Processing Unit) using QASM.{" "}
+        <a href="https://www.amazon.com/Programming-Quantum-Computers-Essential-Algorithms/dp/1492039683">
+          Amazon
+        </a>
+      </p>
+      <h3>Websites</h3>
+      <p>
+        IBM is developing Qiskit which is a great toolkit/library for
+        coding/testing your own quantum algorithms.{" "}
+        <a href="https://docs.quantum.ibm.com/guides">Getting started guide</a>
       </p>
       <h3>Apps</h3>
       <p>
