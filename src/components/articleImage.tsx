@@ -1,10 +1,10 @@
 "use client";
 
 import useNav from "@/hooks/nav";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 
 type Props = {
-  src: string;
+  src: string | StaticImageData;
   alt: string;
 };
 
@@ -26,7 +26,7 @@ const ArticleImage = ({src, alt}: Props) => {
   return (
     <div className="w-full flex justify-center">
       <Image
-        src={`/chapter/${chapterId}/article/${articleId}/${src}.png`}
+        src={typeof src === "string" ? `/chapter/${chapterId}/article/${articleId}/${src}.png` : src}
         width={1000}
         height={400}
         alt={alt}

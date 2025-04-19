@@ -5,6 +5,12 @@ import MathBlock from "@/components/mathBlock";
 import Table from "@/components/table";
 import { getArticlePageMetadata } from "@/course/courseStructure";
 
+import anglesImage from "./images/angles.png"
+import groverImage from "./images/grover.png"
+import groverAxisImage from "./images/groveraxis.png"
+import groverAxisFirstStateImage from "./images/groveraxisfirststate.png"
+import groverAxisRotImage from "./images/groveraxisrot.png"
+
 const CHAPTER_ID = "quantum-algorithms";
 const ARTICLE_ID = "grover-search";
 
@@ -171,7 +177,7 @@ const Page = () => {
         this works, let&apos;s look at the circuit representation:
       </p>
       <ArticleImage
-        src="grover"
+        src={groverImage}
         alt="The circuit representation of the Grover circuit"
       />
       <p>
@@ -312,7 +318,7 @@ const Page = () => {
         don&apos;t share any of the same kets. And thus we can plot them in 2D:
       </p>
       <ArticleImage
-        src="groveraxis"
+        src={groverAxisImage}
         alt="The omega and s prime two-dimensional vector space"
       />
       <p>
@@ -351,7 +357,7 @@ const Page = () => {
         <InlineMathBlock latex="\phi_0" /> as we have done before:
       </p>
       <ArticleImage
-        src="groveraxisfirststate"
+        src={groverAxisFirstStateImage}
         alt="The phi zero state plotted on the two dimensional vector space, closer to s prime than to omega"
       />
       <p>
@@ -378,7 +384,7 @@ const Page = () => {
       </p>
       <p>So this looks like:</p>
       <ArticleImage
-        src="groveraxisrot"
+        src={groverAxisRotImage}
         alt="A representation of the flips a state goes through under the Grover iterator"
       />
       <p>
@@ -402,7 +408,7 @@ const Page = () => {
         rotations. We can see this more easily on the following diagram:
       </p>
       <ArticleImage
-        src="angles"
+        src={anglesImage}
         alt="The flips of the state under the Grover iterator with angles labelled"
       />
       <p>
