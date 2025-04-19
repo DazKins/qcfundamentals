@@ -6,6 +6,13 @@ import MathBlock from "@/components/mathBlock";
 import Table from "@/components/table";
 import { getArticlePageMetadata } from "@/course/courseStructure";
 
+import dj2Image from "./images/dj2.png";
+import djcompImage from "./images/djcomp.png";
+import djncompImage from "./images/djncomp.png";
+import djsetupImage from "./images/djsetup.png";
+import nquantoracleImage from "./images/nquantoracle.png";
+import quantoracleImage from "./images/quantoracle.png";
+
 const CHAPTER_ID = "quantum-algorithms";
 const ARTICLE_ID = "deutsch-jozsa";
 
@@ -138,7 +145,7 @@ const Page = () => {
       </p>
       <p>We&apos;ll denote this operation in a circuit as:</p>
       <ArticleImage
-        src="quantoracle"
+        src={quantoracleImage}
         alt="A quantum circuit representation of an oracle"
       />
       <p>
@@ -161,7 +168,7 @@ const Page = () => {
         with the following circuit:
       </p>
       <ArticleImage
-        src="djsetup"
+        src={djsetupImage}
         alt="A quantum circuit with 2 qubits starting in the 0 state, with a hadamard gate being applied to both qubits but an X applied to the second qubit first"
       />
       <p>
@@ -172,7 +179,7 @@ const Page = () => {
       </p>
       <p>We then feed these two qubits into our quantum oracle:</p>
       <ArticleImage
-        src="dj2"
+        src={dj2Image}
         alt="The previous quantum circuit being fed into the quantum oracle"
       />
       <p>
@@ -291,7 +298,7 @@ const Page = () => {
       </p>
       <p>Our final circuit looks like this:</p>
       <ArticleImage
-        src="djcomp"
+        src={djcompImage}
         alt="The final Deutsch-Josza circuit with measurement at the end"
       />
       <p>
@@ -346,7 +353,7 @@ const Page = () => {
             </p>
             <p>In circuit form this looks like:</p>
             <ArticleImage
-              src="nquantoracle"
+              src={nquantoracleImage}
               alt="An arbitrary n-bit quantum oracle"
             />
           </>
@@ -359,7 +366,7 @@ const Page = () => {
               all n bits at the end:
             </p>
             <ArticleImage
-              src="djncomp"
+              src={djncompImage}
               alt="A Deutsch-Josza circuit over an arbitrary n qubits"
             />
             <p>

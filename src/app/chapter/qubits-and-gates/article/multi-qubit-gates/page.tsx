@@ -6,6 +6,13 @@ import Table from "@/components/table";
 import ArticleImage from "@/components/articleImage";
 import Exercise from "@/components/exercise";
 
+import andorImage from "./images/and+or.png";
+import cnotImage from "./images/cnot.png";
+import cnotswapImage from "./images/cnotswap.png";
+import fanoutImage from "./images/fanout.png";
+import swapImage from "./images/swap.png";
+import xorImage from "./images/xor.png";
+
 const CHAPTER_ID = "qubits-and-gates";
 const ARTICLE_ID = "multi-qubit-gates";
 
@@ -51,7 +58,7 @@ const Page = () => {
       </div>
       <p>And here&apos;s what the circuit symbols look like:</p>
       <ArticleImage
-        src="and+or"
+        src={andorImage}
         alt="Classical circuit symbols for the AND and OR gates"
       />
       <p>
@@ -60,7 +67,7 @@ const Page = () => {
         complex behaviour. Take a look at the circuit below:
       </p>
       <ArticleImage
-        src="xor"
+        src={xorImage}
         alt="A classical circuit implementation of the XOR operation using NOT, AND and OR gates"
       />
       <p>Woah, looks crazy right?</p>
@@ -110,7 +117,7 @@ const Page = () => {
       />
       <p>Just like with classical gates, we have a circuit symbol for this:</p>
       <ArticleImage
-        src="cnot"
+        src={cnotImage}
         alt="The quantum circuit symbol for a CNOT gate"
       />
       <p>
@@ -172,7 +179,7 @@ const Page = () => {
       />
       <p>The circuit symbol for this gate is:</p>
       <ArticleImage
-        src="swap"
+        src={swapImage}
         alt="The quantum circuit symbol for the SWAP gate"
       />
       <p>And can be defined similarly:</p>
@@ -197,7 +204,7 @@ const Page = () => {
         Did you notice a hidden gate? We use it twice in these locations:
       </p>
       <ArticleImage
-        src="fanout"
+        src={fanoutImage}
         alt="The classical XOR circuit again with the implicit FANOUTs highlighted"
       />
       <p>
@@ -382,7 +389,7 @@ const Page = () => {
               <InlineMathBlock latex="\text{SWAP}" />:
             </p>
             <ArticleImage
-              src="cnotswap"
+              src={cnotswapImage}
               alt="A quantum circuit consisting of 3 CNOT gates, the middle one is inverted"
             />
           </>

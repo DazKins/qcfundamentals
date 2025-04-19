@@ -4,6 +4,9 @@ import InlineMathBlock from "@/components/inlineMathBlock";
 import MathBlock from "@/components/mathBlock";
 import ArticleImage from "@/components/articleImage";
 
+import quantumteleportImage from "./images/quantumteleport.png";
+import quantumteleportcompImage from "./images/quantumteleportcomp.png";
+
 const CHAPTER_ID = "entanglement";
 const ARTICLE_ID = "teleportation";
 
@@ -104,7 +107,7 @@ const Page = () => {
         far and how it looks in a circuit diagram:
       </p>
       <ArticleImage
-        src="quantumteleport"
+        src={quantumteleportImage}
         alt="A half complete implementation of the quantum teleportation circuit"
       />
       <p>Those 2 symbols on the right represent measurement of the qubit.</p>
@@ -168,7 +171,7 @@ const Page = () => {
         our circuit diagram:
       </p>
       <ArticleImage
-        src="quantumteleportcomp"
+        src={quantumteleportcompImage}
         alt="A fully complete quantum teleporation circuit"
       />
       <p>

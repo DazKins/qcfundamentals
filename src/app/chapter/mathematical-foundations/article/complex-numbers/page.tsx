@@ -5,6 +5,10 @@ import MathBlock from "@/components/mathBlock";
 import Exercise from "@/components/exercise";
 import ArticleImage from "@/components/articleImage";
 
+import argandImage from "./images/argand.png";
+import complexcircleImage from "./images/complex-circle.png";
+import polarImage from "./images/polar.png";
+
 const CHAPTER_ID = "mathematical-foundations";
 const ARTICLE_ID = "complex-numbers";
 
@@ -78,7 +82,7 @@ const Page = () => {
         on a circle that extends the standard number line:
       </p>
       <ArticleImage
-        src="complex-circle"
+        src={complexcircleImage}
         alt="A circular representation of the complex units on an Argan diagram"
       />
       <p>
@@ -98,7 +102,7 @@ const Page = () => {
         Let&apos;s take a look at how we plot these numbers on the 2D plane:
       </p>
       <ArticleImage
-        src="argand"
+        src={argandImage}
         alt="A variety of example complex numbers plotted on an Argand diagram"
       />
       <p>So we can see how they plot just like 2D points.</p>
@@ -128,7 +132,7 @@ const Page = () => {
         coordinates. We can do the same for complex numbers:
       </p>
       <ArticleImage
-        src="polar"
+        src={polarImage}
         alt="An example of a complex number in polar form, with an angle and a radius"
       />
       <p>

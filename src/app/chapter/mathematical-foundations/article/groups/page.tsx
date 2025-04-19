@@ -3,10 +3,11 @@ import Article from "@/components/article";
 import InlineMathBlock from "@/components/inlineMathBlock";
 import MathBlock from "@/components/mathBlock";
 import Table from "@/components/table";
-import Image from "next/image";
-import { addKeysToArray2 } from "@/util/key";
 import Exercise from "@/components/exercise";
 import ArticleImage from "@/components/articleImage";
+
+import trianglegroupflipImage from "./images/triangle-group-flip.png";
+import trianglegrouprotationImage from "./images/triangle-group-rotation.png";
 
 const CHAPTER_ID = "mathematical-foundations";
 const ARTICLE_ID = "groups";
@@ -41,7 +42,7 @@ const Page = () => {
         by a permutation of these vertices. Here&apos;s how that works:
       </p>
       <ArticleImage
-        src="triangle-group-rotation"
+        src={trianglegrouprotationImage}
         alt="The rotations of a triangle and the different permutations of the vertices"
       />
       <p>
@@ -55,7 +56,7 @@ const Page = () => {
         permutations:
       </p>
       <ArticleImage
-        src="triangle-group-flip"
+        src={trianglegroupflipImage}
         alt="A representation of how flipping a triangle affects the vertex permutations"
       />
       <p>

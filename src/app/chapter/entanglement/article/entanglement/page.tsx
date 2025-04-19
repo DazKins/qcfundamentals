@@ -5,6 +5,10 @@ import ArticleImage from "@/components/articleImage";
 import InlineMathBlock from "@/components/inlineMathBlock";
 import Exercise from "@/components/exercise";
 
+import threeentanglerImage from "./images/3entangler.png";
+import alicebobentangledImage from "./images/alicebobentangled.png";
+import entanglerImage from "./images/entangler.png";
+
 const CHAPTER_ID = "entanglement";
 const ARTICLE_ID = "entanglement";
 
@@ -34,7 +38,7 @@ const Page = () => {
       </p>
       <p>Let&apos;s examine the following circuit:</p>
       <ArticleImage
-        src="entangler"
+        src={entanglerImage}
         alt="A quantum circuit consisting of a Hadamard gate on the first qubit followed by a CNOT gate"
       />
       <p>
@@ -132,7 +136,7 @@ const Page = () => {
         qubit, Bob takes the other and then they travel far apart:
       </p>
       <ArticleImage
-        src="alicebobentangled"
+        src={alicebobentangledImage}
         alt="A depiction of two actors Alice and Bob entangling two qubits together and then being separated by a large physical distance."
       />
       <p>
@@ -246,7 +250,7 @@ const Page = () => {
               (or first) and third qubit. So our circuit becomes:
             </p>
             <ArticleImage
-              src="3entangler"
+              src={threeentanglerImage}
               alt="A circuit of three qubits consisting of a Hadamard gate on the first qubit, a CNOT between the first and second qubit and a CNOT between the second and third qubit"
             />
             <h4>Question 3</h4>

@@ -7,6 +7,9 @@ import Exercise from "@/components/exercise";
 import ArticleImage from "@/components/articleImage";
 import ArticleLink from "@/components/articleLink";
 
+import mod3Image from "./images/mod-3.png";
+import mod322Image from "./images/mod-3-2+2.png";
+
 const CHAPTER_ID = "mathematical-foundations";
 const ARTICLE_ID = "fields";
 
@@ -131,7 +134,7 @@ const Page = () => {
         from 0:
       </p>
       <ArticleImage
-        src="mod-3"
+        src={mod3Image}
         alt="A representation of counting mod 3 by a clock with the numbers 0, 1 and 2"
       />
       <p>
@@ -147,7 +150,7 @@ const Page = () => {
         using our clock:
       </p>
       <ArticleImage
-        src="mod-3-2+2"
+        src={mod322Image}
         alt="A representation of adding 2 and 2 to get 1 when counting mod 3"
       />
       <p>

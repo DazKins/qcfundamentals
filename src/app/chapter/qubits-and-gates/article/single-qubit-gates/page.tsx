@@ -4,8 +4,11 @@ import InlineMathBlock from "@/components/inlineMathBlock";
 import MathBlock from "@/components/mathBlock";
 import Exercise from "@/components/exercise";
 import Table from "@/components/table";
-import Image from "next/image";
 import ArticleImage from "@/components/articleImage";
+
+import twoxnotImage from "./images/2xnot.png";
+import notImage from "./images/not.png";
+import quantCircuitImage from "./images/quant-circuit.png";
 
 const CHAPTER_ID = "qubits-and-gates";
 const ARTICLE_ID = "single-qubit-gates";
@@ -53,10 +56,10 @@ const Page = () => {
         gate that can be used in a circuit diagram. The{" "}
         <InlineMathBlock latex="\textmd{NOT}" /> gate is represented as:
       </p>
-      <ArticleImage src="not" alt="A classical NOT gate circuit symbol" />
+      <ArticleImage src={notImage} alt="A classical NOT gate circuit symbol" />
       <p>From this one gate we can build a very simple circuit such as:</p>
       <ArticleImage
-        src="2xnot"
+        src={twoxnotImage}
         alt="A classical circuit consisting of two NOT gates, one after the other"
       />
       <p>
@@ -110,7 +113,7 @@ const Page = () => {
         the X gate followed by a Z gate would look like:
       </p>
       <ArticleImage
-        src="quant-circuit"
+        src={quantCircuitImage}
         alt="A quantum circuit consisting of an X gate followed by a Z gate"
       />
       <p>

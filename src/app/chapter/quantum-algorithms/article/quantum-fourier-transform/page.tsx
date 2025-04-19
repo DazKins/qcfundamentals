@@ -4,6 +4,8 @@ import InlineMathBlock from "@/components/inlineMathBlock";
 import MathBlock from "@/components/mathBlock";
 import { getArticlePageMetadata } from "@/course/courseStructure";
 
+import quantumfouriertransformImage from "./images/quantumfouriertransform.png";
+
 const CHAPTER_ID = "quantum-algorithms";
 const ARTICLE_ID = "quantum-fourier-transform";
 
@@ -259,7 +261,7 @@ const Page = () => {
         transform and then examine why it works:
       </p>
       <ArticleImage
-        src="quantumfouriertransform"
+        src={quantumfouriertransformImage}
         alt="The quantum circuit for the quantum fourier transform consisting of Hadmard gates and R gates"
       />
       <p>

@@ -5,6 +5,10 @@ import ArticleImage from "@/components/articleImage";
 import MathBlock from "@/components/mathBlock";
 import Exercise from "@/components/exercise";
 
+import alicebobentangledImage from "./images/alicebobentangled.png";
+import superdenseImage from "./images/superdense.png";
+import superdensealiceImage from "./images/superdensealice.png";
+
 const CHAPTER_ID = "entanglement";
 const ARTICLE_ID = "superdense-coding";
 
@@ -38,7 +42,7 @@ const Page = () => {
         entangled two qubits and taken one half of the entangled pair each.
       </p>
       <ArticleImage
-        src="alicebobentangled"
+        src={alicebobentangledImage}
         alt="A depiction of two actors Alice and Bob entangling two qubits together and then being separated by a large physical distance."
       />
       <p>So our system starts in the usual state:</p>
@@ -80,7 +84,7 @@ const Page = () => {
       <MathBlock latex="\ket{\phi_1} = \frac{1}{\sqrt{2}}(U_{b_0b_1}\ket{0} \otimes \ket{0} + U_{b_0b_1}\ket{1} \otimes \ket{1})" />
       <p>The circuit we have so far looks like this:</p>
       <ArticleImage
-        src="superdensealice"
+        src={superdensealiceImage}
         alt="A quantum circuit started in the entangled beta zero zero state where an X gate is applied to the first qubit when b_1 is 1 followed by a Z gate when b_0 is 1"
       />
       <p>
@@ -98,7 +102,7 @@ const Page = () => {
       <MathBlock latex="\ket{\phi_2} = (H \otimes I)\text{CNOT}\ket{\phi_1} = \frac{1}{\sqrt{2}}(H \otimes I)\text{CNOT}(U_{b_0b_1}\ket{0} \otimes \ket{0} + U_{b_0b_1}\ket{1} \otimes \ket{1})" />
       <p>And here&apos;s what the circuit looks like now:</p>
       <ArticleImage
-        src="superdense"
+        src={superdenseImage}
         alt="A quantum circuit starting in the entangled state where an X gate is applied to the first qubit if b_1 is 1 followed by a Z gate if b_0 is 1. A CNOT gate is then applied followed by a Hadamard gate on the first qubit"
       />
       <p>

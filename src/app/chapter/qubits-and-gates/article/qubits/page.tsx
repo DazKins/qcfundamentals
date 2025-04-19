@@ -7,6 +7,11 @@ import Exercise from "@/components/exercise";
 import ArticleImage from "@/components/articleImage";
 import ArticleLink from "@/components/articleLink";
 
+import blockplusImage from "./images/bloch-+.png";
+import bloch0Image from "./images/bloch-0.png";
+import bloch1Image from "./images/bloch-1.png";
+import blochanglesImage from "./images/blochangles.png";
+
 const CHAPTER_ID = "qubits-and-gates";
 const ARTICLE_ID = "qubits";
 
@@ -161,7 +166,7 @@ const Page = () => {
       <div className="flex flex-col gap-8 sm:flex-row items-center justify-around">
         <div>
           <Image
-            src="/article/qubits/bloch-0.png"
+            src={bloch0Image}
             alt="bloch-sphere-0"
             width={300}
             height={500}
@@ -172,7 +177,7 @@ const Page = () => {
         </div>
         <div>
           <Image
-            src="/article/qubits/bloch-1.png"
+            src={bloch1Image}
             alt="bloch-sphere-1"
             width={300}
             height={500}
@@ -183,7 +188,7 @@ const Page = () => {
         </div>
         <div>
           <Image
-            src="/article/qubits/bloch-+.png"
+            src={blockplusImage}
             alt="bloch-sphere-+"
             width={300}
             height={500}
@@ -242,7 +247,7 @@ const Page = () => {
         <InlineMathBlock latex="0 \leq \phi < 2\pi " />.
       </p>
       <ArticleImage
-        src="blochangles"
+        src={blochanglesImage}
         alt="A representation of qubits as angles on a Bloch sphere"
       />
       <p>
