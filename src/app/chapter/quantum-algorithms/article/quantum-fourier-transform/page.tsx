@@ -1,5 +1,6 @@
 import Article from "@/components/article";
 import ArticleImage from "@/components/articleImage";
+import ArticleLink from "@/components/articleLink";
 import InlineMathBlock from "@/components/inlineMathBlock";
 import MathBlock from "@/components/mathBlock";
 import { getArticlePageMetadata } from "@/course/courseStructure";
@@ -15,16 +16,67 @@ const Page = () => {
   return (
     <Article>
       <p>
-        In order to keep advancing in our study of quantum algorithms, we now
-        have to visit something called the fourier transform. The fourier
-        transform is a mathematical tool that is well used outside of quantum
-        computing but will prove useful for us.
+        The quantum Fourier transform (QFT) applies a discrete Fourier transform
+        to the amplitudes of a quantum state. It changes how information is
+        encoded in the state, making it a useful building block for algorithms
+        that work with phases and periodicity.
       </p>
       <p>
-        Specifically, we will find that quantum computers are able to implement
-        a special quantum version of the fourier transform that will be
-        aplicable to many problems.
+        We&apos;ll start with the discrete Fourier transform, rewrite the QFT of
+        a computational basis state as a product of single-qubit states, and use
+        that expression to build a circuit with Hadamard and controlled phase
+        gates.
       </p>
+      <h2>What you will learn</h2>
+      <ul>
+        <li>
+          Interpret the complex phase factors in the discrete Fourier transform.
+        </li>
+        <li>
+          Use binary fractions to derive the QFT&apos;s product representation.
+        </li>
+        <li>
+          Follow the Hadamard, controlled phase and SWAP gates in a QFT circuit.
+        </li>
+        <li>
+          Understand why the circuit uses a quadratic number of gates in the
+          number of qubits.
+        </li>
+      </ul>
+      <h2>Prerequisites</h2>
+      <p>
+        Start with{" "}
+        <ArticleLink
+          chapterId="mathematical-foundations"
+          articleId="complex-numbers"
+        >
+          complex numbers and rotations
+        </ArticleLink>
+        ,{" "}
+        <ArticleLink
+          chapterId="mathematical-foundations"
+          articleId="bra-ket-notation"
+        >
+          bra-ket notation
+        </ArticleLink>
+        , and the tensor products in{" "}
+        <ArticleLink chapterId="qubits-and-gates" articleId="multiple-qubits">
+          Multiple Qubits
+        </ArticleLink>
+        . You&apos;ll also use the Hadamard gate from{" "}
+        <ArticleLink
+          chapterId="qubits-and-gates"
+          articleId="single-qubit-gates"
+        >
+          Single Qubit Gates
+        </ArticleLink>{" "}
+        and controlled operations from{" "}
+        <ArticleLink chapterId="qubits-and-gates" articleId="multi-qubit-gates">
+          Multi Qubit Gates
+        </ArticleLink>
+        .
+      </p>
+      <h2>The discrete Fourier transform</h2>
       <p>
         The discrete fourier transform is a mathematical operation that takes,
         as input, a sequence of numbers{" "}
@@ -112,14 +164,18 @@ const Page = () => {
         how we can apply this to our quantum algorithms. It&apos;s use will
         hopefully become apparent later.
       </p>
-      <p>We will define the quantum fourier transform as follows:</p>
-      <MathBlock latex="\ket{y} = \frac{1}{\sqrt{N}}\sum_{j=0}^{N-1}\omega_N^{yj}\ket{j}" />
+      <h2>From the discrete transform to the QFT</h2>
       <p>
-        This looks fairly similar, but notice that we have{" "}
-        <InlineMathBlock latex="yj" /> in the omega exponent rather than{" "}
-        <InlineMathBlock latex="jk" /> like we did earlier. This is because
-        instead of transforming a discrete sequence of numbers we are
-        transforming a superposition quantum state.
+        The quantum Fourier transform is a linear operation. On a computational
+        basis state <InlineMathBlock latex="\ket{y}" />, it acts as follows:
+      </p>
+      <MathBlock latex="\operatorname{QFT}\ket{y} = \frac{1}{\sqrt{N}}\sum_{j=0}^{N-1}\omega_N^{yj}\ket{j}" />
+      <p>
+        Here <InlineMathBlock latex="y" /> labels the input basis state, and{" "}
+        <InlineMathBlock latex="j" /> runs over the output basis states. The
+        phase factors depend on both indices. For a superposition input, apply
+        this rule to each basis state and add the results with the original
+        amplitudes.
       </p>
       <p>
         Note also that although <InlineMathBlock latex="y" /> and{" "}
@@ -133,6 +189,7 @@ const Page = () => {
         <InlineMathBlock latex="N = 2^n" /> for some{" "}
         <InlineMathBlock latex="n" />.
       </p>
+      <h2>Deriving the product representation</h2>
       <p>
         To understand how we implement this in a quantum circuit, we will use
         some algebra to transform this summation formula into a different tensor
@@ -142,7 +199,7 @@ const Page = () => {
         To do this, our first step is to split the <InlineMathBlock latex="j" />{" "}
         summation into it&apos;s individual bits:
       </p>
-      <MathBlock latex="\ket{y} = \frac{1}{\sqrt{N}}\sum_{j_1=0}^{1} \ldots \sum_{j_n=0}^{1}\omega_N^{yj}\ket{j_1, \ldots, j_n}" />
+      <MathBlock latex="\operatorname{QFT}\ket{y} = \frac{1}{\sqrt{N}}\sum_{j_1=0}^{1} \ldots \sum_{j_n=0}^{1}\omega_N^{yj}\ket{j_1, \ldots, j_n}" />
       <p>
         Then we&apos;ll look at a slightly different representation of our{" "}
         <InlineMathBlock latex="\omega" /> term. We know that{" "}
@@ -164,7 +221,7 @@ const Page = () => {
       </p>
       <MathBlock latex="\omega_N^{yj} = e^{2\pi iy\sum_{l=1}^{n}j_l2^{-l}}" />
       <p>And our main equation becomes:</p>
-      <MathBlock latex="\ket{y} = \frac{1}{\sqrt{N}}\sum_{j_1=0}^{1} \ldots \sum_{j_n=0}^{1}e^{2\pi iy\sum_{l=1}^{n}j_l2^{-l}}\ket{j_1, \ldots, j_n}" />
+      <MathBlock latex="\operatorname{QFT}\ket{y} = \frac{1}{\sqrt{N}}\sum_{j_1=0}^{1} \ldots \sum_{j_n=0}^{1}e^{2\pi iy\sum_{l=1}^{n}j_l2^{-l}}\ket{j_1, \ldots, j_n}" />
       <p>
         Since the exponential co-efficient is now represented as a sum of
         <InlineMathBlock latex="j" />s individual bits, we can also separate the
@@ -172,7 +229,7 @@ const Page = () => {
       </p>
       <MathBlock
         latex={[
-          "\\ket{y} = \\frac{1}{\\sqrt{N}}\\sum_{j_1=0}^{1} \\ldots \\sum_{j_n=0}^{1}e^{2\\pi iyj_12^{-1}}\\ket{j_1} \\otimes \\ldots \\otimes e^{2\\pi iyj_n2^{-n}}\\ket{j_n}",
+          "\\operatorname{QFT}\\ket{y} = \\frac{1}{\\sqrt{N}}\\sum_{j_1=0}^{1} \\ldots \\sum_{j_n=0}^{1}e^{2\\pi iyj_12^{-1}}\\ket{j_1} \\otimes \\ldots \\otimes e^{2\\pi iyj_n2^{-n}}\\ket{j_n}",
           "= \\frac{1}{\\sqrt{N}}\\sum_{j_1=0}^{1} \\ldots \\sum_{j_n=0}^{1} \\bigotimes_{l=1}^{n}e^{2\\pi iyj_l2^{-l}}\\ket{j_l}",
         ]}
       />
@@ -183,15 +240,15 @@ const Page = () => {
         s, we can move the tensor product to the outside to do this instead of
         summing over each bit:
       </p>
-      <MathBlock latex="\ket{y} = \frac{1}{\sqrt{N}}\bigotimes_{l=1}^{n}\sum_{j_l=0}^{1}e^{2\pi iy2^{-l}}\ket{j_l}" />
+      <MathBlock latex="\operatorname{QFT}\ket{y} = \frac{1}{\sqrt{N}}\bigotimes_{l=1}^{n}\sum_{j_l=0}^{1}e^{2\pi iyj_l2^{-l}}\ket{j_l}" />
       <p>
         And now our summation is just for 2 terms, so we can remove the big
         summation and write it explicitly:
       </p>
       <MathBlock
         latex={[
-          "\\ket{y} = \\frac{1}{\\sqrt{N}}\\bigotimes_{l=1}^{n}\\Bigl[e^{2\\pi iy0\\cdot 2^{-l}}\\ket{0} + e^{2\\pi iy1 \\cdot 2^{-l}}\\ket{1}\\Bigr]",
-          "\\ket{y} = \\frac{1}{\\sqrt{N}}\\bigotimes_{l=1}^{n}\\Bigl[\\ket{0} + e^{2\\pi iy2^{-l}}\\ket{1}\\Bigr]",
+          "\\operatorname{QFT}\\ket{y} = \\frac{1}{\\sqrt{N}}\\bigotimes_{l=1}^{n}\\Bigl[e^{2\\pi iy0\\cdot 2^{-l}}\\ket{0} + e^{2\\pi iy1 \\cdot 2^{-l}}\\ket{1}\\Bigr]",
+          "\\operatorname{QFT}\\ket{y} = \\frac{1}{\\sqrt{N}}\\bigotimes_{l=1}^{n}\\Bigl[\\ket{0} + e^{2\\pi iy2^{-l}}\\ket{1}\\Bigr]",
         ]}
       />
       <p>
@@ -218,7 +275,7 @@ const Page = () => {
       </p>
       <MathBlock
         latex={[
-          "\\ket{y} = \\frac{1}{\\sqrt{N}}\\bigotimes_{l=1}^{n}\\Bigl[\\ket{0} + e^{2\\pi i0.y_{n-l+1}\\ldots y_n}\\ket{1}\\Bigr]",
+          "\\operatorname{QFT}\\ket{y} = \\frac{1}{\\sqrt{N}}\\bigotimes_{l=1}^{n}\\Bigl[\\ket{0} + e^{2\\pi i0.y_{n-l+1}\\ldots y_n}\\ket{1}\\Bigr]",
         ]}
       />
       <p>
@@ -226,12 +283,13 @@ const Page = () => {
         <InlineMathBlock latex="\otimes" /> symbol and replace{" "}
         <InlineMathBlock latex="N" /> with <InlineMathBlock latex="2^n" />:
       </p>
-      <MathBlock latex="\ket{y} = \frac{(\ket{0} + e^{2\pi i0.y_n}\ket{1})(\ket{0} + e^{2\pi i0.y_{n-1}y_n}\ket{1}) \ldots (\ket{0} + e^{2\pi i0.y_1 \ldots y_n}\ket{1})}{2^{n/2}}" />
+      <MathBlock latex="\operatorname{QFT}\ket{y} = \frac{(\ket{0} + e^{2\pi i0.y_n}\ket{1})(\ket{0} + e^{2\pi i0.y_{n-1}y_n}\ket{1}) \ldots (\ket{0} + e^{2\pi i0.y_1 \ldots y_n}\ket{1})}{2^{n/2}}" />
       <p>
         This is the product representation of the quantum fourier transform.
         It&apos;s useful because it better shows the behaviour on individual
         bits and will allow us to construct a circuit easier.
       </p>
+      <h2>Building the QFT circuit</h2>
       <p>
         To build the circuit, we&apos;ll need to invent some new gates. The
         quantum gates we&apos;ve studied previously have mostly been focussed
@@ -276,7 +334,7 @@ const Page = () => {
       </p>
       <p>
         Applying the first Hadamard gate gives us{" "}
-        <InlineMathBlock latex="\frac{1}{2}(\ket{0} + e^{2\pi i0.y_1}\ket{1})" />{" "}
+        <InlineMathBlock latex="\frac{1}{\sqrt{2}}(\ket{0} + e^{2\pi i0.y_1}\ket{1})" />{" "}
         since if <InlineMathBlock latex="y_1 = 0" /> then{" "}
         <InlineMathBlock latex="e^{2\pi i0.y_1} = 1" /> and if{" "}
         <InlineMathBlock latex="y_1 = 1" /> then{" "}
@@ -284,13 +342,13 @@ const Page = () => {
       </p>
       <p>
         The controlled <InlineMathBlock latex="R_2" /> gate then takes us to{" "}
-        <InlineMathBlock latex="\frac{1}{2}(\ket{0} + e^{2\pi i0.y_1y_2}\ket{1})" />{" "}
+        <InlineMathBlock latex="\frac{1}{\sqrt{2}}(\ket{0} + e^{2\pi i0.y_1y_2}\ket{1})" />{" "}
         since the <InlineMathBlock latex="\ket{1}" /> state will undergo a
         further 90 degree rotation if <InlineMathBlock latex="y_2 = 1" />.
       </p>
       <p>
         Continuing on in this fashion, the first qubit ends in the state{" "}
-        <InlineMathBlock latex="\frac{1}{2}(\ket{0} + e^{2\pi i0.y_1 \ldots y_n}\ket{1})" />
+        <InlineMathBlock latex="\frac{1}{\sqrt{2}}(\ket{0} + e^{2\pi i0.y_1 \ldots y_n}\ket{1})" />
         . Our total state so far is then:
       </p>
       <MathBlock latex="\frac{(\ket{0} + e^{2\pi i0.y_1 \ldots y_n}\ket{1})}{2^{1/2}}\ket{y_2, \ldots, y_n}" />
@@ -300,35 +358,66 @@ const Page = () => {
       </p>
       <MathBlock latex="\frac{(\ket{0} + e^{2\pi i0.y_1 \ldots y_n}\ket{1})(\ket{0} + e^{2\pi i0.y_2 \ldots y_n}\ket{1})}{2^{2/2}}\ket{y_3, \ldots, y_n}" />
       <p>
-        And following the pattern for the rest of our qubits we finally end up
-        in the state:
+        Following the pattern for the rest of our qubits gives the circuit state
+        before reversing the output qubits, which we&apos;ll call{" "}
+        <InlineMathBlock latex="\ket{\psi_{\mathrm{rev}}}" />:
       </p>
-      <MathBlock latex="\ket{y} = \frac{(\ket{0} + e^{2\pi i0.y_1 \ldots y_n}\ket{1})(\ket{0} + e^{2\pi i0.y_2 \ldots y_n}\ket{1}) \ldots (\ket{0} + e^{2\pi i0.y_n}\ket{1})}{2^{n/2}}" />
+      <MathBlock latex="\ket{\psi_{\mathrm{rev}}} = \frac{(\ket{0} + e^{2\pi i0.y_1 \ldots y_n}\ket{1})(\ket{0} + e^{2\pi i0.y_2 \ldots y_n}\ket{1}) \ldots (\ket{0} + e^{2\pi i0.y_n}\ket{1})}{2^{n/2}}" />
+      <h2>Reversing the output qubits</h2>
       <p>
         This is almost what we want, but notice that the qubits are actually
         backwards compared to our equation from earlier!
       </p>
       <p>
-        This is easily solved by using <InlineMathBlock latex="n/2" />{" "}
+        This is easily solved by using{" "}
+        <InlineMathBlock latex="\lfloor n/2 \rfloor" />{" "}
         <InlineMathBlock latex="\text{SWAP}" /> gates to move the positions of
         the qubits.
       </p>
       <p>
-        Great! So we&apos;ve found a circuit that implements the quantum fourier
-        transform!
+        After these SWAP gates, the output is{" "}
+        <InlineMathBlock latex="\operatorname{QFT}\ket{y}" />. So we&apos;ve
+        found a circuit that implements the quantum Fourier transform!
       </p>
+      <h2>How many gates does the QFT need?</h2>
       <p>
         We apply <InlineMathBlock latex="n" /> gates to the first qubit,{" "}
         <InlineMathBlock latex="n-1" /> gates to the 2nd etc. followed by{" "}
-        <InlineMathBlock latex="n/2" /> <InlineMathBlock latex="\text{SWAP}" />{" "}
-        gates so we end up using a total of{" "}
-        <InlineMathBlock latex="(n + (n - 1) + \ldots + 2 + 1) + n/2 = \frac{n(n+1)}{2} + n/2 = \frac{1}{2}n^2 + n" />{" "}
+        <InlineMathBlock latex="\lfloor n/2 \rfloor" />{" "}
+        <InlineMathBlock latex="\text{SWAP}" /> gates so we end up using a total
+        of{" "}
+        <InlineMathBlock latex="(n + (n - 1) + \ldots + 2 + 1) + \lfloor n/2 \rfloor = \frac{n(n+1)}{2} + \lfloor n/2 \rfloor" />{" "}
         gates. So this is fairly efficient, no exponential scaling.
       </p>
       <p>
-        We&apos;ll begin exploring in the next articles how this quantum fourier
-        transform can be used.
+        This gives us an <InlineMathBlock latex="O(n^2)" />
+        -gate circuit on <InlineMathBlock latex="n" /> qubits, treating each
+        controlled phase gate as one gate. Its output is a quantum state:
+        measuring it does not reveal every transformed amplitude. This
+        distinction matters when comparing the QFT with a classical Fourier
+        transform that returns a list of numbers.
       </p>
+      <h2>Related lessons</h2>
+      <ul>
+        <li>
+          <ArticleLink chapterId="quantum-algorithms" articleId="order-finding">
+            Order Finding
+          </ArticleLink>
+          : see how the QFT helps extract periodic structure.
+        </li>
+        <li>
+          <ArticleLink chapterId="quantum-algorithms" articleId="shor">
+            Shor&apos;s Algorithm
+          </ArticleLink>
+          : connect order finding to integer factorisation.
+        </li>
+        <li>
+          <ArticleLink chapterId="quantum-algorithms" articleId="grover-search">
+            Grover Search
+          </ArticleLink>
+          : compare a search algorithm based on amplitude amplification.
+        </li>
+      </ul>
     </Article>
   );
 };
