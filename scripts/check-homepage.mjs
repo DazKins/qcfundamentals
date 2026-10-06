@@ -8,13 +8,19 @@ const intro = await readFile(
   "utf8",
 );
 assert.equal((html.match(/<h1(?:\s[^>]*)?>/g) ?? []).length, 1);
-assert.match(html, /Quantum Computing Fundamentals: a free, maths-first course/);
+assert.match(
+  html,
+  /Quantum Computing Fundamentals: a free, maths-first course/,
+);
 for (const heading of [
   "Who is this course for?",
   "What you will learn",
   "Course chapters and lessons",
 ]) {
-  assert.ok(html.includes(`<h2>${heading}</h2>`), `Missing heading: ${heading}`);
+  assert.ok(
+    html.includes(`<h2>${heading}</h2>`),
+    `Missing heading: ${heading}`,
+  );
 }
 assert.match(html, /href="\/introduction-to-the-course"/);
 assert.match(
