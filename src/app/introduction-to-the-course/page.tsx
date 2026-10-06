@@ -1,3 +1,13 @@
+import { getPageMetadata } from "@/util/metadata";
+
+export const metadata = getPageMetadata({
+  title: "Introduction to the Course | QCFundamentals",
+  description:
+    "Discover the mathematics-first approach of QCFundamentals, the high-school maths background you need, and how the course prepares you for further study.",
+  path: "/introduction-to-the-course",
+  image: "/qc.png",
+});
+
 const Page = () => {
   return (
     <div className="flex flex-col gap-4">

@@ -1,4 +1,13 @@
 import Link from "next/link";
+import { getPageMetadata } from "@/util/metadata";
+
+export const metadata = getPageMetadata({
+  title: "Afterword and Next Steps | QCFundamentals",
+  description:
+    "Continue your quantum computing studies with suggested next steps in textbooks, quantum physics, quantum programming, QASM and Qiskit.",
+  path: "/afterword-next-steps",
+  image: "/qc.png",
+});
 
 const Page = () => {
   return (

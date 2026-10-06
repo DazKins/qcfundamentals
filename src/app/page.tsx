@@ -1,4 +1,13 @@
 import { ChapterDefinitions } from "@/course/courseStructure";
+import { getPageMetadata } from "@/util/metadata";
+
+export const metadata = getPageMetadata({
+  title: "Quantum Computing Fundamentals | QCFundamentals",
+  description:
+    "Learn quantum computing with a mathematics-first course covering complex numbers, qubits, gates, entanglement and quantum algorithms, with worked exercises.",
+  path: "/",
+  image: "/qc.png",
+});
 
 export default function Home() {
   return (
