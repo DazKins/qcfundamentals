@@ -1,3 +1,13 @@
+import { getPageMetadata } from "@/util/metadata";
+
+export const metadata = getPageMetadata({
+  title: "About the Course | QCFundamentals",
+  description:
+    "Meet DazKins, the creator of QCFundamentals, and find the open-source course on GitHub to suggest improvements, report corrections or contribute.",
+  path: "/about",
+  image: "/qc.png",
+});
+
 const Page = () => {
   return (
     <div className="flex flex-col gap-5">

@@ -1,4 +1,9 @@
 import Chapter from "@/components/chapter";
+import { getChapterPageMetadata } from "@/course/courseStructure";
+
+const CHAPTER_ID = "qubits-and-gates";
+
+export const metadata = getChapterPageMetadata(CHAPTER_ID);
 
 const Page = () => {
   return (
