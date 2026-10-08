@@ -167,7 +167,7 @@ const Page = () => {
         <div>
           <Image
             src={bloch0Image}
-            alt="bloch-sphere-0"
+            alt="Bloch sphere with the state vector pointing to the north pole, representing the zero state"
             width={300}
             height={500}
           />
@@ -178,7 +178,7 @@ const Page = () => {
         <div>
           <Image
             src={bloch1Image}
-            alt="bloch-sphere-1"
+            alt="Bloch sphere with the state vector pointing to the south pole, representing the one state"
             width={300}
             height={500}
           />
@@ -189,7 +189,7 @@ const Page = () => {
         <div>
           <Image
             src={blockplusImage}
-            alt="bloch-sphere-+"
+            alt="Bloch sphere with the state vector pointing along the positive x-axis on the equator, representing the plus state"
             width={300}
             height={500}
           />
