@@ -1,15 +1,16 @@
 import Article from "@/components/article";
 import ArticleImage from "@/components/articleImage";
+import ArticleLink from "@/components/articleLink";
 import InlineMathBlock from "@/components/inlineMathBlock";
 import MathBlock from "@/components/mathBlock";
 import Table from "@/components/table";
 import { getArticlePageMetadata } from "@/course/courseStructure";
 
-import anglesImage from "./images/angles.png"
-import groverImage from "./images/grover.png"
-import groverAxisImage from "./images/groveraxis.png"
-import groverAxisFirstStateImage from "./images/groveraxisfirststate.png"
-import groverAxisRotImage from "./images/groveraxisrot.png"
+import anglesImage from "./images/angles.png";
+import groverImage from "./images/grover.png";
+import groverAxisImage from "./images/groveraxis.png";
+import groverAxisFirstStateImage from "./images/groveraxisfirststate.png";
+import groverAxisRotImage from "./images/groveraxisrot.png";
 
 const CHAPTER_ID = "quantum-algorithms";
 const ARTICLE_ID = "grover-search";
@@ -20,18 +21,61 @@ const Page = () => {
   return (
     <Article>
       <p>
-        With Deutsch-Jozsa, we saw our first fundamentally quantum algorithm
-        that showed how quantum computers could do something better than
-        classical computers. But it doesn&apos;t seem like a particularly useful
-        algorithm. Is there a more useful algorithm that we might be able to run
-        on a quantum computer?
+        Grover&apos;s algorithm is a quantum algorithm for unstructured search.
+        Given a way to check whether a candidate is a solution, it increases the
+        probability of measuring a matching candidate through repeated phase
+        flips and reflections.
       </p>
       <p>
-        We&apos;ll answer this question by looking at Grover Search. This
-        algorithm shows how we can use a quantum computer to search through some
-        list of items exponentially faster than a classical computer would be
-        able to.
+        For a search space of <InlineMathBlock latex="N" /> candidates with one
+        marked solution, Grover search uses{" "}
+        <InlineMathBlock latex="O(\sqrt{N})" /> oracle queries to find it with
+        high probability, compared with <InlineMathBlock latex="O(N)" /> queries
+        for classical unstructured search. This is a quadratic query speedup.
+        The cost of implementing the oracle and accessing data still matters
+        when considering a practical application.
       </p>
+      <h2>What you will learn</h2>
+      <ul>
+        <li>Describe an unstructured search problem using a phase oracle.</li>
+        <li>
+          Build the Grover iterator from the oracle and diffusion operator.
+        </li>
+        <li>
+          Use geometric reflections to understand amplitude amplification.
+        </li>
+        <li>
+          Explain why the number of oracle queries scales with the square root
+          of the search space.
+        </li>
+      </ul>
+      <h2>Prerequisites</h2>
+      <p>
+        Review{" "}
+        <ArticleLink
+          chapterId="mathematical-foundations"
+          articleId="bra-ket-notation"
+        >
+          bra-ket notation and outer products
+        </ArticleLink>
+        , the Hadamard gate in{" "}
+        <ArticleLink
+          chapterId="qubits-and-gates"
+          articleId="single-qubit-gates"
+        >
+          Single Qubit Gates
+        </ArticleLink>
+        , and tensor products in{" "}
+        <ArticleLink chapterId="qubits-and-gates" articleId="multiple-qubits">
+          Multiple Qubits
+        </ArticleLink>
+        . The{" "}
+        <ArticleLink chapterId="quantum-algorithms" articleId="deutsch-jozsa">
+          Deutsch-Jozsa algorithm
+        </ArticleLink>{" "}
+        provides a useful introduction to quantum oracle algorithms.
+      </p>
+      <h2>The unstructured search problem</h2>
       <p>Let&apos;s start by formally defining the problem.</p>
       <p>
         Suppose we have a list of items we would like to search. Perhaps a list
@@ -100,6 +144,7 @@ const Page = () => {
         <InlineMathBlock latex="N-1" /> until it finds one that satisfies{" "}
         <InlineMathBlock latex="f(x) = 1" />.
       </p>
+      <h2>Marking the solution with a phase oracle</h2>
       <p>Now let&apos;s go back to the quantum world.</p>
       <p>
         To start constructing our quantum algorithm, we&apos;re going to
@@ -109,8 +154,9 @@ const Page = () => {
       <p>
         So it essentially sticks a negative sign in front of a particular state
         and leaves all others alone. We call this a phase oracle since adding a
-        negative sign is just multiplying by a global phase{" "}
-        <InlineMathBlock latex="e^{i\pi} = -1" />.
+        negative sign is multiplying the marked state&apos;s amplitude by{" "}
+        <InlineMathBlock latex="e^{i\pi} = -1" />. In a superposition, this
+        changes its phase relative to the unmarked states.
       </p>
       <p>We can represent this oracle in outer-product notation:</p>
       <MathBlock latex="O_x = I - 2\ket{x}\bra{x}" />
@@ -132,6 +178,14 @@ const Page = () => {
         <InlineMathBlock latex="f(x) = 1" />. It&apos;s possible to generalise
         to multiple solutions, but we&apos;ll keep it simple for now.
       </p>
+      <h2>The steps of Grover&apos;s algorithm</h2>
+      <p>
+        For the circuit below, assume <InlineMathBlock latex="N = 2^n" /> with{" "}
+        <InlineMathBlock latex="n \geq 1" />. If the original number of
+        candidates is not a power of two, pad the search space with non-matching
+        candidates to the next power of two; <InlineMathBlock latex="N" /> then
+        refers to this padded size.
+      </p>
       <p>
         Let&apos;s define the solution we&apos;re looking for as{" "}
         <InlineMathBlock latex="\omega" /> i.e.{" "}
@@ -140,10 +194,9 @@ const Page = () => {
       </p>
       <ol className="list-decimal list-inside">
         <li>
-          Prepare <InlineMathBlock latex="n=\lceil \log_2{N} \rceil" /> qubits
-          in the starting state <InlineMathBlock latex="\ket{0}" />. This
-          ensures we have enough bits to represent all the possible indexes in
-          our database.
+          Prepare <InlineMathBlock latex="n=\log_2{N}" /> qubits in the starting
+          state <InlineMathBlock latex="\ket{0}" />. This ensures we have enough
+          bits to represent all the possible indexes in our database.
         </li>
         <li>
           Apply the Hadamard gate to all qubits:{" "}
@@ -187,6 +240,7 @@ const Page = () => {
         the Grover iterator. This will be the part that gets repeated several
         times.
       </p>
+      <h2>The Grover iterator and diffusion operator</h2>
       <p>
         Analysing this algorithm revolves around finding a nice mathematical
         representation of this operator. Formally, we can see it&apos;s defined
@@ -232,6 +286,7 @@ const Page = () => {
       <MathBlock latex="D = 2\ket{s}\bra{s} - I" />
       <p>And thus:</p>
       <MathBlock latex="G = (2\ket{s}\bra{s} - I)(I - 2\ket{\omega}\bra{\omega})" />
+      <h2>How reflections amplify the solution</h2>
       <p>
         The next step of our journey will be building some geometric intuition
         for what these operators are really doing.
@@ -280,13 +335,14 @@ const Page = () => {
         that 2 reflections always make a rotation. So we can see that our Grover
         iterator is performing a rotation of our vector every time we apply it.
       </p>
+      <h2>A two-dimensional picture of the search</h2>
       <p>
         We&apos;d like to be able to visualise this rotation; to see where
         it&apos;s rotating from and where it&apos;s rotating to. The problem is
-        that we have <InlineMathBlock latex="n = \lceil \log_2{N} \rceil" />{" "}
-        qubits and thus <InlineMathBlock latex="\approx N" /> different basis
-        states. This means if we have 1000 items to search through, we have a
-        1000-dimensional vector space! That&apos;s not very easy to visualise...
+        that we have <InlineMathBlock latex="n = \log_2{N}" /> qubits and thus{" "}
+        <InlineMathBlock latex="N" /> different basis states. With 1024
+        candidates, for example, we have a 1024-dimensional vector space!
+        That&apos;s not very easy to visualise...
       </p>
       <p>
         Luckily we have a handy tool up our sleeve: projection. Just in the same
@@ -333,25 +389,27 @@ const Page = () => {
         what the normalisation coefficients are for, so we have to determine
         whether it is closer to <InlineMathBlock latex="\ket{\omega}" /> or{" "}
         <InlineMathBlock latex="\ket{s^\prime}" />. We can do this with the
-        inner-product since we know two orthogonal vectors inner-product to 0
-        and two parallel vectors to 1:
+        inner product: orthogonal vectors have inner product 0, and each of our
+        normalised basis vectors has inner product 1 with itself.
       </p>
       <MathBlock
         latex={[
-          "\\braket{\\omega|s} = \\bra{\\omega}\\frac{1}{\\sqrt{N}}\\sum_{x=0}^{N}\\ket{x}",
+          "\\braket{\\omega|s} = \\bra{\\omega}\\frac{1}{\\sqrt{N}}\\sum_{x=0}^{N-1}\\ket{x}",
           "= \\frac{1}{\\sqrt{N}}\\braket{\\omega|\\omega} = \\frac{1}{\\sqrt{N}}",
         ]}
       />
       <MathBlock
         latex={[
-          "\\braket{s^\\prime |s} = \\Bigl(\\frac{1}{\\sqrt{N-1}}\\sum_{x\\neq \\omega}\\bra{\\omega}\\Bigr)\\Bigl(\\frac{1}{\\sqrt{N}}\\sum_{x=0}^{N}\\ket{x}\\Bigr)",
-          "= \\frac{1}{\\sqrt{N-1}\\sqrt{N}}\\sum_{x\\neq \\omega}\\braket{\\omega|x} = \\frac{1}{\\sqrt{N-1}\\sqrt{N}}(N-1)",
+          "\\braket{s^\\prime |s} = \\Bigl(\\frac{1}{\\sqrt{N-1}}\\sum_{x\\neq \\omega}\\bra{x}\\Bigr)\\Bigl(\\frac{1}{\\sqrt{N}}\\sum_{y=0}^{N-1}\\ket{y}\\Bigr)",
+          "= \\frac{1}{\\sqrt{N-1}\\sqrt{N}}\\sum_{x\\neq \\omega}\\sum_{y=0}^{N-1}\\braket{x|y}",
+          "= \\frac{1}{\\sqrt{N-1}\\sqrt{N}}\\sum_{x\\neq \\omega}\\braket{x|x} = \\frac{N-1}{\\sqrt{N-1}\\sqrt{N}}",
           "= \\sqrt{\\frac{N-1}{N}}",
         ]}
       />
       <p>
-        From these results, it is fairly clear that our initial state vector
-        lies closer to <InlineMathBlock latex="\ket{s^\prime}" /> than{" "}
+        For <InlineMathBlock latex="N > 2" />, these results show that our
+        initial state vector lies closer to{" "}
+        <InlineMathBlock latex="\ket{s^\prime}" /> than{" "}
         <InlineMathBlock latex="\ket{\omega}" />, so let&apos;s plot our
         starting point. We&apos;ll denote our starting state as{" "}
         <InlineMathBlock latex="\phi_0" /> as we have done before:
@@ -403,6 +461,7 @@ const Page = () => {
         only question is how many times do we have to rotate? i.e. how many
         times do we have to apply the Grover iterator?
       </p>
+      <h2>How many Grover iterations are needed?</h2>
       <p>
         To answer this, we&apos;ll have to look at the angles involved in the
         rotations. We can see this more easily on the following diagram:
@@ -428,7 +487,8 @@ const Page = () => {
       </p>
       <p>So what is the red angle?</p>
       <p>
-        We can use the following geometric result on the inner-product:{" "}
+        In this two-dimensional subspace with real coefficients, we can use the
+        following geometric result on the inner product:{" "}
         <InlineMathBlock latex="\braket{x|y} = \sqrt{\braket{x|x}}\sqrt{\braket{y|y}}\cos{\theta}" />
         . In our case <InlineMathBlock latex="\ket{s}" /> and{" "}
         <InlineMathBlock latex="\ket{s^\prime}" /> are unit vectors, so the
@@ -443,33 +503,69 @@ const Page = () => {
       <MathBlock latex="\sin{\theta} = \sqrt{\frac{1}{N}}" />
       <p>
         For small <InlineMathBlock latex="\theta" /> we have{" "}
-        <InlineMathBlock latex="\sin^{-1}{\theta} \approx \theta" /> so:
+        <InlineMathBlock latex="\sin{\theta} \approx \theta" /> so:
       </p>
       <MathBlock latex="\theta \approx \sqrt{\frac{1}{N}}" />
       <p>
-        Now remember every application of the Grover iterator rotates by{" "}
-        <InlineMathBlock latex="2\theta" /> so after{" "}
-        <InlineMathBlock latex="n" /> iterations we are at an angle of{" "}
-        <InlineMathBlock latex="(n+1)2\theta" />.
+        The starting state is already at an angle of{" "}
+        <InlineMathBlock latex="\theta" /> from{" "}
+        <InlineMathBlock latex="\ket{s^\prime}" />. Every application of the
+        Grover iterator adds <InlineMathBlock latex="2\theta" />, so after{" "}
+        <InlineMathBlock latex="r" /> iterations the angle is{" "}
+        <InlineMathBlock latex="(2r+1)\theta" />.
       </p>
       <p>
-        We reach the solution when this angle equals{" "}
-        <InlineMathBlock latex="\pi/2" /> which, when subbing into the previous
-        equation, is when <InlineMathBlock latex="n = \pi/4\theta - 1" />.
+        The solution direction is at an angle of{" "}
+        <InlineMathBlock latex="\pi/2" />. Solving for the ideal number of
+        iterations gives{" "}
+        <InlineMathBlock latex="r = \frac{\pi}{4\theta} - \frac{1}{2}" />. We
+        choose the nearest non-negative integer, since we can only apply a whole
+        number of Grover iterations.
       </p>
       <p>
         Subbing now in our approximation of <InlineMathBlock latex="\theta" />:
       </p>
-      <MathBlock latex="n = \frac{\pi}{4}\sqrt{N}-1" />
+      <MathBlock latex="r \approx \frac{\pi}{4}\sqrt{N}-\frac{1}{2}" />
+      <p>
+        After <InlineMathBlock latex="r" /> iterations, the success probability
+        is <InlineMathBlock latex="\sin^2((2r+1)\theta)" />. Continuing too far
+        past the solution direction decreases this probability again.
+      </p>
+      <h2>The quadratic query speedup</h2>
       <p>Wow, that was a lot of work! But we&apos;re finally done!</p>
       <p>
         We&apos;ve shown that we require only{" "}
-        <InlineMathBlock latex="\sim \sqrt{N}" /> steps to reach the solution.
+        <InlineMathBlock latex="\sim \sqrt{N}" /> Grover iterations, each using
+        one query to the solution oracle, to obtain a high probability of
+        measuring the solution.
       </p>
       <p>
-        Remember a classical algorithm would take <InlineMathBlock latex="N" />{" "}
-        steps, so we&apos;ve found a significant improvement!
+        Classical unstructured search requires a number of queries proportional
+        to <InlineMathBlock latex="N" /> in general. The improvement is
+        quadratic, as also explained in{" "}
+        <a href="https://quantum.cloud.ibm.com/learning/en/courses/fundamentals-of-quantum-algorithms/grover-algorithm/introduction">
+          IBM Quantum Learning&apos;s introduction to Grover&apos;s algorithm
+        </a>
+        .
       </p>
+      <h2>Related lessons</h2>
+      <ul>
+        <li>
+          <ArticleLink chapterId="quantum-algorithms" articleId="deutsch-jozsa">
+            Deutsch-Jozsa
+          </ArticleLink>
+          : compare another quantum algorithm that uses an oracle.
+        </li>
+        <li>
+          <ArticleLink
+            chapterId="quantum-algorithms"
+            articleId="quantum-fourier-transform"
+          >
+            Quantum Fourier Transform
+          </ArticleLink>
+          : explore another building block for quantum algorithms.
+        </li>
+      </ul>
     </Article>
   );
 };
