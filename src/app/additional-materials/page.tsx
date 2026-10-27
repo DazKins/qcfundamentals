@@ -1,3 +1,13 @@
+import { getPageMetadata } from "@/util/metadata";
+
+export const metadata = getPageMetadata({
+  title: "Additional Learning Materials | QCFundamentals",
+  description:
+    "Find quantum computing books, videos, courses and programming tools, plus quantum physics lectures, to support your studies and explore further.",
+  path: "/additional-materials",
+  image: "/qc.png",
+});
+
 const Page = () => {
   return (
     <div className="flex flex-col gap-5">

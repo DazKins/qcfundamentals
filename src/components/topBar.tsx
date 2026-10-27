@@ -31,7 +31,7 @@ const TopBar = () => {
           <Link href={"/"}>
             <Image
               src="/logo.svg"
-              alt="bloch-sphere-0"
+              alt="QCFundamentals home"
               width={300}
               height={54}
             />

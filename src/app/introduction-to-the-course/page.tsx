@@ -1,3 +1,13 @@
+import { getPageMetadata } from "@/util/metadata";
+
+export const metadata = getPageMetadata({
+  title: "Introduction to the Course | QCFundamentals",
+  description:
+    "Discover the mathematics-first approach of QCFundamentals, the high-school maths background you need, and how the course prepares you for further study.",
+  path: "/introduction-to-the-course",
+  image: "/qc.png",
+});
+
 const Page = () => {
   return (
     <div className="flex flex-col gap-4">
@@ -18,7 +28,7 @@ const Page = () => {
         there that will primarily focus on visuals, animations and intuition.
         This is not wrong. We highly encourage you check them out (you can see
         them detailed in the{" "}
-        <a href="additionalMaterials">Additional Materials</a> section), but the
+        <a href="/additional-materials">Additional Materials</a> section), but the
         aim of QCFundamentals is to teach you in a way that will easily allow
         you to continue on to further study. The mathematical language/notation
         we use in the course is the same as the language used in academic papers

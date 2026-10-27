@@ -17,6 +17,7 @@ export default function RootLayout({
 }) {
   return (
     <html
+      lang="en"
       className={`bg-black text-white leading-7 tracking-wide ${normal.className}`}
     >
       <body>
