@@ -9,13 +9,32 @@ const Page = () => {
   return (
     <Chapter>
       <p>
-        In this chapter we&apos;ll start to take a look at some interesting
-        algorithms that we can run on quantum computers.
+        A quantum algorithm uses superposition and interference, and sometimes
+        entanglement, to answer a specific question in fewer steps than the best
+        classical method we know.
       </p>
       <p>
-        We&apos;ll look at some scenarios in which quantum computers can be more
-        powerful than a classical computer by being able to solve specific
-        problems faster using things like superposition and entanglement.
+        Each lesson below derives one algorithm in full.{" "}
+        <a href="/chapter/quantum-algorithms/article/deutsch-jozsa">
+          Deutsch-Jozsa
+        </a>{" "}
+        separates constant and balanced functions with a single query.{" "}
+        <a href="/chapter/quantum-algorithms/article/grover-search">
+          Grover search
+        </a>{" "}
+        finds a marked item in an unordered list. The{" "}
+        <a href="/chapter/quantum-algorithms/article/quantum-fourier-transform">
+          quantum Fourier transform
+        </a>{" "}
+        is the engine of{" "}
+        <a href="/chapter/quantum-algorithms/article/order-finding">
+          order finding
+        </a>
+        , and{" "}
+        <a href="/chapter/quantum-algorithms/article/shor">
+          Shor&apos;s algorithm
+        </a>{" "}
+        turns that order into the prime factors of a composite integer.
       </p>
     </Chapter>
   );

@@ -4,19 +4,29 @@ export type ChapterId = string;
 
 export type ChapterDefinition = {
   id: ChapterId;
+  // Short label used in navigation and on the homepage.
   title: string;
   description: string;
   articles: ArticleDefinition[];
   comingSoon?: boolean;
+  // Document title, without the site suffix. Defaults to `${title} Overview`.
+  pageTitle?: string;
+  // Visible H1. Defaults to title, so navigation labels can stay short.
+  heading?: string;
 };
 
 export type ArticleId = string;
 
 export type ArticleDefinition = {
   id: ArticleId;
+  // Short label used in navigation, contents lists and the homepage.
   title: string;
   description: string;
   comingSoon?: boolean;
+  // Document title, without the site suffix. Defaults to title.
+  pageTitle?: string;
+  // Visible H1. Defaults to title, so navigation labels can stay short.
+  heading?: string;
 };
 
 export const ChapterDefinitions: ChapterDefinition[] = [
@@ -35,8 +45,10 @@ export const ChapterDefinitions: ChapterDefinition[] = [
       {
         title: "Groups",
         id: "groups",
+        pageTitle: "Mathematical Groups",
+        heading: "Mathematical Groups",
         description:
-          "Understand mathematical groups through rotations and reflections of a triangle, then explore closure, associativity, identity and inverses with exercises.",
+          "What a mathematical group is, using rotations and reflections of a triangle, then closure, associativity, the identity and inverses.",
       },
       {
         title: "Fields",
@@ -59,8 +71,10 @@ export const ChapterDefinitions: ChapterDefinition[] = [
       {
         title: "Bra-Ket Notation",
         id: "bra-ket-notation",
+        pageTitle: "Bra-Ket Notation for Quantum Computing",
+        heading: "Bra-Ket Notation for Quantum Computing",
         description:
-          "Learn to use bras, kets, inner products and outer products, and express vectors and linear operators in the notation used throughout quantum computing.",
+          "Dirac bra-ket notation for quantum computing: what a bra and a ket represent, how the inner product is written, and how outer products represent operators.",
       },
     ],
   },
@@ -79,20 +93,26 @@ export const ChapterDefinitions: ChapterDefinition[] = [
       {
         title: "Single Qubit Gates",
         id: "single-qubit-gates",
+        pageTitle: "Single-Qubit Gates: Pauli and Hadamard",
+        heading: "Single-Qubit Gates: Pauli and Hadamard",
         description:
-          "Learn how single-qubit gates act on quantum states, from the NOT and Hadamard gates to circuit diagrams and outer-product representations.",
+          "How the Pauli X, Y and Z gates and the Hadamard gate change a single-qubit state, with circuit diagrams and outer products.",
       },
       {
         title: "Multiple Qubits",
         id: "multiple-qubits",
+        pageTitle: "Multiple Qubits and Tensor Products",
+        heading: "Multiple Qubits and Tensor Products",
         description:
-          "Learn how tensor products describe multiple qubits, combine quantum states and build computational bases, with worked examples and exercises.",
+          "How the tensor product builds a multiple-qubit state, combines quantum states and forms the computational basis, with examples.",
       },
       {
         title: "Multi Qubit Gates",
         id: "multi-qubit-gates",
+        pageTitle: "Multi-Qubit Gates: CNOT and SWAP",
+        heading: "Multi-Qubit Gates: CNOT and SWAP",
         description:
-          "Explore multi-qubit quantum gates, including CNOT and SWAP, and use linear operators to understand quantum circuits and the no-cloning theorem.",
+          "How CNOT and SWAP act on two qubits, how to write those gates as linear operators, and why the no-cloning theorem holds.",
       },
     ],
   },
@@ -105,8 +125,10 @@ export const ChapterDefinitions: ChapterDefinition[] = [
       {
         title: "Entanglement",
         id: "entanglement",
+        pageTitle: "Quantum Entanglement",
+        heading: "Quantum Entanglement",
         description:
-          "Learn how entangled states differ from separable states, how quantum circuits create EPR pairs, and how measurement links the outcomes of entangled qubits.",
+          "Quantum entanglement: how it differs from a separable state, how a circuit creates an EPR pair, and how measurement links the two qubits.",
       },
       {
         title: "Teleportation",
@@ -125,14 +147,18 @@ export const ChapterDefinitions: ChapterDefinition[] = [
   {
     id: "quantum-algorithms",
     description:
-      "Study quantum algorithms step by step, including Deutsch-Jozsa, Grover search, the quantum Fourier transform, order finding and Shor's algorithm.",
+      "A chapter deriving Deutsch-Jozsa, Grover search, the quantum Fourier transform, order finding and Shor's algorithm from the circuit up.",
     title: "Quantum Algorithms",
+    pageTitle: "Quantum Algorithms: Deutsch-Jozsa to Shor",
+    heading: "Quantum Algorithms: Deutsch-Jozsa to Shor",
     articles: [
       {
         title: "Deutsch-Jozsa",
         id: "deutsch-jozsa",
+        pageTitle: "The Deutsch-Jozsa Algorithm",
+        heading: "The Deutsch-Jozsa Algorithm",
         description:
-          "Derive the Deutsch-Jozsa algorithm and learn how a quantum oracle distinguishes constant and balanced functions with one query, including an n-bit exercise.",
+          "How the Deutsch-Jozsa algorithm tells a constant function from a balanced one with a single quantum query, including an n-bit exercise.",
       },
       {
         title: "Grover Search",
@@ -149,14 +175,18 @@ export const ChapterDefinitions: ChapterDefinition[] = [
       {
         title: "Order Finding",
         id: "order-finding",
+        pageTitle: "Quantum Order-Finding Algorithm",
+        heading: "Quantum Order-Finding Algorithm",
         description:
-          "Learn quantum order finding with modular arithmetic, the quantum Fourier transform and continued fractions, preparing for integer factorisation.",
+          "How quantum order finding uses modular arithmetic, the quantum Fourier transform and continued fractions to recover the period Shor's algorithm needs.",
       },
       {
         title: "Shor's Algorithm",
         id: "shor",
+        pageTitle: "Shor's Algorithm for Factoring",
+        heading: "Shor's Algorithm for Factoring",
         description:
-          "Learn how Shor's algorithm uses quantum order finding and classical greatest common divisors to factor composite integers, with a worked exercise.",
+          "How Shor's algorithm factors a composite integer: quantum order finding supplies the period, then the greatest common divisor recovers the prime factors.",
       },
     ],
   },
@@ -239,8 +269,11 @@ export const getChapterDefinition = (
 export const getChapterPageMetadata = (chapterId: string) => {
   const chapterDefinition = getChapterDefinition(chapterId);
 
+  const pageTitle =
+    chapterDefinition.pageTitle ?? `${chapterDefinition.title} Overview`;
+
   return getPageMetadata({
-    title: `${chapterDefinition.title} Overview | QCFundamentals`,
+    title: `${pageTitle} | QCFundamentals`,
     description: chapterDefinition.description,
     path: `/chapter/${chapterDefinition.id}`,
     image: "/qc.png",
@@ -276,7 +309,7 @@ export const getArticlePageMetadata = (
   const articleDefinition = getArticleDefinition(chapterId, articleId);
 
   return getPageMetadata({
-    title: `${articleDefinition.title} | QCFundamentals`,
+    title: `${articleDefinition.pageTitle ?? articleDefinition.title} | QCFundamentals`,
     description: articleDefinition.description,
     path: `/chapter/${chapterId}/article/${articleDefinition.id}`,
     image: "/qc.png",

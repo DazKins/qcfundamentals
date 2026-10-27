@@ -30,7 +30,7 @@ const Chapter = ({ children }: Props) => {
       <p>
         <a href="/">{"<"} Home</a>
       </p>
-      <h1>{chapterDefinition.title}</h1>
+      <h1>{chapterDefinition.heading ?? chapterDefinition.title}</h1>
       {children}
       <h2>Contents</h2>
       <ul className="list-inside">
