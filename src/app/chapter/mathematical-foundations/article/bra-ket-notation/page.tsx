@@ -14,16 +14,48 @@ const Page = () => {
   return (
     <Article>
       <p>
-        We&apos;re now going to cover a slightly different notation for doing
-        linear algebra called Bra-ket notation. It was invented by Paul Dirac
-        ins his 1939 publication &quot;A New Notation for Quantum
-        Mechanics&quot;. Although it won&apos;t be immmediately obvious, this
-        notation will be very convenient as we jump into quantum computing
+        Bra-ket notation, also called Dirac notation, is a way to write vectors,
+        inner products and linear operators. In quantum computing, it gives us a
+        compact language for describing quantum states and the gates that act on
+        them.
       </p>
       <p>
-        This notation will give us many new and interesting tools to use, but we
-        will just cover the basics in this article as we&apos;ve already spent
-        long enough build the mathematical foundations.
+        We&apos;ll build on the linear algebra we already know, work through
+        examples with basis vectors, and finish with exercises using the Pauli
+        operators.
+      </p>
+      <h2>What you will learn</h2>
+      <ul>
+        <li>Read bras and kets, and distinguish inner from outer products.</li>
+        <li>Write a vector as a sum of orthonormal basis vectors.</li>
+        <li>
+          Express linear operators as outer products and apply them to kets.
+        </li>
+      </ul>
+      <h2>Prerequisites</h2>
+      <p>
+        You should be comfortable with{" "}
+        <ArticleLink
+          chapterId="mathematical-foundations"
+          articleId="complex-numbers"
+        >
+          complex numbers and conjugation
+        </ArticleLink>
+        ,{" "}
+        <ArticleLink
+          chapterId="mathematical-foundations"
+          articleId="vector-spaces"
+        >
+          vector spaces and bases
+        </ArticleLink>
+        , and the inner products and operators introduced in{" "}
+        <ArticleLink
+          chapterId="mathematical-foundations"
+          articleId="linear-algebra"
+        >
+          linear algebra
+        </ArticleLink>
+        .
       </p>
       <h2>Definitions</h2>
       <p>There are 4 fundamental objects we will use:</p>
@@ -107,23 +139,25 @@ const Page = () => {
         <InlineMathBlock latex="\ket{w}" /> as vectors I&apos;m going to define
         the following:
       </p>
-      <MathBlock latex="\ket{0},\ket{1},\ket{2},...,\ket{d} \in V \qquad \text{and} \qquad \braket{i|j}=\begin{cases}1\text{  if  }i = j \\ 0\text{  if  }i\neq j\end{cases}" />
+      <MathBlock latex="\ket{0},\ket{1},\ldots,\ket{d-1} \in V \qquad \text{and} \qquad \braket{i|j}=\begin{cases}1\text{  if  }i = j \\ 0\text{  if  }i\neq j\end{cases}" />
       <p>
-        So we have <InlineMathBlock latex="d" /> vectors, that are members of
-        the vector space <InlineMathBlock latex="V" />. They are all orthogonal
-        to eachother. That is, the inner product of any two vectors is 0. They
-        are also normal, as the inner product of a vector with itself is 1.
+        So we have <InlineMathBlock latex="d" /> vectors in the{" "}
+        <InlineMathBlock latex="d" />
+        -dimensional vector space <InlineMathBlock latex="V" />, with labels
+        from 0 to <InlineMathBlock latex="d-1" />. Distinct basis vectors are
+        orthogonal: their inner product is 0. Each vector is also normalised,
+        with an inner product of 1 with itself.
       </p>
       <p>
         So the vectors{" "}
-        <InlineMathBlock latex="\ket{0}, \ket{1}, \ldots, \ket{d}" /> form an
+        <InlineMathBlock latex="\ket{0}, \ket{1}, \ldots, \ket{d-1}" /> form an
         orthonormal basis of dimension <InlineMathBlock latex="d" />.
       </p>
       <p>
         An arbitrary vector <InlineMathBlock latex="\ket{v}" /> in our space{" "}
         <InlineMathBlock latex="V" /> can then be defined as:
       </p>
-      <MathBlock latex="\ket{v}= v_0\ket{0} + v_1\ket{1} + \ldots + v_d\ket{d} = \sum_i{v_i\ket{i}}" />
+      <MathBlock latex="\ket{v}= v_0\ket{0} + v_1\ket{1} + \ldots + v_{d-1}\ket{d-1} = \sum_{i=0}^{d-1}{v_i\ket{i}}" />
       <h2>Linear operators as outer products</h2>
       <p>
         We&apos;ve already seen how the outer product of two vectors can give us
@@ -134,7 +168,7 @@ const Page = () => {
         The most basic operator we will investigate first is the identity
         operator:
       </p>
-      <MathBlock latex="I = \ket{0}\bra{0} + \ket{1}\bra{1} + \ldots + \ket{d}\bra{d} = \sum_i\ket{i}\bra{i}" />
+      <MathBlock latex="I = \ket{0}\bra{0} + \ket{1}\bra{1} + \ldots + \ket{d-1}\bra{d-1} = \sum_{i=0}^{d-1}\ket{i}\bra{i}" />
       <p>
         It might not be intuitive how that works at first, so let&apos;s try it
         out on our arbitrary vector <InlineMathBlock latex="\ket{v}" /> defined
@@ -319,11 +353,11 @@ const Page = () => {
               ]}
             />
             <p>
-              Checking the other cases will reveal the pattern that when
-              multiplying two of these operators that are different in
-              alphabetical order we get <InlineMathBlock latex="i" /> times the
-              other operator. If we multiply them not in alphabetical order we
-              get <InlineMathBlock latex="-i" /> times the other operator.
+              Checking the other cases reveals a cyclic pattern:{" "}
+              <InlineMathBlock latex="XY=iZ,\quad YZ=iX,\quad ZX=iY" />.
+              Reversing the order of any of these products changes the sign, so
+              we get <InlineMathBlock latex="-i" /> times the remaining Pauli
+              operator.
             </p>
             <p>
               We should also investigate the case of when we multiply an
@@ -351,6 +385,30 @@ const Page = () => {
           </>
         }
       />
+      <h2>Related lessons</h2>
+      <ul>
+        <li>
+          <ArticleLink chapterId="qubits-and-gates" articleId="qubits">
+            Qubits
+          </ArticleLink>
+          : use bra-ket notation to describe quantum states and measurement.
+        </li>
+        <li>
+          <ArticleLink
+            chapterId="qubits-and-gates"
+            articleId="single-qubit-gates"
+          >
+            Single Qubit Gates
+          </ArticleLink>
+          : see the Pauli operators act as quantum gates.
+        </li>
+        <li>
+          <ArticleLink chapterId="quantum-algorithms" articleId="grover-search">
+            Grover Search
+          </ArticleLink>
+          : see how outer products describe reflections in a quantum algorithm.
+        </li>
+      </ul>
     </Article>
   );
 };
