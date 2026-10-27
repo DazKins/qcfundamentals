@@ -69,7 +69,7 @@ const Article = ({ children }: { children: ReactNode }) => {
             </a>
           ))}
       </div>
-      <h1>{articleDefinition.title}</h1>
+      <h1>{articleDefinition.heading ?? articleDefinition.title}</h1>
       {children}
       {nextArticleId &&
         (getArticleDefinition(chapterId, nextArticleId).comingSoon ? (

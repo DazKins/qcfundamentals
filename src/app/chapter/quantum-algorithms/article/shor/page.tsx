@@ -15,8 +15,8 @@ const Page = () => {
     <Article>
       <p>
         We&apos;re here! We&apos;ve made it. Finally after all the build-up,
-        we&apos;re finally ready to see how quantum computers can factor large
-        numbers into prime factors!
+        we&apos;re ready for Shor&apos;s algorithm: how a quantum computer
+        factors a large composite number into primes.
       </p>
       <p>
         And quite surprisingly, this may be one of the shortest articles. We
@@ -53,6 +53,7 @@ const Page = () => {
         solving the order-finding problem and then showed that that algorithm
         gives us a way to do factorisation.
       </p>
+      <h2>From the order to the factors</h2>
       <p>
         Let&apos;s see how we can use order-finding to factor{" "}
         <InlineMathBlock latex="N" />!
@@ -166,8 +167,8 @@ const Page = () => {
               First we must choose our <InlineMathBlock latex="1 < a < 15" />{" "}
               that is co-prime to <InlineMathBlock latex="15" />. It turns out{" "}
               <InlineMathBlock latex="a=4" /> gets us the solution pretty
-              quickly, but to demonstrate a slightly more complex example we&apos;ll
-              choose <InlineMathBlock latex="a=7" />.
+              quickly, but to demonstrate a slightly more complex example
+              we&apos;ll choose <InlineMathBlock latex="a=7" />.
             </p>
             <p>
               First, we must calculate the order <InlineMathBlock latex="r" />{" "}
