@@ -1,7 +1,6 @@
 import type { MetadataRoute } from "next";
 import { ChapterDefinitions } from "@/course/courseStructure";
-
-const SITE_URL = "https://qcfundamentals.com";
+import { canonicalUrl } from "@/util/canonicalUrl.mjs";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const paths = [
@@ -20,5 +19,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ),
   ];
 
-  return paths.map((path) => ({ url: new URL(path, SITE_URL).href }));
+  return paths.map((path) => ({ url: canonicalUrl(path) }));
 }

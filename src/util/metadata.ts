@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SITE_ORIGIN, canonicalUrl } from "./canonicalUrl.mjs";
 
 export const getPageMetadata = ({
   title,
@@ -14,11 +15,15 @@ export const getPageMetadata = ({
   image?: string;
   type?: "website" | "article";
 }): Metadata => {
+  // Absolute self URL. A relative path depends on metadataBase resolution; an
+  // absolute URL is the preferred URL Google documents for rel=canonical.
+  const canonical = path ? canonicalUrl(path) : undefined;
+
   return {
     openGraph: {
       title: title,
       type: type ?? "website",
-      url: path,
+      url: canonical,
       images: image,
       description,
     },
@@ -29,7 +34,7 @@ export const getPageMetadata = ({
     },
     title: title,
     description,
-    alternates: path ? { canonical: path } : undefined,
-    metadataBase: new URL("https://qcfundamentals.com"),
+    alternates: canonical ? { canonical } : undefined,
+    metadataBase: new URL(SITE_ORIGIN),
   };
 };

@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { readdir, readFile } from "node:fs/promises";
 import path from "node:path";
+import { canonicalUrl } from "../src/util/canonicalUrl.mjs";
 
 // Run after `npm run build` to verify the actual metadata route output.
 async function pagePaths(directory = "src/app") {
@@ -20,9 +21,7 @@ const robots = await readFile(".next/server/app/robots.txt.body", "utf8");
 const locations = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map(
   (match) => match[1],
 );
-const expected = (await pagePaths()).map(
-  (route) => new URL(route, "https://qcfundamentals.com").href,
-);
+const expected = (await pagePaths()).map((route) => canonicalUrl(route));
 assert.match(
   xml,
   /<urlset xmlns="http:\/\/www.sitemaps.org\/schemas\/sitemap\/0.9">/,
