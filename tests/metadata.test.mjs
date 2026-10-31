@@ -3,6 +3,8 @@ import { existsSync, readFileSync, readdirSync } from "node:fs";
 import path from "node:path";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
+import { canonicalUrl } from "../src/util/canonicalUrl.mjs";
+import { canonicalLinkHeaders } from "../src/util/indexablePages.mjs";
 
 // Run after `npm run build`: node --test tests/metadata.test.mjs
 // Inspect rendered HTML so missing exports and Next.js metadata inheritance are
@@ -104,7 +106,7 @@ for (const route of routes) {
   test(`${route} has complete, self-referencing search and social metadata`, () => {
     const metadata = metadataFor(route);
     metadataByRoute.set(route, metadata);
-    const canonical = new URL(route, origin).href;
+    const canonical = canonicalUrl(route);
     const description = metadata.meta("description");
 
     assert.ok(metadata.title.trim(), `${route}: empty title`);
@@ -113,9 +115,10 @@ for (const route of routes) {
       /QCFundamentals$/,
       `${route}: missing site name`,
     );
-    // Next.js may omit the trailing slash on the origin-only homepage URL.
-    assert.equal(new URL(metadata.canonical).href, canonical);
-    assert.equal(new URL(metadata.meta("og:url")).href, canonical);
+    // Exact string, not URL-normalized: the homepage must stay the bare origin,
+    // and every other page must be that origin plus its slash-free path.
+    assert.equal(metadata.canonical, canonical);
+    assert.equal(metadata.meta("og:url"), canonical);
     assert.equal(metadata.meta("og:title"), metadata.title);
     assert.equal(metadata.meta("twitter:title"), metadata.title);
     assert.equal(metadata.meta("og:description"), description);
@@ -154,28 +157,28 @@ test("high-impression pages use query-aligned titles, descriptions and headings"
     [
       "/chapter/mathematical-foundations/article/bra-ket-notation",
       {
-        title: "Bra-Ket Notation for Quantum Computing | QCFundamentals",
-        h1: "Bra-Ket Notation for Quantum Computing",
+        title: "Dirac Bra-Ket Notation Explained | QCFundamentals",
+        h1: "Dirac Bra-Ket Notation Explained",
         description:
-          "Dirac bra-ket notation for quantum computing: what a bra and a ket represent, how the inner product is written, and how outer products represent operators.",
+          "Dirac bra-ket notation explained: kets are states, bras are dual vectors, the inner product is a bra acting on a ket, and an outer product is an operator.",
       },
     ],
     [
       "/chapter/mathematical-foundations/article/groups",
       {
-        title: "Mathematical Groups | QCFundamentals",
-        h1: "Mathematical Groups",
+        title: "What Is a Mathematical Group? | QCFundamentals",
+        h1: "What Is a Mathematical Group?",
         description:
-          "What a mathematical group is, using rotations and reflections of a triangle, then closure, associativity, the identity and inverses.",
+          "What a mathematical group is: symmetries of a triangle, then closure, associativity, an identity, inverses and a well-defined operation.",
       },
     ],
     [
       "/chapter/qubits-and-gates/article/single-qubit-gates",
       {
-        title: "Single-Qubit Gates: Pauli and Hadamard | QCFundamentals",
-        h1: "Single-Qubit Gates: Pauli and Hadamard",
+        title: "Pauli X, Y, Z and the Hadamard Gate | QCFundamentals",
+        h1: "Pauli X, Y, Z and the Hadamard Gate",
         description:
-          "How the Pauli X, Y and Z gates and the Hadamard gate change a single-qubit state, with circuit diagrams and outer products.",
+          "How Pauli X, Y and Z and the Hadamard gate act on one qubit, with outer products, circuits and the superposition the Hadamard gate creates.",
       },
     ],
     [
@@ -190,10 +193,10 @@ test("high-impression pages use query-aligned titles, descriptions and headings"
     [
       "/chapter/qubits-and-gates/article/multi-qubit-gates",
       {
-        title: "Multi-Qubit Gates: CNOT and SWAP | QCFundamentals",
-        h1: "Multi-Qubit Gates: CNOT and SWAP",
+        title: "CNOT and SWAP: Two-Qubit Gates | QCFundamentals",
+        h1: "CNOT and SWAP: Two-Qubit Gates",
         description:
-          "How CNOT and SWAP act on two qubits, how to write those gates as linear operators, and why the no-cloning theorem holds.",
+          "How the CNOT gate flips a target qubit and the SWAP gate exchanges two qubits, written as operators, and why quantum states cannot be cloned.",
       },
     ],
     [
@@ -253,8 +256,27 @@ test("high-impression pages use query-aligned titles, descriptions and headings"
       page.description.length <= 160,
       `${route}: description is ${page.description.length} characters`,
     );
-    assert.equal(new URL(metadata.canonical).href, new URL(route, origin).href);
+    assert.equal(metadata.canonical, canonicalUrl(route));
   }
+});
+
+test("configured Link canonicals match the self-referencing HTML canonical", () => {
+  const headers = canonicalLinkHeaders(appDirectory);
+  assert.equal(headers.length, routes.length);
+  const qft = "/chapter/quantum-algorithms/article/quantum-fourier-transform";
+  for (const header of headers) {
+    const metadata = metadataByRoute.get(header.source);
+    assert.ok(metadata, `${header.source}: page was not rendered`);
+    assert.equal(header.headers.length, 1);
+    assert.equal(
+      header.headers[0].value,
+      `<${metadata.canonical}>; rel="canonical"`,
+    );
+  }
+  assert.equal(
+    metadataByRoute.get(qft).canonical,
+    "https://qcfundamentals.com/chapter/quantum-algorithms/article/quantum-fourier-transform",
+  );
 });
 
 test("the entanglement chapter overview and lesson have distinct titles", () => {

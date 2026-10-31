@@ -45,10 +45,10 @@ export const ChapterDefinitions: ChapterDefinition[] = [
       {
         title: "Groups",
         id: "groups",
-        pageTitle: "Mathematical Groups",
-        heading: "Mathematical Groups",
+        pageTitle: "What Is a Mathematical Group?",
+        heading: "What Is a Mathematical Group?",
         description:
-          "What a mathematical group is, using rotations and reflections of a triangle, then closure, associativity, the identity and inverses.",
+          "What a mathematical group is: symmetries of a triangle, then closure, associativity, an identity, inverses and a well-defined operation.",
       },
       {
         title: "Fields",
@@ -71,10 +71,10 @@ export const ChapterDefinitions: ChapterDefinition[] = [
       {
         title: "Bra-Ket Notation",
         id: "bra-ket-notation",
-        pageTitle: "Bra-Ket Notation for Quantum Computing",
-        heading: "Bra-Ket Notation for Quantum Computing",
+        pageTitle: "Dirac Bra-Ket Notation Explained",
+        heading: "Dirac Bra-Ket Notation Explained",
         description:
-          "Dirac bra-ket notation for quantum computing: what a bra and a ket represent, how the inner product is written, and how outer products represent operators.",
+          "Dirac bra-ket notation explained: kets are states, bras are dual vectors, the inner product is a bra acting on a ket, and an outer product is an operator.",
       },
     ],
   },
@@ -93,10 +93,10 @@ export const ChapterDefinitions: ChapterDefinition[] = [
       {
         title: "Single Qubit Gates",
         id: "single-qubit-gates",
-        pageTitle: "Single-Qubit Gates: Pauli and Hadamard",
-        heading: "Single-Qubit Gates: Pauli and Hadamard",
+        pageTitle: "Pauli X, Y, Z and the Hadamard Gate",
+        heading: "Pauli X, Y, Z and the Hadamard Gate",
         description:
-          "How the Pauli X, Y and Z gates and the Hadamard gate change a single-qubit state, with circuit diagrams and outer products.",
+          "How Pauli X, Y and Z and the Hadamard gate act on one qubit, with outer products, circuits and the superposition the Hadamard gate creates.",
       },
       {
         title: "Multiple Qubits",
@@ -109,10 +109,10 @@ export const ChapterDefinitions: ChapterDefinition[] = [
       {
         title: "Multi Qubit Gates",
         id: "multi-qubit-gates",
-        pageTitle: "Multi-Qubit Gates: CNOT and SWAP",
-        heading: "Multi-Qubit Gates: CNOT and SWAP",
+        pageTitle: "CNOT and SWAP: Two-Qubit Gates",
+        heading: "CNOT and SWAP: Two-Qubit Gates",
         description:
-          "How CNOT and SWAP act on two qubits, how to write those gates as linear operators, and why the no-cloning theorem holds.",
+          "How the CNOT gate flips a target qubit and the SWAP gate exchanges two qubits, written as operators, and why quantum states cannot be cloned.",
       },
     ],
   },
