@@ -161,8 +161,14 @@ const Page = () => {
       <p>
         We call this value <InlineMathBlock latex="r" /> the order. Generally,
         computing the order is really difficult. At least for classical
-        computers. We&apos;ll now apply the quantum fourier transform in order
-        to solve it more easily using a quantum computer.
+        computers. We&apos;ll now apply the{" "}
+        <ArticleLink
+          chapterId="quantum-algorithms"
+          articleId="quantum-fourier-transform"
+        >
+          quantum Fourier transform
+        </ArticleLink>{" "}
+        in order to solve it more easily using a quantum computer.
       </p>
       <p>
         Like a lot of quantum algorithms, lets start by introducing an oracle.
@@ -407,8 +413,12 @@ const Page = () => {
         for now.
       </p>
       <p>
-        In the next article we&apos;ll use what we&apos;ve learned to factor
-        prime numbers!
+        <ArticleLink chapterId="quantum-algorithms" articleId="shor">
+          Shor&apos;s algorithm
+        </ArticleLink>{" "}
+        uses this order to factor a composite integer into primes. Both lessons
+        are in the <a href="/chapter/quantum-algorithms">quantum algorithms</a>{" "}
+        chapter.
       </p>
     </Article>
   );

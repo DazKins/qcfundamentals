@@ -1,4 +1,5 @@
 import Article from "@/components/article";
+import ArticleLink from "@/components/articleLink";
 import Exercise from "@/components/exercise";
 import InlineMathBlock from "@/components/inlineMathBlock";
 import MathBlock from "@/components/mathBlock";
@@ -14,14 +15,103 @@ const Page = () => {
   return (
     <Article>
       <p>
-        We&apos;re here! We&apos;ve made it. Finally after all the build-up,
-        we&apos;re ready for Shor&apos;s algorithm: how a quantum computer
-        factors a large composite number into primes.
+        Shor&apos;s algorithm factors a composite integer into primes. It
+        reduces factoring <InlineMathBlock latex="N" /> to{" "}
+        <ArticleLink chapterId="quantum-algorithms" articleId="order-finding">
+          order finding
+        </ArticleLink>
+        : choose an integer <InlineMathBlock latex="a" /> that is co-prime to{" "}
+        <InlineMathBlock latex="N" /> and find the smallest positive integer{" "}
+        <InlineMathBlock latex="r" /> such that{" "}
+        <InlineMathBlock latex="a^r \equiv 1\ (\text{mod}\ N)" />. A quantum
+        computer finds that order with the{" "}
+        <ArticleLink
+          chapterId="quantum-algorithms"
+          articleId="quantum-fourier-transform"
+        >
+          quantum Fourier transform
+        </ArticleLink>
+        . When <InlineMathBlock latex="r" /> is even, and{" "}
+        <InlineMathBlock latex="a^{r/2} \not\equiv -1\ (\text{mod}\ N)" />, the
+        greatest common divisors of <InlineMathBlock latex="N" /> with{" "}
+        <InlineMathBlock latex="a^{r/2} - 1" /> and with{" "}
+        <InlineMathBlock latex="a^{r/2} + 1" /> are non-trivial factors. This
+        lesson derives that classical step. The quantum subroutine is the
+        order-finding lesson.
       </p>
+      <h2>What you will learn</h2>
+      <ul>
+        <li>
+          State what Shor&apos;s algorithm factors, and which step is quantum.
+        </li>
+        <li>
+          Turn an even order into two factors with the greatest common divisor.
+        </li>
+        <li>
+          See why an odd order, or a trivial divisor, means trying another base.
+        </li>
+        <li>
+          Factor <InlineMathBlock latex="15" /> from the order of{" "}
+          <InlineMathBlock latex="7" /> modulo <InlineMathBlock latex="15" />.
+        </li>
+      </ul>
+      <h2>Prerequisites</h2>
       <p>
-        And quite surprisingly, this may be one of the shortest articles. We
-        won&apos;t even use any quantum computing here!
+        Read{" "}
+        <ArticleLink chapterId="quantum-algorithms" articleId="order-finding">
+          order finding
+        </ArticleLink>{" "}
+        first. That lesson uses the{" "}
+        <ArticleLink
+          chapterId="quantum-algorithms"
+          articleId="quantum-fourier-transform"
+        >
+          quantum Fourier transform
+        </ArticleLink>{" "}
+        and continued fractions to recover <InlineMathBlock latex="r" />. Both
+        sit in the{" "}
+        <Link href="/chapter/quantum-algorithms">quantum algorithms</Link>{" "}
+        chapter.
       </p>
+      <h2>How Shor&apos;s algorithm works</h2>
+      <p>
+        Let <InlineMathBlock latex="N" /> be composite. The procedure is:
+      </p>
+      <ol className="list-decimal list-inside">
+        <li>
+          Pick a random integer <InlineMathBlock latex="a" /> with{" "}
+          <InlineMathBlock latex="1 < a < N" />. If{" "}
+          <InlineMathBlock latex="\gcd(a, N)" /> is not{" "}
+          <InlineMathBlock latex="1" />, that divisor is already a factor of{" "}
+          <InlineMathBlock latex="N" />.
+        </li>
+        <li>
+          Otherwise <InlineMathBlock latex="a" /> and{" "}
+          <InlineMathBlock latex="N" /> are co-prime, so an order{" "}
+          <InlineMathBlock latex="r" /> exists.{" "}
+          <ArticleLink chapterId="quantum-algorithms" articleId="order-finding">
+            Quantum order finding
+          </ArticleLink>{" "}
+          returns the smallest such <InlineMathBlock latex="r" />.
+        </li>
+        <li>
+          If <InlineMathBlock latex="r" /> is odd, try another{" "}
+          <InlineMathBlock latex="a" />. If <InlineMathBlock latex="r = 2m" />{" "}
+          is even and{" "}
+          <InlineMathBlock latex="a^m \not\equiv -1\ (\text{mod}\ N)" />, then{" "}
+          <InlineMathBlock latex="\gcd(N, a^m - 1)" /> and{" "}
+          <InlineMathBlock latex="\gcd(N, a^m + 1)" /> are non-trivial factors
+          of <InlineMathBlock latex="N" />.
+        </li>
+      </ol>
+      <p>
+        Shor&apos;s algorithm was first proposed by{" "}
+        <Link href="https://en.wikipedia.org/wiki/Peter_Shor">Peter Shor</Link>{" "}
+        in 1994. In &quot;Algorithms for Quantum Computation: Discrete
+        Logarithms and Factoring&quot; he presented the quantum algorithm for
+        order finding, then showed that the order gives a factorisation.
+      </p>
+      <h2>Why factoring matters</h2>
       <p>
         Being able to factor large numbers is hugely important since it forms
         the backbone of all modern encryption. Specifically, RSA encryption uses
@@ -31,7 +121,7 @@ const Page = () => {
         large prime numbers. <InlineMathBlock latex="N" /> forms the
         &quot;public&quot; key that is exposed to everyone and{" "}
         <InlineMathBlock latex="p" /> and <InlineMathBlock latex="q" /> form the
-        &quot;private&quot; that should be kept secret.
+        private key that should be kept secret.
       </p>
       <p>
         So we can see that having some machine that could factor composite
@@ -43,15 +133,6 @@ const Page = () => {
         know that factoring <InlineMathBlock latex="N" /> would give an attacker
         the ability to read any encrypted message sent to the owner of the
         private keys.
-      </p>
-      <p>
-        Shor&apos;s algorithm was first proposed by{" "}
-        <Link href="https://en.wikipedia.org/wiki/Peter_Shor">Peter Shor</Link>{" "}
-        in 1994. In fact, we&apos;ve already seen half of it. In his original
-        paper: &quot;Algorithms for Quantum Computation: Discrete Logarithms and
-        Factoring&quot; he first presented the fast quantum algorithm for
-        solving the order-finding problem and then showed that that algorithm
-        gives us a way to do factorisation.
       </p>
       <h2>From the order to the factors</h2>
       <p>
@@ -75,9 +156,11 @@ const Page = () => {
       </p>
       <MathBlock latex="a^r \equiv 1\ (\text{mod}\ N)" />
       <p>
-        This is our order-finding problem. We simply use our fast quantum
-        algorithm from the previous article to find{" "}
-        <InlineMathBlock latex="r" />.
+        This is our order-finding problem. We use the{" "}
+        <ArticleLink chapterId="quantum-algorithms" articleId="order-finding">
+          quantum order-finding algorithm
+        </ArticleLink>{" "}
+        to find <InlineMathBlock latex="r" />.
       </p>
       <p>
         If <InlineMathBlock latex="r" /> turns out to be odd, we&apos;re out of
@@ -122,7 +205,7 @@ const Page = () => {
         <InlineMathBlock latex="p" /> and <InlineMathBlock latex="q" /> in the
         factorisation of <InlineMathBlock latex="a^m + 1" /> so we can&apos;t
         extract any factors and we have to start our algorithm again from the
-        begining.
+        beginning.
       </p>
       <p>
         Taking a look at the other term, it is actually always the case that{" "}
@@ -134,7 +217,7 @@ const Page = () => {
         <InlineMathBlock latex="m = r/2" /> and thus{" "}
         <InlineMathBlock latex="m < r" />, we would have found a smaller order
         of <InlineMathBlock latex="a" /> and <InlineMathBlock latex="N" />. Our
-        order-finding algorthim is always guaranteed to give us the smallest
+        order-finding algorithm is always guaranteed to give us the smallest
         possible order so this would be a contradiction.
       </p>
       <p>
@@ -151,7 +234,7 @@ const Page = () => {
         <InlineMathBlock latex="\gcd(N, a^m - 1)" /> will now give us our
         factors <InlineMathBlock latex="p" /> and <InlineMathBlock latex="q" />.
       </p>
-      <h2>Exercise</h2>
+      <h2>Exercise: factor 15</h2>
       <Exercise
         problem={
           <>
@@ -215,6 +298,30 @@ const Page = () => {
         non-trivial (not <InlineMathBlock latex="1" /> or{" "}
         <InlineMathBlock latex="N" />) factors.
       </p>
+      <h2>Related lessons</h2>
+      <ul>
+        <li>
+          <ArticleLink chapterId="quantum-algorithms" articleId="order-finding">
+            Order finding
+          </ArticleLink>
+          : the quantum subroutine that returns the period{" "}
+          <InlineMathBlock latex="r" />.
+        </li>
+        <li>
+          <ArticleLink
+            chapterId="quantum-algorithms"
+            articleId="quantum-fourier-transform"
+          >
+            Quantum Fourier transform
+          </ArticleLink>
+          : the transform order finding uses to read that period off the state.
+        </li>
+        <li>
+          <Link href="/chapter/quantum-algorithms">Quantum algorithms</Link>:
+          the chapter these lessons belong to, from Deutsch-Jozsa through
+          Shor&apos;s algorithm.
+        </li>
+      </ul>
     </Article>
   );
 };
