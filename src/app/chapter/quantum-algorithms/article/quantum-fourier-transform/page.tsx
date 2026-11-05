@@ -417,6 +417,11 @@ const Page = () => {
           </ArticleLink>
           : compare a search algorithm based on amplitude amplification.
         </li>
+        <li>
+          <a href="/chapter/quantum-algorithms">Quantum algorithms</a>: the
+          chapter that continues from this transform through order finding to
+          Shor&apos;s algorithm.
+        </li>
       </ul>
     </Article>
   );
