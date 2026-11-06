@@ -173,6 +173,15 @@ test("high-impression pages use query-aligned titles, descriptions and headings"
       },
     ],
     [
+      "/chapter/mathematical-foundations/article/vector-spaces",
+      {
+        title: "What Is a Vector Space in Quantum Computing? | QCFundamentals",
+        h1: "What Is a Vector Space in Quantum Computing?",
+        description:
+          "A vector space is a set closed under addition and scalar multiplication; a basis fixes its dimension, which quantum computing uses to write a qubit state.",
+      },
+    ],
+    [
       "/chapter/qubits-and-gates/article/single-qubit-gates",
       {
         title: "Pauli X, Y, Z and the Hadamard Gate | QCFundamentals",

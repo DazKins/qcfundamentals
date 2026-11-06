@@ -13,7 +13,17 @@ export const metadata = getArticlePageMetadata(CHAPTER_NUMBER, ARTICLE_ID);
 const Page = () => {
   return (
     <Article>
-      <p>The next stop on our tour of abstract mathematics is vector spaces.</p>
+      <p>
+        A vector space is a set of vectors closed under addition and under
+        multiplication by scalars from a{" "}
+        <ArticleLink chapterId="mathematical-foundations" articleId="fields">
+          field
+        </ArticleLink>
+        . A basis is a minimal set of vectors that can build every other vector,
+        and the size of that basis is the dimension. Quantum computing writes
+        each qubit state as a vector in a two-dimensional space, so these rules
+        are how those states are combined.
+      </p>
       <p>
         You may have heard of or used &quot;vectors&quot; before and, if so,
         your intuition will definitely be helpful here. However, just as before,
