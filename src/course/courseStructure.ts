@@ -59,8 +59,10 @@ export const ChapterDefinitions: ChapterDefinition[] = [
       {
         title: "Vector Spaces",
         id: "vector-spaces",
+        pageTitle: "What Is a Vector Space in Quantum Computing?",
+        heading: "What Is a Vector Space in Quantum Computing?",
         description:
-          "Learn the rules of vector spaces, vector addition and scalar multiplication, then explore bases, linear independence, spanning sets and dimension.",
+          "A vector space is a set closed under addition and scalar multiplication; a basis fixes its dimension, which quantum computing uses to write a qubit state.",
       },
       {
         title: "Linear Algebra",
