@@ -141,8 +141,10 @@ export const ChapterDefinitions: ChapterDefinition[] = [
       {
         title: "Superdense Coding",
         id: "superdense-coding",
+        pageTitle: "Superdense Coding: Send 2 Classical Bits with 1 Qubit",
+        heading: "Superdense Coding: Send 2 Classical Bits with 1 Qubit",
         description:
-          "Work through superdense coding: use a shared entangled pair and one transmitted qubit to communicate two classical bits, with circuit diagrams and exercises.",
+          "Superdense coding sends two classical bits with one qubit and a pre-shared Bell pair. Two bits is the limit for one transmitted qubit plus that pair.",
       },
     ],
   },
