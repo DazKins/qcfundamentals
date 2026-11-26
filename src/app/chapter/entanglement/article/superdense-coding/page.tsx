@@ -1,5 +1,6 @@
 import { getArticlePageMetadata } from "@/course/courseStructure";
 import Article from "@/components/article";
+import ArticleLink from "@/components/articleLink";
 import InlineMathBlock from "@/components/inlineMathBlock";
 import ArticleImage from "@/components/articleImage";
 import MathBlock from "@/components/mathBlock";
@@ -18,6 +19,15 @@ const Page = () => {
   return (
     <Article>
       <p>
+        Superdense coding sends two classical bits by transmitting one qubit,
+        using a pre-shared Bell pair (an{" "}
+        <ArticleLink chapterId="entanglement" articleId="entanglement">
+          EPR pair
+        </ArticleLink>
+        ). Two classical bits is the limit for one transmitted qubit together
+        with that pre-shared pair.
+      </p>
+      <p>
         We&apos;re now getting pretty familiar with the fact that a qubit can
         hold any state in a superposition of <InlineMathBlock latex="\ket{0}" />{" "}
         and <InlineMathBlock latex="\ket{1}" />. Whereas a classical bit can
@@ -28,9 +38,12 @@ const Page = () => {
       </p>
       <p>
         In the previous article we discussed how Alice and Bob could use a
-        shared entagled pair of qubits to communicate using quantum
-        teleportation. We found that they would need to communicate two
-        classical bits in order to decode a sent quantum state.
+        shared entagled pair of qubits to communicate using{" "}
+        <ArticleLink chapterId="entanglement" articleId="teleportation">
+          quantum teleportation
+        </ArticleLink>
+        . We found that they would need to communicate two classical bits in
+        order to decode a sent quantum state.
       </p>
       <p>
         In this article we will look at the opposite scenario. Where Alice and

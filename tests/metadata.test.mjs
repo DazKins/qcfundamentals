@@ -218,6 +218,16 @@ test("high-impression pages use query-aligned titles, descriptions and headings"
       },
     ],
     [
+      "/chapter/entanglement/article/superdense-coding",
+      {
+        title:
+          "Superdense Coding: Send 2 Classical Bits with 1 Qubit | QCFundamentals",
+        h1: "Superdense Coding: Send 2 Classical Bits with 1 Qubit",
+        description:
+          "Superdense coding sends two classical bits with one qubit and a pre-shared Bell pair. Two bits is the limit for one transmitted qubit plus that pair.",
+      },
+    ],
+    [
       "/chapter/quantum-algorithms",
       {
         title: "Quantum Algorithms: Deutsch-Jozsa to Shor | QCFundamentals",
